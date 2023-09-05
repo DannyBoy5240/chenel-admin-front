@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Col from 'react-bootstrap/Col';
+import Col from "react-bootstrap/Col";
 
 export default function Header() {
   return (
@@ -76,7 +76,12 @@ export default function Header() {
                 data-bs-toggle="dropdown"
               >
                 <Col xs={6} md={4}>
-                  <Image src="assets/img/avatar.jpg" width={40} height={45} roundedCircle />
+                  <Image
+                    src="assets/img/avatar.jpg"
+                    width={40}
+                    height={45}
+                    roundedCircle
+                  />
                 </Col>
               </a>
               <ul className="dropdown-menu">

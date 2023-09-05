@@ -15,6 +15,8 @@ import AboutUs from "./pages/AboutUs";
 import Packages from "./pages/Packages";
 import BlogPage from "./pages/Blog";
 
+import WriterDashboard from "./pages/writer";
+
 function App() {
   return (
     <Router>
@@ -29,6 +31,8 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/packages" element={<Packages />} />
           <Route path="/blog" element={<BlogPage />} />
+
+          <Route path="/writer/" element={<WriterDashboard />} />
         </Routes>
         <Footer />
       </div>
