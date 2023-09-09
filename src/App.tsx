@@ -16,6 +16,10 @@ import Packages from "./pages/Packages";
 import BlogPage from "./pages/Blog";
 
 import WriterDashboard from "./pages/writer";
+import ManagerDashboard from "./pages/manager";
+import Userinfo from "./pages/Userinfo";
+import WriterProfiles from "./pages/profiles/WriterProfiles";
+
 
 function App() {
   return (
@@ -33,6 +37,11 @@ function App() {
           <Route path="/blog" element={<BlogPage />} />
 
           <Route path="/writer/" element={<WriterDashboard />} />
+          <Route path="/manager/" element={<ManagerDashboard />} />
+          <Route path="/Userinfo/" element={<Userinfo />} />
+
+          <Route path="/profiles/" element={<WriterProfiles />} />
+
         </Routes>
         <Footer />
       </div>

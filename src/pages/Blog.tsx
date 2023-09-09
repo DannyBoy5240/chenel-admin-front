@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Button, InputGroup, Form, ListGroup } from "react-bootstrap";
+import { InputGroup, Form, ListGroup } from "react-bootstrap";
 import { Blog } from "../libs/interfaces";
 import BlogItem from "../components/blog/BlogItem";
 import FloatingButton from "../components/common/FloatingButton";

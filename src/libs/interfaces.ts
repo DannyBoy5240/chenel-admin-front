@@ -10,3 +10,9 @@ export type Blog = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type UserListItem = {
+  name: string;
+  email: string;
+  status: string;
+};
