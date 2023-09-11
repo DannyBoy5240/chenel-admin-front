@@ -20,14 +20,23 @@ import ManagerDashboard from "./pages/manager";
 import Userinfo from "./pages/Userinfo";
 import WriterProfiles from "./pages/profiles/WriterProfiles";
 
-
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Header />
+      <div
+        className="position-relative vh-100 overflow-hidden"
+        style={{ fontFamily: "Dosis" }}
+      >
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route
+            path="/"
+            element={
+              <div>
+                <Header />
+                <Dashboard />
+              </div>
+            }
+          />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signIn" element={<Login />} />
           <Route path="/signUp" element={<Register />} />
@@ -41,7 +50,6 @@ function App() {
           <Route path="/Userinfo/" element={<Userinfo />} />
 
           <Route path="/profiles/" element={<WriterProfiles />} />
-
         </Routes>
         <Footer />
       </div>

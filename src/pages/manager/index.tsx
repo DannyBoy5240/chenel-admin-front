@@ -7,32 +7,51 @@ import Writers from "../../components/managers/Writers";
 import Docs from "../../components/managers/Docs";
 import Editor from "../../components/common/ManagerEditor";
 
-export default function ManagerDashboard() {
-  const [page, setPage] = useState('info');
-  return (
-    <main id="main">
-      <section className="section-bg">
-        {/* <div className="container"> */}
-          <div className="row">
-            <div className="col-lg-2 mt-5">
-              <Sidebutton page={page} setPage={setPage}/>
-            </div>
-            <div className="col-lg-9">
-              <TopSideBar />
-              {page == 'info' && (<UserInfo setPage={setPage} />)}
-              {page == 'clerk' && (<Clerks />)}
-              {page == 'writer' && (<Writers />)}
-              {page == 'doc' && (<Docs />)}
-              {page == 'editor' && (<Editor />)}
+import logoImage from "../../assets/img/logo.png";
 
-              
-              
-            </div>
-            <div className="col-lg-1 mt-5">
+export default function ManagerDashboard() {
+  const [page, setPage] = useState("info");
+  return (
+    <div className="h-100 d-flex flex-column">
+      {/* Header */}
+      <div className="d-flex py-3 align-items-center">
+        <div className="col-lg-2 d-flex align-items-center">
+          <div className="px-3">
+            <img
+              src={logoImage}
+              className="img-fluid"
+              style={{ width: "60px" }}
+              alt="Logo"
+            />
+          </div>
+          <div className="fw-bold">Chenel Service</div>
+        </div>
+        <div className="col-md-7 col-lg-5">
+          <div className="position-relative w-100 px-1 rounded-pill bg-light">
+            <input
+              className="form-control border-0 rounded-pill p-2 pl-5 bg-light"
+              placeholder="Search User"
+            />
+            <div style={{ position: "absolute", top: "8px", right: "30px" }}>
+              Search Icon
             </div>
           </div>
-        {/* </div> */}
-      </section>
-    </main>
+        </div>
+      </div>
+      <div className="d-flex flex-grow-1">
+        <div className="col-lg-2">
+          <Sidebutton page={page} setPage={setPage} />
+        </div>
+        <div className="col-lg-9">
+          {/* <TopSideBar /> */}
+          {page == "info" && <UserInfo setPage={setPage} />}
+          {page == "clerk" && <Clerks />}
+          {page == "writer" && <Writers />}
+          {page == "doc" && <Docs />}
+          {page == "editor" && <Editor />}
+        </div>
+        <div className="col-lg-1 mt-5"></div>
+      </div>
+    </div>
   );
 }
