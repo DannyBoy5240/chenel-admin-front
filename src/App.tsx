@@ -16,7 +16,8 @@ import Packages from "./pages/Packages";
 import BlogPage from "./pages/Blog";
 
 import WriterDashboard from "./pages/writer";
-import ManagerDashboard from "./pages/manager";
+import ManagerDashboard from "./pages/manager/ManagerDashboard";
+import ManagerWriterProfile from "./pages/manager/ManagerWriterProfile";
 import Userinfo from "./pages/Userinfo";
 import WriterProfiles from "./pages/profiles/WriterProfiles";
 
@@ -45,8 +46,9 @@ function App() {
           <Route path="/packages" element={<Packages />} />
           <Route path="/blog" element={<BlogPage />} />
 
-          <Route path="/writer/" element={<WriterDashboard />} />
           <Route path="/manager/" element={<ManagerDashboard />} />
+          <Route path="/manager/writer" element={<ManagerWriterProfile />} />
+          <Route path="/writer/" element={<WriterDashboard />} />
           <Route path="/Userinfo/" element={<Userinfo />} />
 
           <Route path="/profiles/" element={<WriterProfiles />} />

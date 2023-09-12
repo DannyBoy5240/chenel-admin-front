@@ -7,7 +7,7 @@ import toClerksIcon from "../../assets/icons/to-clerks.svg";
 import backIcon from "../../assets/icons/back.svg";
 import removeIcon from "../../assets/icons/delete.svg";
 
-export default function UserInfo(props: any) {
+export default function WriterManageDashboard(props: any) {
   const MAX_VALUE = 10005;
   const [key, setKey] = useState("home");
   const [userViewFlag, setUserViewFlag] = useState(0); // flag idx for user item click
@@ -329,12 +329,7 @@ export default function UserInfo(props: any) {
                 className={`${
                   key == "home" ? "bg-header-clicked" : "hover-bg-header-change"
                 }`}
-                style={{
-                  width: "180px",
-                  textAlign: "center",
-                  padding: "15px",
-                  color: "black",
-                }}
+                style={{ width: "180px", textAlign: "center", padding: "15px" }}
                 role="button"
                 onClick={() => {
                   setKey("home");
@@ -351,12 +346,7 @@ export default function UserInfo(props: any) {
                     ? "bg-header-clicked"
                     : "hover-bg-header-change"
                 }`}
-                style={{
-                  width: "180px",
-                  textAlign: "center",
-                  padding: "15px",
-                  color: "black",
-                }}
+                style={{ width: "180px", textAlign: "center", padding: "15px" }}
                 role="button"
                 onClick={() => {
                   setKey("towriters");
@@ -373,12 +363,7 @@ export default function UserInfo(props: any) {
                     ? "bg-header-clicked"
                     : "hover-bg-header-change"
                 }`}
-                style={{
-                  width: "180px",
-                  textAlign: "center",
-                  padding: "15px",
-                  color: "black",
-                }}
+                style={{ width: "180px", textAlign: "center", padding: "15px" }}
                 role="button"
                 onClick={() => {
                   setKey("toclerks");

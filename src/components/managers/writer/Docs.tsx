@@ -1,134 +1,112 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import Table from "react-bootstrap/Table";
-import FloatingButton from "../common/FloatingButton";
+import FloatingButton from "../../common/FloatingButton";
 
 export default function UserInfo() {
   const [key, setKey] = useState("home");
-  const navigate = useNavigate();
 
   const [temp_userdb, setTemp_UserDB] = useState([
     {
-      name: "writer1",
+      name: "user1",
       email: "email1@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer2",
+      name: "user2",
       email: "email2@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer3",
+      name: "user3",
       email: "email3@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer4",
+      name: "user4",
       email: "email4@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer5",
+      name: "user5",
       email: "email5@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer6",
+      name: "user6",
       email: "email6@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer7",
+      name: "user7",
       email: "email7@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer8",
+      name: "user8",
       email: "email8@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer9",
+      name: "user9",
       email: "email9@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer10",
+      name: "user10",
       email: "email0@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer11",
+      name: "user11",
       email: "email11@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer12",
+      name: "user12",
       email: "email12@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer12",
+      name: "user12",
       email: "email12@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer12",
+      name: "user12",
       email: "email12@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer12",
+      name: "user12",
       email: "email12@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
     {
-      name: "writer12",
+      name: "user12",
       email: "email12@gmail.com",
       phone: "+1 234 56789",
       regtime: "08:20 Sep. 5 2023",
-      writer: "",
     },
   ]);
 
   const writerViewHandler = (idx: any) => {
-    console.log(`writer ${idx} view clicked!`);
-    navigate("/manager/writer");
+    console.log(`user ${idx} view clicked!`);
   };
 
   return (
