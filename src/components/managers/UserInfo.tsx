@@ -1,7 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import homeIcon from "../../assets/icon/house-solid.svg";
+import houseSolidIcon from "../../assets/icons/house-solid.svg";
+import toWritersIcon from "../../assets/icons/to-writers.svg";
+import toClerksIcon from "../../assets/icons/to-clerks.svg";
+import backIcon from "../../assets/icons/back.svg";
+import removeIcon from "../../assets/icons/delete.svg";
 
 export default function UserInfo(props: any) {
   const MAX_VALUE = 10005;
@@ -293,17 +297,22 @@ export default function UserInfo(props: any) {
   const setWriterUserManageHandler = () => {
     console.log("Set users to writer!");
 
+    if (flagWriterIdx == 0) return;
+
     setTemp_UserDB((prevTemp_UserDB: any) => {
       return prevTemp_UserDB.map((data: any, idx: any) => {
         if (flagWriterUser[idx] != 0) {
-          console.log("idx -> ", idx, " context -> ", temp_userdb[idx].name);
-          return { ...data, writer: temp_userdb[flagWriterIdx].name };
+          return { ...data, writer: `writer${flagWriterIdx}` };
         } else {
           // Keep other elements unchanged
           return data;
         }
       });
     });
+
+    // Clear FlagWriterUser
+    setFlagWriterUser(new Array(MAX_VALUE).fill(0));
+    setFlagWriterIdx(0);
   };
 
   return (
@@ -326,6 +335,9 @@ export default function UserInfo(props: any) {
                   setKey("home");
                 }}
               >
+                <span className="px-1">
+                  <img src={houseSolidIcon} className="icon-default-sz" />
+                </span>
                 <span className="px-1">Home</span>
               </div>
               <div
@@ -340,7 +352,10 @@ export default function UserInfo(props: any) {
                   setKey("towriters");
                 }}
               >
-                To Writers
+                <span className="px-1">
+                  <img src={toWritersIcon} className="icon-default-sz" />
+                </span>
+                <span className="px-1">To Writers</span>
               </div>
               <div
                 className={`${
@@ -354,7 +369,10 @@ export default function UserInfo(props: any) {
                   setKey("toclerks");
                 }}
               >
-                To Clerks
+                <span className="px-1">
+                  <img src={toClerksIcon} className="icon-default-sz" />
+                </span>
+                <span className="px-1">To Clerks</span>
               </div>
             </div>
             <div className="pe-3"></div>
@@ -434,7 +452,7 @@ export default function UserInfo(props: any) {
                         role="button"
                         onClick={() => {
                           let tempUserList = [...flagWriterUser]; // Create a new array to avoid mutating state directly
-                          tempUserList[idx] = !tempUserList[idx]; // Toggle the value at idx
+                          tempUserList[idx] = 1 - tempUserList[idx]; // Toggle the value at idx
                           setFlagWriterUser(tempUserList);
                         }}
                       >
@@ -477,7 +495,7 @@ export default function UserInfo(props: any) {
                         onClick={() => setFlagWriterIdx(idx + 1)}
                       >
                         <div className="w-50">{idx + 1}</div>
-                        <div className="w-50">{data.name}</div>
+                        <div className="w-50">{`writer${idx + 1}`}</div>
                       </div>
                     );
                   })}
@@ -507,11 +525,19 @@ export default function UserInfo(props: any) {
           {/* User Info View with Idx Toolbar */}
           <div className="d-flex py-1 w-full justify-content-between">
             <div className="d-flex">
-              <div className="p-1" onClick={() => setUserViewFlag(0)}>
-                Back
+              <div
+                className="p-1"
+                onClick={() => setUserViewFlag(0)}
+                role="button"
+              >
+                <img src={backIcon} className="icon-default-sz" />
               </div>
-              <div className="p-1" onClick={() => removeUserHandler()}>
-                Delete
+              <div
+                className="p-1"
+                onClick={() => removeUserHandler()}
+                role="button"
+              >
+                <img src={removeIcon} className="icon-default-sz" />
               </div>
             </div>
             <div>Registration Time: {temp_userinfo.regtime}</div>

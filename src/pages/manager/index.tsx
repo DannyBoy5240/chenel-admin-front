@@ -7,12 +7,15 @@ import Writers from "../../components/managers/Writers";
 import Docs from "../../components/managers/Docs";
 import Editor from "../../components/common/ManagerEditor";
 
+import searchIcon from "../../assets/icons/search-icon.svg";
+
 import logoImage from "../../assets/img/logo.png";
+import testAvatar from "../../assets/img/avatar.jpg";
 
 export default function ManagerDashboard() {
   const [page, setPage] = useState("info");
   return (
-    <div className="h-100 d-flex flex-column">
+    <div className="h-100 d-flex flex-column position-relative">
       {/* Header */}
       <div className="d-flex py-3 align-items-center">
         <div className="col-lg-2 d-flex align-items-center">
@@ -33,7 +36,7 @@ export default function ManagerDashboard() {
               placeholder="Search User"
             />
             <div style={{ position: "absolute", top: "8px", right: "30px" }}>
-              Search Icon
+              <img src={searchIcon} className="icon-default-sz" />
             </div>
           </div>
         </div>
@@ -51,6 +54,12 @@ export default function ManagerDashboard() {
           {page == "editor" && <Editor />}
         </div>
         <div className="col-lg-1 mt-5"></div>
+      </div>
+      {/* Profile Icon */}
+      <div className="position-aboluste" style={{ top: "20px", right: "20px" }}>
+        <div className="avatar-default-sz rounded-circle">
+          <img src={testAvatar} className="avatar-default-sz rounded-circle" />
+        </div>
       </div>
     </div>
   );

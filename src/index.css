@@ -39,3 +39,13 @@ code {
   overflow-y: auto; /* Enable vertical scroll when content overflows */
   overflow-x: hidden;
 }
+
+.icon-default-sz {
+  width: 16px;
+  height: 16px;
+}
+
+.avatar-default-sz {
+  width: 48px;
+  height: 48px;
+}

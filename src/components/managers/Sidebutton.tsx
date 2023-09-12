@@ -1,5 +1,11 @@
 import React from "react";
 
+import inboxIcon from "../../assets/icons/inbox-solid.svg";
+import toWritersIcon from "../../assets/icons/to-writers.svg";
+import toClicksIcon from "../../assets/icons/to-clerks.svg";
+import completedDocIcon from "../../assets/icons/completed-doc.svg";
+import addPlusIcon from "../../assets/icons/add-new-user.svg";
+
 export default function SideButton(props: any) {
   return (
     <div className="px-3" role="button">
@@ -9,7 +15,9 @@ export default function SideButton(props: any) {
           style={{ background: "#c2e7ff", borderRadius: "12px" }}
           onClick={() => props.setPage("editor")}
         >
-          <span className="px-3">+</span>
+          <span className="px-3">
+            <img src={addPlusIcon} className="icon-default-sz" />
+          </span>
           <span className="pe-3">Add New User</span>
         </div>
       </div>
@@ -24,9 +32,11 @@ export default function SideButton(props: any) {
             }}
             onClick={() => props.setPage("info")}
           >
-            <span style={{ display: "inline-block", width: "30px" }}>👨‍👩‍👧</span>
+            <span style={{ display: "inline-block", width: "30px" }}>
+              <img src={inboxIcon} className="icon-default-sz" />
+            </span>
             <span style={{ fontWeight: `${props.page == "info" ? 700 : 500}` }}>
-              Users
+              Inbox
             </span>
           </a>
         </li>
@@ -42,7 +52,9 @@ export default function SideButton(props: any) {
             }}
             onClick={() => props.setPage("writer")}
           >
-            <span style={{ display: "inline-block", width: "30px" }}>👩‍🏫</span>
+            <span style={{ display: "inline-block", width: "30px" }}>
+              <img src={toWritersIcon} className="icon-default-sz" />
+            </span>
             <span
               style={{ fontWeight: `${props.page == "writer" ? 700 : 500}` }}
             >
@@ -62,7 +74,9 @@ export default function SideButton(props: any) {
             }}
             onClick={() => props.setPage("clerk")}
           >
-            <span style={{ display: "inline-block", width: "30px" }}>👨‍💼</span>
+            <span style={{ display: "inline-block", width: "30px" }}>
+              <img src={toClicksIcon} className="icon-default-sz" />
+            </span>
             <span
               style={{ fontWeight: `${props.page == "clerk" ? 700 : 500}` }}
             >
@@ -80,7 +94,9 @@ export default function SideButton(props: any) {
             }}
             onClick={() => props.setPage("doc")}
           >
-            <span style={{ display: "inline-block", width: "30px" }}>✔</span>
+            <span style={{ display: "inline-block", width: "30px" }}>
+              <img src={completedDocIcon} className="icon-default-sz" />
+            </span>
             <span style={{ fontWeight: `${props.page == "doc" ? 700 : 500}` }}>
               Completed Doc
             </span>
