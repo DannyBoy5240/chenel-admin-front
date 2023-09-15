@@ -49,3 +49,18 @@ code {
   width: 48px;
   height: 48px;
 }
+
+/* Custom Image Upload Button Style */
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  color: black;
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}

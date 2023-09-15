@@ -8,8 +8,11 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
+
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import EmployeeRegister from "./pages/auth/EmployeeRegister";
+
 import FAQ from "./pages/FAQ";
 import AboutUs from "./pages/AboutUs";
 import Packages from "./pages/Packages";
@@ -35,12 +38,16 @@ function App() {
               <div>
                 <Header />
                 <Dashboard />
+                <Footer />
               </div>
             }
           />
-          <Route path="/contact" element={<Contact />} />
+
           <Route path="/signIn" element={<Login />} />
           <Route path="/signUp" element={<Register />} />
+          <Route path="/signUp/Employee" element={<EmployeeRegister />} />
+
+          <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/packages" element={<Packages />} />
@@ -53,7 +60,6 @@ function App() {
 
           <Route path="/profiles/" element={<WriterProfiles />} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );
