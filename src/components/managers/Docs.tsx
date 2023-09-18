@@ -1,5 +1,9 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import axios from "axios";
+
+import { BACKEND_URL } from "../../constants";
+
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Table from "react-bootstrap/Table";
@@ -106,6 +110,32 @@ export default function UserInfo() {
     },
   ]);
 
+  const [docList, setDocList] = useState([]);
+
+  const fetchDocsData = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/users/viewalldocs`,
+        {},
+        config
+      );
+
+      if (res.data.success) setDocList(res.data.docs);
+      else setDocList([]);
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchDocsData();
+  }, []);
+
   const documentViewHandler = (idx: any) => {
     console.log(`document ${idx} view clicked!`);
   };
@@ -127,7 +157,7 @@ export default function UserInfo() {
         </div>
       </div>
       <div style={{ overflowY: "auto", height: "60vh" }}>
-        {temp_userdb.map((idx: any, key: any) => {
+        {docList.map((idx: any, key: any) => {
           return (
             <div key={key} role="button" className="hover-row-bg-change">
               <div

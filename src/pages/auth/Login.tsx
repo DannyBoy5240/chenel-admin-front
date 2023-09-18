@@ -2,14 +2,24 @@ import React, { useState, useRef } from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import { useSelector, useDispatch } from "react-redux";
+
 import axios from "axios";
 
 import { BACKEND_URL } from "../../constants";
 
+import { login } from "../../actions/auth";
+
 import "./auth.css";
 
-export default function Login() {
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+import jwt_decode from "jwt-decode";
+
+function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [signInError, setSignInError] = useState("");
 
@@ -37,35 +47,21 @@ export default function Login() {
   };
 
   // signin handler with email and password
-  const signInHandler = () => {
-    const data = {
-      email: email,
-      password: password,
-    };
-
-    const url = `${BACKEND_URL}/users/signIn`;
-    axios
-      .post(url, data)
-      .then((response) => {
-        console.log("Response: ", response.data);
-        const res = response.data;
-        if (res.success) {
-          // navigate based on the roles
-          if (res.roles === "ADMIN") navigate("/admin");
-          else if (res.roles === "MANAGER") navigate("/manager");
-          else if (res.roles === "WRITER") navigate("/writer");
-          else if (res.roles === "CLERK") navigate("/clerk");
-          else navigate("/");
-          //
-        } else {
-          console.log(res.message);
-          setSignInError(res.message);
-        }
-        return;
-      })
-      .catch((error) => {
-        console.log("Error: ", error);
-      });
+  const signInHandler = async () => {
+    const res = await dispatch(login(email, password));
+    if (res.success) {
+      const decoded_res = jwt_decode(res.token) as any;
+      // navigate to the url based on the role
+      const role = decoded_res.user.roles;
+      if (role === "ADMIN") navigate("/admin");
+      else if (role === "MANAGER") navigate("/manager");
+      else if (role === "WRITER") navigate("/writer");
+      else if (role === "CLERK") navigate("/clerk");
+      else if (role === "CUSTOMER") navigate("/");
+      else navigate("/notfound");
+    } else {
+      setSignInError(res.message);
+    }
   };
 
   return (
@@ -153,3 +149,13 @@ export default function Login() {
     </div>
   );
 }
+
+Login.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(Login);

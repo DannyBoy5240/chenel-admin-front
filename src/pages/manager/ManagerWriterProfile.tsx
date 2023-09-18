@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
+import { BACKEND_URL } from "../../constants";
+
+import axios from "axios";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
 
 import WriterInfo from "../../components/managers/writer/WriterInfo";
 import Sidebutton from "../../components/managers/writer/Sidebutton";
@@ -16,13 +23,56 @@ import searchIcon from "../../assets/icons/search-icon.svg";
 import logoImage from "../../assets/img/logo.png";
 import testAvatar from "../../assets/img/avatar.jpg";
 
-export default function ManagerWriterProfile() {
+interface Props {
+  auth: any;
+}
+
+function ManagerWriterProfile(props: Props) {
   const [page, setPage] = useState("info");
+  const [docList, setDocList] = useState([]);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (props.auth.token) {
+      const decoded = jwt_decode(props.auth.token) as any;
+      fetchWriterData();
+    } else {
+      navigate("/signIn");
+    }
+  }, []);
+
+  const data = location.state.data;
+
+  const fetchWriterData = async () => {
+    const tdata = {
+      writer: data.email,
+    };
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/users/viewriterdoc`,
+        tdata,
+        config
+      );
+      if (res.data.success) {
+        setDocList(res.data.users);
+      }
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
 
   return (
-    <div className="h-100 d-flex flex-column position-relative">
+    <div
+      className="h-100 d-flex flex-column position-relative"
+      style={{ background: "#F6F8FC" }}
+    >
       {/* Header */}
       <div className="d-flex py-3 align-items-center">
         <div
@@ -46,18 +96,43 @@ export default function ManagerWriterProfile() {
           <Sidebutton page={page} setPage={setPage} />
         </div>
         <div className="col-lg-9">
-          {page == "info" && <WriterInfo setPage={setPage} />}
-          {page == "writer" && <Wusers />}
-          {page == "doc" && <Docs />}
+          {page == "info" && <WriterInfo setPage={setPage} data={data} />}
+          {page == "writer" && (
+            <Wusers
+              docs={docList.filter(
+                (data: any) => data.userdoc.status === "WRITERCHECKING"
+              )}
+            />
+          )}
+          {page == "doc" && (
+            <Docs
+              docs={docList.filter(
+                (data: any) => data.userdoc.status === "WRITERCONFIRM"
+              )}
+            />
+          )}
         </div>
         <div className="col-lg-1 mt-5"></div>
       </div>
       {/* Profile Icon */}
-      <div className="position-aboluste" style={{ top: "20px", right: "20px" }}>
+      <div style={{ position: "absolute", top: "18px", right: "18px" }}>
         <div className="avatar-default-sz rounded-circle">
-          <img src={testAvatar} className="avatar-default-sz rounded-circle" />
+          <img
+            src={testAvatar}
+            className="avatar-default-sz rounded-circle profile-avatar"
+          />
         </div>
       </div>
     </div>
   );
 }
+
+ManagerWriterProfile.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(ManagerWriterProfile);

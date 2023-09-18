@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
 
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+
 export default function Dashboard() {
   const [index, setIndex] = useState(0);
 
@@ -9,7 +12,8 @@ export default function Dashboard() {
   };
 
   return (
-    <>
+    <div>
+      <Header />
       <section id="hero" className="d-flex align-items-center">
         <div className="container">
           <div className="row justify-content-between">
@@ -195,6 +199,7 @@ export default function Dashboard() {
           </div>
         </div>
       </section>
-    </>
+      <Footer />
+    </div>
   );
 }

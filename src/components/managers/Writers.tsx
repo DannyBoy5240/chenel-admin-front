@@ -1,6 +1,9 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
+
+import { BACKEND_URL } from "../../constants";
 
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -11,125 +14,45 @@ export default function UserInfo() {
   const [key, setKey] = useState("home");
   const navigate = useNavigate();
 
-  const [temp_userdb, setTemp_UserDB] = useState([
-    {
-      name: "writer1",
-      email: "email1@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer2",
-      email: "email2@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer3",
-      email: "email3@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer4",
-      email: "email4@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer5",
-      email: "email5@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer6",
-      email: "email6@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer7",
-      email: "email7@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer8",
-      email: "email8@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer9",
-      email: "email9@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer10",
-      email: "email0@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer11",
-      email: "email11@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "writer12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-  ]);
+  const [userList, setUserList] = useState([]);
 
-  const writerViewHandler = (idx: any) => {
-    console.log(`writer ${idx} view clicked!`);
-    navigate("/manager/writer");
+  const fetchWriterData = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(`${BACKEND_URL}/users/userList`, {}, config);
+
+      if (res.data.success) setUserList(res.data.users);
+      else setUserList([]);
+    } catch (err: any) {
+      console.log(err.message);
+    }
   };
+
+  useEffect(() => {
+    fetchWriterData();
+  }, []);
+
+  const writerViewHandler = (idx: any, data: any) => {
+    console.log(`writer ${idx} view clicked!`);
+    navigate("/manager/writer", { state: { data: data } });
+  };
+
+  function convertToUSDateTime(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZone: "America/New_York",
+    };
+    return date.toLocaleString("en-US", options);
+  }
 
   return (
     <div>
@@ -148,26 +71,30 @@ export default function UserInfo() {
         </div>
       </div>
       <div style={{ overflowY: "auto", height: "60vh" }}>
-        {temp_userdb.map((idx: any, key: any) => {
-          return (
-            <div key={key} role="button" className="hover-row-bg-change">
-              <div
-                className="d-flex w-100 px-3 py-2"
-                onClick={() => writerViewHandler(key + 1)}
-              >
-                <div className="w-25 d-flex">
-                  <div className="w-50">{key + 1}</div>
-                  <div className="w-50">{idx.name}</div>
+        {userList
+          .filter((user: any) => user.roles === "WRITER")
+          .map((idx: any, key: any) => {
+            return (
+              <div key={key} role="button" className="hover-row-bg-change">
+                <div
+                  className="d-flex w-100 px-3 py-2"
+                  onClick={() => writerViewHandler(key + 1, idx)}
+                >
+                  <div className="w-25 d-flex">
+                    <div className="w-50">{key + 1}</div>
+                    <div className="w-50">{idx.fullName}</div>
+                  </div>
+                  <div className="w-50 d-flex">
+                    <div className="w-50">{idx.email}</div>
+                    <div className="w-50">{idx.phoneNumber}</div>
+                  </div>
+                  <div className="w-25 text-end">
+                    {convertToUSDateTime(idx.regTime)}
+                  </div>
                 </div>
-                <div className="w-50 d-flex">
-                  <div className="w-50">{idx.email}</div>
-                  <div className="w-50">{idx.phone}</div>
-                </div>
-                <div className="w-25 text-end">{idx.regtime}</div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </div>
   );

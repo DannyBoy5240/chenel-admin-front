@@ -14,11 +14,26 @@ code {
     monospace;
 }
 
+.bg-header-left-clicked {
+  background-color: #f2f2f2;
+  border-bottom: 3px solid #555;
+  color: #0d6efd;
+  font-weight: 500;
+  border-top-left-radius: 20px;
+}
+
 .bg-header-clicked {
   background-color: #f2f2f2;
   border-bottom: 3px solid #555;
   color: #0d6efd;
   font-weight: 500;
+}
+
+.hover-bg-header-left-change:hover {
+  background-color: #f2f2f2;
+  border-bottom: 3px solid #555;
+  color: #0d6efd;
+  border-top-left-radius: 20px;
 }
 
 .hover-bg-header-change:hover {
@@ -28,11 +43,17 @@ code {
 }
 
 .row-bg-clicked {
-  background-color: #eee;
+  background-color: #c2dbff;
+}
+
+.hover-row-bg-change {
+  background-color: #f2f6fc;
+  border-bottom: 1px solid #e1e7ee;
 }
 
 .hover-row-bg-change:hover {
-  background-color: #eee; /* Change to the desired background color on hover */
+  background-color: #c2dbff; /* Change to the desired background color on hover */
+  border-bottom: 1px solid #e1e7ee;
 }
 
 .overflow-scroll {
@@ -63,4 +84,53 @@ code {
 
 .custom-file-upload input[type="file"] {
   display: none;
+}
+
+.no-outline {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.profile-avatar {
+  border: 2px solid #55555555;
+  padding: 1px 1px;
+}
+
+/* Add New User Input Box Style */
+.user-input-box {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgb(165, 165, 165);
+  padding: 8px;
+  outline: none;
+  height: 64px;
+}
+
+.user-input-title-box {
+  border: 1px solid #a5a5a5;
+  border-radius: 8px;
+  padding: 5px;
+  outline: none;
+  width: 200px;
+}
+
+/* Row Send Button Style */
+.row-send-btn {
+  padding: 0px 10px 0px 10px;
+  background: #a3a3a355;
+  border-radius: 18px;
+}
+
+.row-send-btn:hover {
+  padding: 0px 10px 0px 10px;
+  background: #a3a3a3;
+  border-radius: 18px;
+}
+
+/* default Component background */
+.default-component-back {
+  background-color: white;
+  border-radius: 18px;
+  padding-top: 25px;
 }

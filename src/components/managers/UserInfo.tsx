@@ -4,289 +4,85 @@ import { useState, useEffect } from "react";
 import houseSolidIcon from "../../assets/icons/house-solid.svg";
 import toWritersIcon from "../../assets/icons/to-writers.svg";
 import toClerksIcon from "../../assets/icons/to-clerks.svg";
-import backIcon from "../../assets/icons/back.svg";
+// import backIcon from "../../assets/icons/back.svg";
+import backIcon from "../../assets/icons/back.jpg";
 import removeIcon from "../../assets/icons/delete.svg";
+
+import axios from "axios";
+
+import { BACKEND_URL } from "../../constants";
 
 export default function UserInfo(props: any) {
   const MAX_VALUE = 10005;
   const [key, setKey] = useState("home");
   const [userViewFlag, setUserViewFlag] = useState(0); // flag idx for user item click
 
-  const [temp_userdb, setTemp_UserDB] = useState([
-    {
-      name: "user1",
-      email: "email1@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user2",
-      email: "email2@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user3",
-      email: "email3@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user4",
-      email: "email4@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user5",
-      email: "email5@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user6",
-      email: "email6@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user7",
-      email: "email7@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user8",
-      email: "email8@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user9",
-      email: "email9@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user10",
-      email: "email0@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user11",
-      email: "email11@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-    {
-      name: "user12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-      writer: "",
-    },
-  ]);
-  const temp_userinfo = {
-    name: "user",
-    email: "user@gmail.com",
-    phone: "+1 234 56789",
-    writer: "writer",
-    regtime: "08:20 Sep. 5 2023",
-    data: [
-      {
-        qus: "What is your full legal name?",
-        ans: "Answer1",
-      },
-      {
-        qus: "Do you have any other names or aliases you have used?",
-        ans: "Answer2",
-      },
-      {
-        qus: "When were you born?",
-        ans: "Answer3",
-      },
-      {
-        qus: "Where were you born (city and country)?",
-        ans: "Answer4",
-      },
-      {
-        qus: "Are you male or female?",
-        ans: "Answer5",
-      },
-      {
-        qus: "What is your Social Security Number?",
-        ans: "Answer6",
-      },
-      {
-        qus: "What is your Alien Registration Number (A-Number)?",
-        ans: "Answer7",
-      },
-      {
-        qus: "What is your current mailing and physical address, those for the last five years?",
-        ans: "Answer8",
-      },
-      {
-        qus: "What is your phone number?",
-        ans: "Answer9",
-      },
-      {
-        qus: "What is your email address?",
-        ans: "Answer10",
-      },
-      {
-        qus: "What is your current immigration status?",
-        ans: "Answer11",
-      },
-      {
-        qus: "When did you enter the United States?",
-        ans: "Answer12",
-      },
-      {
-        qus: "Where did you enter the United States?",
-        ans: "Answer13",
-      },
-      {
-        qus: "What was your port of entry?",
-        ans: "Answer14",
-      },
-      {
-        qus: "What type of visa did you use to enter the United States?",
-        ans: "Answer15",
-      },
-      {
-        qus: "What is your I-94 Arrival/Departure Record number?",
-        ans: "Answer16",
-      },
-      {
-        qus: "Have you ever had a previous visa denied or revoked?",
-        ans: "Answer17",
-      },
-      {
-        qus: "Have you previously applied for any immigration benefits?",
-        ans: "Answer18",
-      },
-      {
-        qus: "Have you ever been out of status in the United States?",
-        ans: "Answer19",
-      },
-      {
-        qus: "What is your marital status?",
-        ans: "Answer20",
-      },
-      {
-        qus: "What is your spouse's full name?",
-        ans: "Answer21",
-      },
-      {
-        qus: "When was your spouse born?",
-        ans: "Answer22",
-      },
-      {
-        qus: "What is your spouse's immigration status?",
-        ans: "Answer23",
-      },
-      {
-        qus: "Do you have any children? If yes, provide their names and dates of birth.",
-        ans: "Answer24",
-      },
-      {
-        qus: "Where are you currently employed?",
-        ans: "Answer25",
-      },
-      {
-        qus: "What is your job title?",
-        ans: "Answer26",
-      },
-      {
-        qus: "What are your job responsibilities?",
-        ans: "Answer27",
-      },
-      {
-        qus: "When did you start your current job?",
-        ans: "Answer28",
-      },
-      {
-        qus: "Have you worked for any other employers for the past five years? If yes, provide details.",
-        ans: "Answer29",
-      },
-      {
-        qus: "List the countries you have visited outside the United States.",
-        ans: "Answer30",
-      },
-      {
-        qus: "Provide the purpose and dates of your last international trip.",
-        ans: "Answer31",
-      },
-      {
-        qus: "Have you ever been arrested or convicted of a crime? If yes, provide details.",
-        ans: "Answer32",
-      },
-      {
-        qus: "Do you have any health conditions that might affect your application?",
-        ans: "Answer33",
-      },
-      {
-        qus: "Have you ever been diagnosed with a communicable disease of public health significance?",
-        ans: "Answer34",
-      },
-      {
-        qus: "Have you ever been a member of or associated with any terrorist organizations?",
-        ans: "Answer35",
-      },
-      {
-        qus: "Have you ever engaged in espionage or sabotage?",
-        ans: "Answer36",
-      },
-    ],
-  };
+  const [userList, setUserList] = useState([]);
+  const [docList, setDocList] = useState([]);
 
   const [flagWriterUser, setFlagWriterUser] = useState(
     new Array(MAX_VALUE).fill(0)
   );
   const [flagWriterIdx, setFlagWriterIdx] = useState(0);
+  const [flagClerkUser, setFlagClerkUser] = useState(
+    new Array(MAX_VALUE).fill(0)
+  );
+  const [flagClerkIdx, setFlagClerkIdx] = useState(0);
 
-  const userViewHandler = (idx: any) => {
-    console.log(`user ${idx} view clicked!`);
+  const fetchUserData = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res1 = await axios.post(
+        `${BACKEND_URL}/users/userList`,
+        {},
+        config
+      );
+      if (res1.data.success) setUserList(res1.data.users);
+      else setUserList([]);
+
+      const res2 = await axios.post(
+        `${BACKEND_URL}/users/viewalldocs`,
+        {},
+        config
+      );
+      if (res2.data.success) setDocList(res2.data.docs);
+      else setDocList([]);
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const [userDocContent, setUserDocContent] = useState([]);
+
+  const fetchUserDocData = async (email: any) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/users/viewdoc`,
+        { email: email },
+        config
+      );
+      if (res.data.success) setUserDocContent(res.data.users.qusans);
+      else setUserDocContent([]);
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+
+  const userViewHandler = (idx: any, email: String) => {
+    fetchUserDocData(email);
     setUserViewFlag(idx);
   };
 
@@ -294,46 +90,117 @@ export default function UserInfo(props: any) {
     console.log(`user ${userViewFlag} will be deleted!`);
   };
 
-  const setWriterUserManageHandler = () => {
-    console.log("Set users to writer!");
-
+  const setWriterUserManageHandler = async () => {
     if (flagWriterIdx == 0) return;
 
-    setTemp_UserDB((prevTemp_UserDB: any) => {
-      return prevTemp_UserDB.map((data: any, idx: any) => {
-        if (flagWriterUser[idx] != 0) {
-          return { ...data, writer: `writer${flagWriterIdx}` };
-        } else {
-          // Keep other elements unchanged
-          return data;
-        }
-      });
-    });
+    const data = {
+      info: userList
+        .filter((user: any) => user.roles === "CUSTOMER")
+        .filter((val: any, idx: any) => flagWriterUser[idx] === 1),
+      writer: userList.filter((user: any) => user.roles === "WRITER")[
+        flagWriterIdx - 1
+      ],
+    };
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/users/updateUserWriter`,
+        data,
+        config
+      );
+      console.log("result -> ", res.data);
+    } catch (err: any) {
+      console.log(err.message);
+    }
 
     // Clear FlagWriterUser
     setFlagWriterUser(new Array(MAX_VALUE).fill(0));
     setFlagWriterIdx(0);
+
+    // update information
+    fetchUserData();
   };
+
+  const setClerkUserManageHandler = async () => {
+    if (flagClerkIdx == 0) return;
+
+    const data = {
+      info: userList
+        .filter((user: any) => user.roles === "CUSTOMER")
+        .filter((val: any, idx: any) => flagClerkUser[idx] === 1),
+      clerk: userList.filter((user: any) => user.roles === "CLERK")[
+        flagClerkIdx - 1
+      ],
+    };
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/users/updateUserClerk`,
+        data,
+        config
+      );
+      console.log("result -> ", res.data);
+    } catch (err: any) {
+      console.log(err.message);
+    }
+
+    // Clear FlagWriterUser
+    setFlagClerkUser(new Array(MAX_VALUE).fill(0));
+    setFlagClerkIdx(0);
+
+    // update information
+    fetchUserData();
+  };
+
+  function convertToUSDateTime(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZone: "America/New_York",
+    };
+    return date.toLocaleString("en-US", options);
+  }
 
   return (
     <div className="h-100">
       {/* Summary View */}
       {userViewFlag == 0 ? (
-        <div
-          className="d-flex flex-column h-100"
-          style={{ paddingBottom: "100px" }}
-        >
-          <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex flex-column h-100">
+          <div
+            className="d-flex justify-content-between align-items-center"
+            style={{
+              backgroundColor: "white",
+              borderTopLeftRadius: "20px",
+              borderTopRightRadius: "20px",
+            }}
+          >
             <div className="d-flex">
               <div
                 className={`${
-                  key == "home" ? "bg-header-clicked" : "hover-bg-header-change"
+                  key == "home"
+                    ? "bg-header-left-clicked"
+                    : "hover-bg-header-left-change"
                 }`}
                 style={{
-                  width: "180px",
+                  width: "240px",
                   textAlign: "center",
-                  padding: "15px",
+                  padding: "25px",
                   color: "black",
+                  fontSize: "18px",
                 }}
                 role="button"
                 onClick={() => {
@@ -341,7 +208,7 @@ export default function UserInfo(props: any) {
                 }}
               >
                 <span className="px-1">
-                  <img src={houseSolidIcon} className="icon-default-sz" />
+                  <img src={houseSolidIcon} className="icon-default-sz mb-1" />
                 </span>
                 <span className="px-1">Home</span>
               </div>
@@ -352,10 +219,11 @@ export default function UserInfo(props: any) {
                     : "hover-bg-header-change"
                 }`}
                 style={{
-                  width: "180px",
+                  width: "240px",
                   textAlign: "center",
-                  padding: "15px",
+                  padding: "25px",
                   color: "black",
+                  fontSize: "18px",
                 }}
                 role="button"
                 onClick={() => {
@@ -374,10 +242,11 @@ export default function UserInfo(props: any) {
                     : "hover-bg-header-change"
                 }`}
                 style={{
-                  width: "180px",
+                  width: "240px",
                   textAlign: "center",
-                  padding: "15px",
+                  padding: "25px",
                   color: "black",
+                  fontSize: "18px",
                 }}
                 role="button"
                 onClick={() => {
@@ -395,53 +264,46 @@ export default function UserInfo(props: any) {
           {/* Table Body */}
           {key === "home" ? (
             <div>
-              {/* Table Header */}
-              <div key={key} role="button" style={{ background: "#c2e7ff" }}>
-                <div className="d-inline-flex w-100 px-3 py-2">
-                  <div className="w-25 d-flex">
-                    <div className="w-50">No</div>
-                    <div className="w-50">Name</div>
-                  </div>
-                  <div className="w-50 d-flex">
-                    <div className="w-50">Email</div>
-                    <div className="w-50">Phone</div>
-                  </div>
-                  <div className="w-25 text-end">Registered Time</div>
-                </div>
-              </div>
               <div style={{ overflowY: "auto", height: "60vh" }}>
-                {temp_userdb.map((idx: any, key: any) => {
-                  return (
-                    <div
-                      key={key}
-                      role="button"
-                      className="hover-row-bg-change"
-                    >
+                {userList
+                  .filter((user: any) => user.roles === "CUSTOMER")
+                  .map((idx: any, key: any) => {
+                    return (
                       <div
-                        className="d-flex w-100 px-3 py-2"
-                        onClick={() => userViewHandler(key + 1)}
+                        key={key}
+                        role="button"
+                        className="hover-row-bg-change"
                       >
-                        <div className="w-25 d-flex">
-                          <div className="w-50">{key + 1}</div>
-                          <div className="w-50">{idx.name}</div>
+                        <div
+                          className="d-flex w-100 px-3 py-2"
+                          onClick={() => userViewHandler(key + 1, idx.email)}
+                        >
+                          <div className="w-25 d-flex">
+                            <div className="w-50">{key + 1}</div>
+                            <div className="w-50">{idx.fullName}</div>
+                          </div>
+                          <div className="w-50 d-flex">
+                            <div className="w-50">{idx.email}</div>
+                            <div className="w-50">{idx.phoneNumber}</div>
+                          </div>
+                          <div className="w-25 text-end">
+                            {convertToUSDateTime(idx.regTime)}
+                          </div>
                         </div>
-                        <div className="w-50 d-flex">
-                          <div className="w-50">{idx.email}</div>
-                          <div className="w-50">{idx.phone}</div>
-                        </div>
-                        <div className="w-25 text-end">{idx.regtime}</div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </div>
             </div>
           ) : key === "towriters" ? (
             <div className="d-flex">
-              <div className="w-75">
+              <div className="w-50">
                 <div
-                  className="w-75"
-                  style={{ overflowY: "auto", height: "60vh" }}
+                  style={{
+                    overflowY: "auto",
+                    height: "60vh",
+                    paddingRight: "2px",
+                  }}
                 >
                   {/* Users Header */}
                   <div
@@ -457,33 +319,48 @@ export default function UserInfo(props: any) {
                     </div>
                   </div>
                   {/* Users Content */}
-                  {temp_userdb.map((data: any, idx: any) => {
-                    return (
-                      <div
-                        className={`w-100 d-inline-flex px-3 py-2 hover-row-bg-change ${
-                          flagWriterUser[idx] !== 0 && "row-bg-clicked"
-                        }`}
-                        key={"userwriter" + idx}
-                        role="button"
-                        onClick={() => {
-                          let tempUserList = [...flagWriterUser]; // Create a new array to avoid mutating state directly
-                          tempUserList[idx] = 1 - tempUserList[idx]; // Toggle the value at idx
-                          setFlagWriterUser(tempUserList);
-                        }}
-                      >
-                        <div className="w-25">{idx + 1}</div>
-                        <div className="w-25">{data.name}</div>
-                        <div className="w-25">{data.writer}</div>
-                      </div>
-                    );
-                  })}
+                  {userList
+                    .filter((user: any) => user.roles === "CUSTOMER")
+                    .map((data: any, idx: any) => {
+                      return (
+                        <div
+                          className={`w-100 d-inline-flex px-3 py-2 ${
+                            flagWriterUser[idx] === 1
+                              ? "row-bg-clicked"
+                              : "hover-row-bg-change"
+                          }`}
+                          key={"userwriter" + idx}
+                          role="button"
+                          onClick={() => {
+                            let tempUserList = [...flagWriterUser]; // Create a new array to avoid mutating state directly
+                            tempUserList[idx] = 1 - tempUserList[idx]; // Toggle the value at idx
+                            setFlagWriterUser(tempUserList);
+                          }}
+                        >
+                          <div className="w-25">{idx + 1}</div>
+                          <div className="w-25">{data.fullName}</div>
+                          <div className="w-25">
+                            {
+                              (
+                                userList.filter(
+                                  (user: any) =>
+                                    user.email ===
+                                    (
+                                      docList.filter(
+                                        (doc: any) => doc.email === data.email
+                                      )[0] as any
+                                    ).writer
+                                )[0] as any
+                              )?.fullName // Render the email property
+                            }
+                          </div>
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
               <div className="w-50">
-                <div
-                  className="w-50"
-                  style={{ overflowY: "auto", height: "60vh" }}
-                >
+                <div style={{ overflowY: "auto", height: "60vh" }}>
                   {/* Writers Header */}
                   <div
                     key={key}
@@ -497,46 +374,154 @@ export default function UserInfo(props: any) {
                     </div>
                   </div>
                   {/* Writers Content */}
-                  {temp_userdb.map((data: any, idx: any) => {
-                    return (
-                      <div
-                        className={`w-100 d-flex px-3 py-2 hover-row-bg-change ${
-                          flagWriterIdx == idx + 1
-                            ? "row-bg-clicked"
-                            : "hover-row-bg-change"
-                        }`}
-                        role="button"
-                        key={"userwriter" + idx}
-                        onClick={() => setFlagWriterIdx(idx + 1)}
-                      >
-                        <div className="w-50">{idx + 1}</div>
-                        <div className="w-50">{`writer${idx + 1}`}</div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              <div
-                className="w-25 align-items-center d-flex"
-                style={{ height: "60vh" }}
-              >
-                <div
-                  className="bg-info px-5 py-2 rounded-pill"
-                  role="button"
-                  onClick={() => setWriterUserManageHandler()}
-                >
-                  Send
+                  {userList
+                    .filter((user: any) => user.roles === "WRITER")
+                    .map((data: any, idx: any) => {
+                      return (
+                        <div
+                          className={`position-relative w-100 d-flex px-3 py-2 ${
+                            flagWriterIdx == idx + 1
+                              ? "row-bg-clicked"
+                              : "hover-row-bg-change"
+                          }`}
+                          role="button"
+                          key={"userwriter" + idx}
+                          onClick={() => setFlagWriterIdx(idx + 1)}
+                        >
+                          <div className="w-50">{idx + 1}</div>
+                          <div className="w-50">{data.fullName}</div>
+                          <div
+                            role="button"
+                            className="position-absolute row-send-btn"
+                            style={{ zIndex: 100, top: 8, right: 10 }}
+                            onClick={() => setWriterUserManageHandler()}
+                          >
+                            Send
+                          </div>
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
             </div>
           ) : key === "toclerks" ? (
-            <div></div>
+            <div className="d-flex">
+              <div className="w-50">
+                <div
+                  style={{
+                    overflowY: "auto",
+                    height: "60vh",
+                    paddingRight: "2px",
+                  }}
+                >
+                  {/* Users Header */}
+                  <div
+                    key={key}
+                    role="button"
+                    style={{ background: "#c2e7ff" }}
+                    className="w-100"
+                  >
+                    <div className="w-100 d-inline-flex px-3 py-2">
+                      <div className="w-25">No</div>
+                      <div className="w-25">Name</div>
+                      <div className="w-25">Clerk</div>
+                    </div>
+                  </div>
+                  {/* Users Content */}
+                  {userList
+                    .filter((user: any) => user.roles === "CUSTOMER")
+                    .map((data: any, idx: any) => {
+                      return (
+                        <div
+                          className={`w-100 d-inline-flex px-3 py-2 ${
+                            flagClerkUser[idx] === 1
+                              ? "row-bg-clicked"
+                              : "hover-row-bg-change"
+                          }`}
+                          key={"userclerk" + idx}
+                          role="button"
+                          onClick={() => {
+                            let tempUserList = [...flagClerkUser]; // Create a new array to avoid mutating state directly
+                            tempUserList[idx] = 1 - tempUserList[idx]; // Toggle the value at idx
+                            setFlagClerkUser(tempUserList);
+                          }}
+                        >
+                          <div className="w-25">{idx + 1}</div>
+                          <div className="w-25">{data.fullName}</div>
+                          <div className="w-25">
+                            {
+                              (
+                                userList.filter(
+                                  (user: any) =>
+                                    user.email ===
+                                    (
+                                      docList.filter(
+                                        (doc: any) => doc.email === data.email
+                                      )[0] as any
+                                    ).clerk
+                                )[0] as any
+                              )?.fullName // Render the email property
+                            }
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+              <div className="w-50">
+                <div style={{ overflowY: "auto", height: "60vh" }}>
+                  {/* Clerks Header */}
+                  <div
+                    key={key}
+                    role="button"
+                    style={{ background: "#c2e7ff" }}
+                    className="w-100"
+                  >
+                    <div className="w-100 d-inline-flex px-3 py-2">
+                      <div className="w-50">No</div>
+                      <div className="w-50">Name</div>
+                    </div>
+                  </div>
+                  {/* Clerks Content */}
+                  {userList
+                    .filter((user: any) => user.roles === "CLERK")
+                    .map((data: any, idx: any) => {
+                      return (
+                        <div
+                          className={`position-relative w-100 d-flex px-3 py-2 hover-row-bg-change ${
+                            flagClerkIdx == idx + 1
+                              ? "row-bg-clicked"
+                              : "hover-row-bg-change"
+                          }`}
+                          role="button"
+                          key={"userclerk" + idx}
+                          onClick={() => setFlagClerkIdx(idx + 1)}
+                        >
+                          <div className="w-50">{idx + 1}</div>
+                          <div className="w-50">{data.fullName}</div>
+                          <div
+                            role="button"
+                            className="position-absolute row-send-btn"
+                            style={{ zIndex: 100, top: 8, right: 10 }}
+                            onClick={() => setClerkUserManageHandler()}
+                          >
+                            Send
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+            </div>
           ) : (
             <div></div>
           )}
         </div>
       ) : key === "home" ? (
-        <div>
+        <div
+          className="p-4"
+          style={{ backgroundColor: "white", borderRadius: "20px" }}
+        >
           {/* User Info View with Idx Toolbar */}
           <div className="d-flex py-1 w-full justify-content-between">
             <div className="d-flex">
@@ -547,42 +532,49 @@ export default function UserInfo(props: any) {
               >
                 <img src={backIcon} className="icon-default-sz" />
               </div>
-              <div
+              {/* <div
                 className="p-1"
                 onClick={() => removeUserHandler()}
                 role="button"
               >
                 <img src={removeIcon} className="icon-default-sz" />
-              </div>
+              </div> */}
             </div>
-            <div>Registration Time: {temp_userinfo.regtime}</div>
+            <div>
+              Registration Time :
+              {convertToUSDateTime((userList[userViewFlag] as any).regTime)}
+            </div>
           </div>
           {/* Main Content */}
           <div style={{ height: "70vh", overflow: "auto" }}>
-            <div className="container">
-              <div className="row px-2">
-                <div className="col-12 col-sm-6">
-                  <div>Name: {temp_userinfo.name}</div>
+            <div className="container pt-2 pb-4">
+              <div className="row px-2" style={{ fontSize: "18px" }}>
+                <div className="col-12 col-sm-6 py-1">
+                  <div>Name: {(userList[userViewFlag] as any).fullName}</div>
                 </div>
-                <div className="col-12 col-sm-6">
-                  <div>Email: {temp_userinfo.email}</div>
+                <div className="col-12 col-sm-6 py-1">
+                  <div>Email: {(userList[userViewFlag] as any).email}</div>
                 </div>
-                <div className="col-12 col-sm-6">
-                  <div>Phone: {temp_userinfo.phone}</div>
+                <div className="col-12 col-sm-6 py-1">
+                  <div>
+                    Phone: {(userList[userViewFlag] as any).phoneNumber}
+                  </div>
                 </div>
-                <div className="col-12 col-sm-6">
-                  <div>Writer: {temp_userinfo.writer}</div>
+                <div className="col-12 col-sm-6 py-1">
+                  <div>Writer: {(userList[userViewFlag] as any).writer}</div>
                 </div>
               </div>
             </div>
             <div className="px-2 py-1">
-              {temp_userinfo.data.map((data: any, idx: any) => {
+              {userDocContent.map((data: any, idx: any) => {
                 return (
                   <div key={`userinfo+${idx}`}>
-                    <div>
+                    <div style={{ fontSize: "18px" }}>
                       {idx + 1}. {data.qus}
                     </div>
-                    <div>{data.ans}</div>
+                    <div style={{ lineHeight: "30px" }}>
+                      {data.ans ? data.ans : "------"}
+                    </div>
                   </div>
                 );
               })}

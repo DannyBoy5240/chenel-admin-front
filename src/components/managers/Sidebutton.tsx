@@ -13,7 +13,7 @@ export default function SideButton(props: any) {
         <div
           className="px-0 py-3 d-inline-flex"
           style={{ background: "#c2e7ff", borderRadius: "12px" }}
-          onClick={() => props.setPage("editor")}
+          onClick={() => props.setPage("addnewuser")}
         >
           <span className="px-3">
             <img src={addPlusIcon} className="icon-default-sz" />

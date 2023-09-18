@@ -1,113 +1,30 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import axios from "axios";
+
+import { BACKEND_URL } from "../../../constants";
 
 import FloatingButton from "../../common/FloatingButton";
 
-export default function UserInfo() {
+export default function UserInfo(props: any) {
   const [key, setKey] = useState("home");
 
-  const [temp_userdb, setTemp_UserDB] = useState([
-    {
-      name: "user1",
-      email: "email1@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user2",
-      email: "email2@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user3",
-      email: "email3@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user4",
-      email: "email4@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user5",
-      email: "email5@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user6",
-      email: "email6@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user7",
-      email: "email7@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user8",
-      email: "email8@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user9",
-      email: "email9@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user10",
-      email: "email0@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user11",
-      email: "email11@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-    {
-      name: "user12",
-      email: "email12@gmail.com",
-      phone: "+1 234 56789",
-      regtime: "08:20 Sep. 5 2023",
-    },
-  ]);
-
-  const writerViewHandler = (idx: any) => {
+  const docViewHandler = (idx: any) => {
     console.log(`user ${idx} view clicked!`);
   };
+
+  function convertToUSDateTime(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZone: "America/New_York",
+    };
+    return date.toLocaleString("en-US", options);
+  }
 
   return (
     <div>
@@ -126,22 +43,24 @@ export default function UserInfo() {
         </div>
       </div>
       <div style={{ overflowY: "auto", height: "60vh" }}>
-        {temp_userdb.map((idx: any, key: any) => {
+        {props.docs.map((idx: any, key: any) => {
           return (
             <div key={key} role="button" className="hover-row-bg-change">
               <div
                 className="d-flex w-100 px-3 py-2"
-                onClick={() => writerViewHandler(key + 1)}
+                onClick={() => docViewHandler(key + 1)}
               >
                 <div className="w-25 d-flex">
                   <div className="w-50">{key + 1}</div>
-                  <div className="w-50">{idx.name}</div>
+                  <div className="w-50">{idx.user.fullName}</div>
                 </div>
                 <div className="w-50 d-flex">
-                  <div className="w-50">{idx.email}</div>
-                  <div className="w-50">{idx.phone}</div>
+                  <div className="w-50">{idx.user.email}</div>
+                  <div className="w-50">{idx.user.phoneNumber}</div>
                 </div>
-                <div className="w-25 text-end">{idx.regtime}</div>
+                <div className="w-25 text-end">
+                  {convertToUSDateTime(idx.userdoc.createdAt)}
+                </div>
               </div>
             </div>
           );

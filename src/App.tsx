@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Image, Carousel } from "react-bootstrap";
 
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
+// import Header from "./components/layout/Header";
+// import Footer from "./components/layout/Footer";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
 
@@ -24,44 +24,53 @@ import ManagerWriterProfile from "./pages/manager/ManagerWriterProfile";
 import Userinfo from "./pages/Userinfo";
 import WriterProfiles from "./pages/profiles/WriterProfiles";
 
+// Redux
+import { Provider, useSelector } from "react-redux";
+import store from "./store/store";
+import setAuthToken from "./utils/setAuthToken";
+import { loadUser } from "./actions/auth";
+
+// import PrivateRoute from "./routing/PrivateRoute";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
   return (
-    <Router>
-      <div
-        className="position-relative vh-100 overflow-hidden"
-        style={{ fontFamily: "Dosis" }}
-      >
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <Header />
-                <Dashboard />
-                <Footer />
-              </div>
-            }
-          />
+    <Provider store={store}>
+      <Router>
+        <div
+          className="position-relative vh-100 overflow-hidden"
+          style={{ fontFamily: "Dosis" }}
+        >
+          <Routes>
+            <Route path="/signIn" element={<Login />} />
+            <Route path="/signUp" element={<Register />} />
+            <Route path="/signUp/Employee" element={<EmployeeRegister />} />
 
-          <Route path="/signIn" element={<Login />} />
-          <Route path="/signUp" element={<Register />} />
-          <Route path="/signUp/Employee" element={<EmployeeRegister />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/packages" element={<Packages />} />
+            <Route path="/blog" element={<BlogPage />} />
 
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/packages" element={<Packages />} />
-          <Route path="/blog" element={<BlogPage />} />
-
-          <Route path="/manager/" element={<ManagerDashboard />} />
-          <Route path="/manager/writer" element={<ManagerWriterProfile />} />
-          <Route path="/writer/" element={<WriterDashboard />} />
-          <Route path="/Userinfo/" element={<Userinfo />} />
-
-          <Route path="/profiles/" element={<WriterProfiles />} />
-        </Routes>
-      </div>
-    </Router>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/manager/" element={<ManagerDashboard />} />
+            <Route path="/manager/writer" element={<ManagerWriterProfile />} />
+            <Route path="/writer/" element={<WriterDashboard />} />
+            <Route path="/Userinfo/" element={<Userinfo />} />
+            <Route path="/profiles/" element={<WriterProfiles />} />
+          </Routes>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
