@@ -1,10 +1,8 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import houseSolidIcon from "../../assets/icons/house-solid.svg";
 import toWritersIcon from "../../assets/icons/to-writers.svg";
 import toClerksIcon from "../../assets/icons/to-clerks.svg";
-// import backIcon from "../../assets/icons/back.svg";
 import backIcon from "../../assets/icons/back.jpg";
 import removeIcon from "../../assets/icons/delete.svg";
 
@@ -488,7 +486,7 @@ export default function UserInfo(props: any) {
                     .map((data: any, idx: any) => {
                       return (
                         <div
-                          className={`position-relative w-100 d-flex px-3 py-2 hover-row-bg-change ${
+                          className={`position-relative w-100 d-flex px-3 py-2 ${
                             flagClerkIdx == idx + 1
                               ? "row-bg-clicked"
                               : "hover-row-bg-change"

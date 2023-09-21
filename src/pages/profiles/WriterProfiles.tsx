@@ -5,7 +5,7 @@ import ManageProfile from "../../components/writerprofiles/ManageProfile";
 
 export default function WriterProfiles() {
   const [page, setPage] = useState("info");
-  console.log(page)
+  console.log(page);
   return (
     <main id="main">
       <section className="section-bg">

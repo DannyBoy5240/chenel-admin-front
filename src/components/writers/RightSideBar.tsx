@@ -54,42 +54,6 @@ export default function RightSideBar(props: any) {
       </Form.Select>
 
       <ListGroup as="ol" numbered>
-        {/* <ListGroup.Item
-          as="li"
-          className="d-flex justify-content-between align-items-start"
-        >
-          <div className="ms-2 me-auto">
-            <div className="fw-bold">Subheading</div>
-            Cras justo odio
-          </div>
-          <Badge bg="primary" pill>
-            14
-          </Badge>
-        </ListGroup.Item>
-        <ListGroup.Item
-          as="li"
-          className="d-flex justify-content-between align-items-start"
-        >
-          <div className="ms-2 me-auto">
-            <div className="fw-bold">Subheading</div>
-            Cras justo odio
-          </div>
-          <Badge bg="primary" pill>
-            14
-          </Badge>
-        </ListGroup.Item>
-        <ListGroup.Item
-          as="li"
-          className="d-flex justify-content-between align-items-start"
-        >
-          <div className="ms-2 me-auto">
-            <div className="fw-bold">Subheading</div>
-            Cras justo odio
-          </div>
-          <Badge bg="primary" pill>
-            14
-          </Badge>
-        </ListGroup.Item> */}
         {users.map((item: UserListItem, index: number) => {
           if (status == "all" || status == item.status) {
             return (
@@ -111,45 +75,6 @@ export default function RightSideBar(props: any) {
             );
           }
         })}
-        {/* {status == "all"
-          ? users.map((item: UserListItem, index: number) => (
-              <ListGroup.Item
-                key={index}
-                as="li"
-                className="d-flex justify-content-between align-items-start"
-                onClick={() => props.setName(item.name)}
-                active={props.name == item.name}
-              >
-                <div className="ms-2 me-auto">
-                  <div className="fw-bold">{item.name}</div>
-                  {item.email}
-                </div>
-                <Badge bg="primary" pill>
-                  {item.status}
-                </Badge>
-              </ListGroup.Item>
-            ))
-          : users
-              .filter(
-                (item: UserListItem, index: number) => item.status == status
-              )
-              .map((item: UserListItem, index: number) => (
-                <ListGroup.Item
-                  key={index}
-                  as="li"
-                  className="d-flex justify-content-between align-items-start"
-                  onClick={() => props.setName(item.name)}
-                  active={props.name == item.name}
-                >
-                  <div className="ms-2 me-auto">
-                    <div className="fw-bold">{item.name}</div>
-                    {item.email}
-                  </div>
-                  <Badge bg="primary" pill>
-                    {item.status}
-                  </Badge>
-                </ListGroup.Item>
-              ))} */}
       </ListGroup>
     </React.Fragment>
   );

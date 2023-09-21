@@ -5,11 +5,6 @@ import axios from "axios";
 
 import { BACKEND_URL } from "../../constants";
 
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import Table from "react-bootstrap/Table";
-import FloatingButton from "../common/FloatingButton";
-
 export default function UserInfo() {
   const [key, setKey] = useState("home");
   const navigate = useNavigate();
@@ -38,7 +33,7 @@ export default function UserInfo() {
 
   const writerViewHandler = (idx: any, data: any) => {
     console.log(`writer ${idx} view clicked!`);
-    navigate("/manager/writer", { state: { data: data } });
+    navigate("/manager/writer", { state: { data: data, status: "writer" } });
   };
 
   function convertToUSDateTime(dateString: string): string {
@@ -55,9 +50,18 @@ export default function UserInfo() {
   }
 
   return (
-    <div>
+    <div className="bg-white h-100 default-border-raidus">
       {/* Table Header */}
-      <div key={key} role="button" style={{ background: "#c2e7ff" }}>
+      <div
+        key={key}
+        role="button"
+        style={{
+          background: "#c2e7ff",
+          borderTopLeftRadius: "18px",
+          borderTopRightRadius: "18px",
+        }}
+        className="py-2"
+      >
         <div className="d-inline-flex w-100 px-3 py-2">
           <div className="w-25 d-flex">
             <div className="w-50">No</div>

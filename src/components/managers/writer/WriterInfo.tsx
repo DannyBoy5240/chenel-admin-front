@@ -1,10 +1,13 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 import tempAvatar from "../../../assets/img/avatar.jpg";
 
 export default function WriterInfo(props: any) {
   const [key, setKey] = useState("home");
+
+  const navigate = useNavigate();
 
   function convertToUSDateTime(dateString: string): string {
     const date = new Date(dateString);

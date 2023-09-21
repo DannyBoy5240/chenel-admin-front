@@ -57,7 +57,7 @@ export default function Header() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to="/signIn">
+                  <Link className="dropdown-item" to="/login">
                     SignIn
                   </Link>
                 </li>
@@ -86,7 +86,7 @@ export default function Header() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link className="dropdown-item" to="/signIn">
+                  <Link className="dropdown-item" to="/login">
                     SignIn
                   </Link>
                 </li>

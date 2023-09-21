@@ -122,7 +122,7 @@ export default function EmployeeRegister() {
       .then((response) => {
         console.log("Response: ", response.data);
         if (response.data.success == true) {
-          navigate("/signIn");
+          navigate("/login");
         } else {
           setRegisterError("Register failed! Please try again!");
           flag = false;
@@ -374,7 +374,7 @@ export default function EmployeeRegister() {
             </div>
             <p className="register-card-footer-text">
               You already have an account?{" "}
-              <a href="/signIn" className="text-reset">
+              <a href="/login" className="text-reset">
                 Login here
               </a>
             </p>

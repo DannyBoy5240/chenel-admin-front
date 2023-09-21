@@ -4,8 +4,111 @@ import axios from "axios";
 
 import { BACKEND_URL } from "../../constants";
 
-export default function UserInfo() {
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import Table from "react-bootstrap/Table";
+import FloatingButton from "../common/FloatingButton";
+
+export default function Docs() {
   const [key, setKey] = useState("home");
+  const [temp_userdb, setTemp_UserDB] = useState([
+    {
+      name: "document1",
+      email: "email1@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document2",
+      email: "email2@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document3",
+      email: "email3@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document4",
+      email: "email4@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document5",
+      email: "email5@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document6",
+      email: "email6@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document7",
+      email: "email7@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document8",
+      email: "email8@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document9",
+      email: "email9@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document10",
+      email: "email0@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document11",
+      email: "email11@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document12",
+      email: "email12@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document12",
+      email: "email12@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document12",
+      email: "email12@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document12",
+      email: "email12@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+    {
+      name: "document12",
+      email: "email12@gmail.com",
+      phone: "+1 234 56789",
+      regtime: "08:20 Sep. 5 2023",
+    },
+  ]);
 
   const [userList, setUserList] = useState([]);
   const [docList, setDocList] = useState([]);
@@ -47,6 +150,7 @@ export default function UserInfo() {
 
   return (
     <div className="bg-white h-100 default-border-raidus">
+      {/* Table Header */}
       <div
         key={key}
         role="button"
@@ -91,7 +195,7 @@ export default function UserInfo() {
                       userList.filter(
                         (idx1: any) => idx1.email === idx.writer
                       )[0] as any
-                    )?.fullName
+                    ).fullName
                   }
                 </div>
                 <div style={{ width: "20%" }}>

@@ -4,8 +4,6 @@ import axios from "axios";
 
 import { BACKEND_URL } from "../../../constants";
 
-import FloatingButton from "../../common/FloatingButton";
-
 export default function UserInfo(props: any) {
   const [key, setKey] = useState("home");
 
@@ -27,9 +25,18 @@ export default function UserInfo(props: any) {
   }
 
   return (
-    <div>
+    <div className="bg-white h-100 default-border-raidus">
       {/* Table Header */}
-      <div key={key} role="button" style={{ background: "#c2e7ff" }}>
+      <div
+        key={key}
+        role="button"
+        style={{
+          background: "#c2e7ff",
+          borderTopLeftRadius: "18px",
+          borderTopRightRadius: "18px",
+        }}
+        className="py-2"
+      >
         <div className="d-inline-flex w-100 px-3 py-2">
           <div className="w-25 d-flex">
             <div className="w-50">No</div>

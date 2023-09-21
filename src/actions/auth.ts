@@ -81,7 +81,6 @@ export const login =
     const body = JSON.stringify({ email, password });
     try {
       const res = await axios.post(`${BACKEND_URL}/users/signIn`, body, config);
-
       if (res.data.success) {
         dispatch({
           type: LOGIN_SUCCESS,
@@ -109,7 +108,4 @@ export const login =
   };
 
 // Logout / Clear Profile
-export const logout = () => (dispatch: any) => {
-  dispatch({ type: CLEAR_PROFILE });
-  dispatch({ type: LOGOUT });
-};
+export const logout = () => ({ type: LOGOUT });

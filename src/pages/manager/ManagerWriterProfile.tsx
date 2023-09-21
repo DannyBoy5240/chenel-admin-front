@@ -19,9 +19,9 @@ import Docs from "../../components/managers/writer/Docs";
 // import Editor from "../../components/common/ManagerEditor";
 
 import searchIcon from "../../assets/icons/search-icon.svg";
-
 import logoImage from "../../assets/img/logo.png";
 import testAvatar from "../../assets/img/avatar.jpg";
+import backIcon from "../../assets/icons/back.jpg";
 
 interface Props {
   auth: any;
@@ -39,11 +39,12 @@ function ManagerWriterProfile(props: Props) {
       const decoded = jwt_decode(props.auth.token) as any;
       fetchWriterData();
     } else {
-      navigate("/signIn");
+      navigate("/login");
     }
   }, []);
 
   const data = location.state.data;
+  const statusMode = location.state.status;
 
   const fetchWriterData = async () => {
     const tdata = {
@@ -93,21 +94,25 @@ function ManagerWriterProfile(props: Props) {
       </div>
       <div className="d-flex flex-grow-1">
         <div className="col-lg-2">
-          <Sidebutton page={page} setPage={setPage} />
+          <Sidebutton page={page} setPage={setPage} status={statusMode} />
         </div>
         <div className="col-lg-9">
           {page == "info" && <WriterInfo setPage={setPage} data={data} />}
           {page == "writer" && (
             <Wusers
               docs={docList.filter(
-                (data: any) => data.userdoc.status === "WRITERCHECKING"
+                (data: any) =>
+                  data.userdoc.status ===
+                  (statusMode === "writer" ? "WRITERCHECKING" : "CLERKCHECKING")
               )}
             />
           )}
           {page == "doc" && (
             <Docs
               docs={docList.filter(
-                (data: any) => data.userdoc.status === "WRITERCONFIRM"
+                (data: any) =>
+                  data.userdoc.status ===
+                  (statusMode === "writer" ? "WRITERCONFIRM" : "CLERKCONFIRM")
               )}
             />
           )}
@@ -122,6 +127,15 @@ function ManagerWriterProfile(props: Props) {
             className="avatar-default-sz rounded-circle profile-avatar"
           />
         </div>
+      </div>
+      {/* return */}
+      <div
+        className="position-absolute"
+        style={{ bottom: "18px", right: "24px" }}
+        role="button"
+        onClick={() => navigate("/manager")}
+      >
+        <img src={backIcon} className="icon-default-sz" />
       </div>
     </div>
   );

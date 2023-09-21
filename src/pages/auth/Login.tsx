@@ -1,23 +1,22 @@
-import React, { useState, useRef } from "react";
-
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
 
 import axios from "axios";
 
 import { BACKEND_URL } from "../../constants";
 
-import { login } from "../../actions/auth";
-
 import "./auth.css";
 
+import { login } from "../../actions/auth";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
 import jwt_decode from "jwt-decode";
 
-function Login() {
+interface Props {
+  auth: any;
+}
+function Login(props: Props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -46,6 +45,27 @@ function Login() {
     setSignInError("");
   };
 
+  const customerLoginHandler = async (email: String) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/users/getuserdocstatus`,
+        { email },
+        config
+      );
+      // navigate
+      if (res.data.status === "EDITING")
+        navigate("/userInfo", { state: { email: email } });
+      else navigate("/");
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+
   // signin handler with email and password
   const signInHandler = async () => {
     const res = await dispatch(login(email, password));
@@ -57,12 +77,22 @@ function Login() {
       else if (role === "MANAGER") navigate("/manager");
       else if (role === "WRITER") navigate("/writer");
       else if (role === "CLERK") navigate("/clerk");
-      else if (role === "CUSTOMER") navigate("/");
-      else navigate("/notfound");
+      else if (role === "CUSTOMER") {
+        customerLoginHandler(decoded_res.user.email);
+      } else navigate("/notfound");
     } else {
       setSignInError(res.message);
     }
   };
+
+  // authorization
+  const decoded_token = props.auth.token ? jwt_decode(props.auth.token) : null;
+  const isAuthorized = decoded_token && (decoded_token as any).user;
+
+  useEffect(() => {
+    if (isAuthorized) navigate(`/${(decoded_token as any).user.roles}`);
+    else navigate("/login");
+  }, [isAuthorized, navigate]);
 
   return (
     <div className="d-flex align-items-center vh-100">
@@ -73,7 +103,6 @@ function Login() {
               <img
                 src="http://localhost:3000/assets/img/signIn.jpg"
                 alt="login"
-                // className="login-card-img"
                 width={500}
               />
             </div>

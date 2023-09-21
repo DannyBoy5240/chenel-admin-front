@@ -121,9 +121,19 @@ code {
   background: #a3a3a355;
   border-radius: 18px;
 }
-
 .row-send-btn:hover {
   padding: 0px 10px 0px 10px;
+  background: #a3a3a3;
+  border-radius: 18px;
+}
+
+.row-remove-btn {
+  padding: 5px 5px;
+  background: #a3a3a355;
+  border-radius: 18px;
+}
+.row-remove-btn:hover {
+  padding: 5px 5px;
   background: #a3a3a3;
   border-radius: 18px;
 }
@@ -133,4 +143,9 @@ code {
   background-color: white;
   border-radius: 18px;
   padding-top: 25px;
+}
+
+/* default util style */
+.default-border-raidus {
+  border-radius: 18px;
 }

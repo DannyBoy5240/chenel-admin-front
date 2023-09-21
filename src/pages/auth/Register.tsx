@@ -110,7 +110,7 @@ export default function Register() {
               // Handle successful response
               console.log("Success:", responseData);
               if (responseData.success) {
-                navigate("/signIn");
+                navigate("/login");
               } else {
                 setSignUpError("Register occurs an Error!");
                 return;
@@ -235,7 +235,7 @@ export default function Register() {
                 </form>
                 <p className="register-card-footer-text">
                   You already have an account?{" "}
-                  <a href="/signIn" className="text-reset">
+                  <a href="/login" className="text-reset">
                     Login here
                   </a>
                 </p>

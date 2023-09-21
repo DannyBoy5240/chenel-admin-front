@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import UserInfo from "../../components/managers/UserInfo";
-import Sidebutton from "../../components/managers/Sidebutton";
-import TopSideBar from "../../components/common/TopSideBar";
-import Clerks from "../../components/managers/Clerks";
-import Writers from "../../components/managers/Writers";
-import Docs from "../../components/managers/Docs";
-// import Editor from "../../components/common/ManagerEditor";
-import AddNewUserDoc from "../../components/managers/AddNewUserDoc";
-
 import searchIcon from "../../assets/icons/search-icon.svg";
-
+import backIcon from "../../assets/icons/back.jpg";
 import logoImage from "../../assets/img/logo.png";
 import testAvatar from "../../assets/img/avatar.jpg";
+
+import RightSide from "../../components/writerdashboard/RightSide";
+import UserInfo from "../../components/writers/UserInfo";
+import Docs from "../../components/writers/Docs";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -24,7 +19,7 @@ interface Props {
   auth: any;
 }
 
-function ManagerDashboard(props: Props) {
+function Writerboard(props: Props) {
   const [page, setPage] = useState("info");
   const navigate = useNavigate();
 
@@ -32,9 +27,8 @@ function ManagerDashboard(props: Props) {
     if (props.auth.token) {
       const decoded = jwt_decode(props.auth.token);
       const role = (decoded as any).user.roles;
-      console.log("current role -> ", role);
       // redirect to the origin
-      if (role === "WRITER") navigate("/writer");
+      if (role === "MANAGER") navigate("/manager");
       if (role === "CLERK") navigate("/clerk");
       if (role === "ADMIN") navigate("/admin");
     } else {
@@ -52,7 +46,7 @@ function ManagerDashboard(props: Props) {
         <div
           className="col-lg-2 d-flex align-items-center"
           role="button"
-          onClick={() => navigate("/manager")}
+          onClick={() => window.location.reload()}
         >
           <div className="px-3">
             <img
@@ -79,15 +73,12 @@ function ManagerDashboard(props: Props) {
       </div>
       <div className="d-flex flex-grow-1">
         <div className="col-lg-2">
-          <Sidebutton page={page} setPage={setPage} />
+          <RightSide page={page} setPage={setPage} />
         </div>
         <div className="col-lg-9">
           {/* <TopSideBar /> */}
           {page == "info" && <UserInfo setPage={setPage} />}
-          {page == "writer" && <Writers />}
-          {page == "clerk" && <Clerks />}
-          {page == "doc" && <Docs />}
-          {page == "addnewuser" && <AddNewUserDoc setPage={setPage} />}
+          {page == "docs" && <Docs />}
         </div>
         <div className="col-lg-1 mt-5"></div>
       </div>
@@ -100,11 +91,20 @@ function ManagerDashboard(props: Props) {
           />
         </div>
       </div>
+      {/* return */}
+      <div
+        className="position-absolute"
+        style={{ bottom: "18px", right: "24px" }}
+        role="button"
+        onClick={() => window.location.reload()}
+      >
+        <img src={backIcon} className="icon-default-sz" />
+      </div>
     </div>
   );
 }
 
-ManagerDashboard.propTypes = {
+Writerboard.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
@@ -112,4 +112,4 @@ const mapStateToProps = (state: any) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(ManagerDashboard);
+export default connect(mapStateToProps)(Writerboard);

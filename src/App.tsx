@@ -18,11 +18,15 @@ import AboutUs from "./pages/AboutUs";
 import Packages from "./pages/Packages";
 import BlogPage from "./pages/Blog";
 
-import WriterDashboard from "./pages/writer";
+// import WriterDashboard from "./pages/writer";
+import Userinfo from "./pages/Userinfo";
+// import WriterProfiles from "./pages/profiles/WriterProfiles";
+// import Admin from "./pages/admin";
 import ManagerDashboard from "./pages/manager/ManagerDashboard";
 import ManagerWriterProfile from "./pages/manager/ManagerWriterProfile";
-import Userinfo from "./pages/Userinfo";
-import WriterProfiles from "./pages/profiles/WriterProfiles";
+import Writerboard from "./pages/writers";
+
+import AdminDashBoard from "./pages/admin/AdminDashboard";
 
 // Redux
 import { Provider, useSelector } from "react-redux";
@@ -51,7 +55,7 @@ function App() {
           style={{ fontFamily: "Dosis" }}
         >
           <Routes>
-            <Route path="/signIn" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/signUp" element={<Register />} />
             <Route path="/signUp/Employee" element={<EmployeeRegister />} />
 
@@ -64,9 +68,13 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/manager/" element={<ManagerDashboard />} />
             <Route path="/manager/writer" element={<ManagerWriterProfile />} />
-            <Route path="/writer/" element={<WriterDashboard />} />
-            <Route path="/Userinfo/" element={<Userinfo />} />
-            <Route path="/profiles/" element={<WriterProfiles />} />
+            <Route path="/writer/" element={<Writerboard />} />
+
+            {/* <Route path="/writer/" element={<WriterDashboard />} /> */}
+            <Route path="/userInfo/" element={<Userinfo />} />
+            {/* <Route path="/profiles/" element={<WriterProfiles />} /> */}
+
+            <Route path="/admin/" element={<AdminDashBoard />} />
           </Routes>
         </div>
       </Router>

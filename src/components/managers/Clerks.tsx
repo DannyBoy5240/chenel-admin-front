@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 
 import { BACKEND_URL } from "../../constants";
 
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import Table from "react-bootstrap/Table";
-
 export default function Clerks() {
   const [key, setKey] = useState("home");
+
+  const navigate = useNavigate();
 
   const [userList, setUserList] = useState([]);
 
@@ -33,14 +33,37 @@ export default function Clerks() {
     fetchClerkData();
   }, []);
 
-  const clerkViewHandler = (idx: any) => {
+  const clerkViewHandler = (idx: any, data: any) => {
     console.log(`clerk ${idx} view clicked!`);
+    navigate("/manager/writer", { state: { data: data, status: "clerk" } });
   };
 
+  function convertToUSDateTime(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZone: "America/New_York",
+    };
+    return date.toLocaleString("en-US", options);
+  }
+
   return (
-    <div>
+    <div className="bg-white h-100 default-border-raidus">
       {/* Table Header */}
-      <div key={key} role="button" style={{ background: "#c2e7ff" }}>
+      <div
+        key={key}
+        role="button"
+        style={{
+          background: "#c2e7ff",
+          borderTopLeftRadius: "18px",
+          borderTopRightRadius: "18px",
+        }}
+        className="py-2"
+      >
         <div className="d-inline-flex w-100 px-3 py-2">
           <div className="w-25 d-flex">
             <div className="w-50">No</div>
@@ -61,7 +84,7 @@ export default function Clerks() {
               <div key={key} role="button" className="hover-row-bg-change">
                 <div
                   className="d-flex w-100 px-3 py-2"
-                  onClick={() => clerkViewHandler(key + 1)}
+                  onClick={() => clerkViewHandler(key + 1, idx)}
                 >
                   <div className="w-25 d-flex">
                     <div className="w-50">{key + 1}</div>
@@ -71,7 +94,9 @@ export default function Clerks() {
                     <div className="w-50">{idx.email}</div>
                     <div className="w-50">{idx.phoneNumber}</div>
                   </div>
-                  <div className="w-25 text-end">{idx.regTime}</div>
+                  <div className="w-25 text-end">
+                    {convertToUSDateTime(idx.regTime)}
+                  </div>
                 </div>
               </div>
             );

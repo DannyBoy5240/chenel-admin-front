@@ -30,7 +30,7 @@ export default function SideButton(props: any) {
                 color: "black",
               }}
             >
-              Home
+              {`${props.status === "writer" ? "Writer" : "Clerk"}`} Information
             </span>
           </a>
         </li>
@@ -55,7 +55,7 @@ export default function SideButton(props: any) {
                 color: "black",
               }}
             >
-              Sent Documents
+              Received Documents
             </span>
           </a>
         </li>
@@ -78,7 +78,7 @@ export default function SideButton(props: any) {
                 color: "black",
               }}
             >
-              Document
+              Completed Documents
             </span>
           </a>
         </li>
