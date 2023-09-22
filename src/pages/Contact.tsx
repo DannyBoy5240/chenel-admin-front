@@ -1,9 +1,29 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Contact() {
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+
+import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
+
+interface Props {
+  auth: any;
+}
+function Contact(props: Props) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // authorization
+  const decoded_token =
+    props.auth && props.auth.token ? jwt_decode(props.auth.token) : null;
+  const isAuthorized = decoded_token && (decoded_token as any).user;
+
   return (
     <section id="contact" className="contact" style={{ paddingTop: "150px" }}>
-      {" "}
+      <Header isAuthorized={isAuthorized} title="contact" />{" "}
       <div className="container">
         <div className="section-title">
           <h2>Contact</h2>
@@ -103,6 +123,17 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }
+
+Contact.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(Contact);

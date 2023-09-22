@@ -1,20 +1,41 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-export default function Packages() {
-  const [hoveredElement, setHoveredElement] = React.useState(0);
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
+import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
+
+interface Props {
+  auth: any;
+}
+function Packages(props: Props) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // authorization
+  const decoded_token =
+    props.auth && props.auth.token ? jwt_decode(props.auth.token) : null;
+  const isAuthorized = decoded_token && (decoded_token as any).user;
+
+  // package selection
+  const [hoveredElement, setHoveredElement] = React.useState(0);
   const handleMouseEnter = (elementId: number) => {
     setHoveredElement(elementId);
   };
-
   const handleMouseLeave = () => {
     setHoveredElement(0);
   };
 
   return (
     <section id="about" className="about">
+      <Header isAuthorized={isAuthorized} title="packages" />
       <div className="container">
         <div className="row">
           <div className="col-lg-4 d-flex package">
@@ -137,6 +158,17 @@ export default function Packages() {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }
+
+Packages.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(Packages);

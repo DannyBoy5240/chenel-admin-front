@@ -16,6 +16,7 @@ import jwt_decode from "jwt-decode";
 
 interface Props {
   isAuthorized: any;
+  title: any;
   logout: any;
 }
 export default function Header(props: any) {
@@ -29,7 +30,7 @@ export default function Header(props: any) {
   };
 
   return (
-    <header id="header" className="fixed-top">
+    <header id="header" className="fixed-top" style={{ padding: "0px" }}>
       <div className="container d-flex align-items-center justify-content-between">
         <a href="/" className="logo">
           <img
@@ -43,34 +44,59 @@ export default function Header(props: any) {
         <nav id="navbar" className="navbar">
           <ul>
             <li>
-              <a className="nav-link scrollto active" href="/">
+              <a
+                className={`nav-link scrollto ${
+                  props.title === "home" && "active"
+                }`}
+                href="/"
+              >
                 Home
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="/about">
+              <a
+                className={`nav-link scrollto ${
+                  props.title === "about" && "active"
+                }`}
+                href="/about"
+              >
                 About US
               </a>
             </li>
-            <li>
+            {/* <li>
               <a className="nav-link scrollto" href="/blog">
                 Blog
               </a>
-            </li>
+            </li> */}
             <li>
-              <a className="nav-link scrollto" href="/packages">
+              <a
+                className={`nav-link scrollto ${
+                  props.title === "packages" && "active"
+                }`}
+                href="/packages"
+              >
                 Packages
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="/faq">
+              <a
+                className={`nav-link scrollto ${
+                  props.title === "faq" && "active"
+                }`}
+                href="/faq"
+              >
                 FAQ
               </a>
             </li>
             <li>
-              <Link className="nav-link scrollto" to="/contact">
+              <a
+                className={`nav-link scrollto ${
+                  props.title === "contact" && "active"
+                }`}
+                href="/contact"
+              >
                 Contact US
-              </Link>
+              </a>
             </li>
             {/* Header Auth Avatar */}
             {props.isAuthorized ? (
@@ -110,7 +136,7 @@ export default function Header(props: any) {
                   role="button"
                   data-bs-toggle="dropdown"
                 >
-                  Sign In
+                  Sign In/Out
                 </a>
                 <ul className="dropdown-menu">
                   <li>

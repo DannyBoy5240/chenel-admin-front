@@ -29,7 +29,7 @@ function Dashboard(props: Props) {
 
   return (
     <div className="h-100" style={{ backgroundColor: "#f4fbfe" }}>
-      <Header isAuthorized={isAuthorized} />
+      <Header isAuthorized={isAuthorized} title="home" />
       <section id="hero" className="d-flex align-items-center mt-4">
         <div className="container">
           <div className="row justify-content-between">
