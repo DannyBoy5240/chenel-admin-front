@@ -1,11 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Image, Carousel } from "react-bootstrap";
 
-// import Header from "./components/layout/Header";
-// import Footer from "./components/layout/Footer";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
 
@@ -18,15 +14,15 @@ import AboutUs from "./pages/AboutUs";
 import Packages from "./pages/Packages";
 import BlogPage from "./pages/Blog";
 
-// import WriterDashboard from "./pages/writer";
+import AdminDashBoard from "./pages/admin/AdminDashboard";
 import Userinfo from "./pages/Userinfo";
-// import WriterProfiles from "./pages/profiles/WriterProfiles";
-// import Admin from "./pages/admin";
 import ManagerDashboard from "./pages/manager/ManagerDashboard";
 import ManagerWriterProfile from "./pages/manager/ManagerWriterProfile";
 import Writerboard from "./pages/writers";
 
-import AdminDashBoard from "./pages/admin/AdminDashboard";
+// import WriterDashboard from "./pages/writer";
+// import WriterProfiles from "./pages/profiles/WriterProfiles";
+// import Admin from "./pages/admin";
 
 // Redux
 import { Provider, useSelector } from "react-redux";
@@ -71,8 +67,8 @@ function App() {
             <Route path="/writer/" element={<Writerboard />} />
 
             {/* <Route path="/writer/" element={<WriterDashboard />} /> */}
-            <Route path="/userInfo/" element={<Userinfo />} />
             {/* <Route path="/profiles/" element={<WriterProfiles />} /> */}
+            <Route path="/userinfo/" element={<Userinfo />} />
 
             <Route path="/admin/" element={<AdminDashBoard />} />
           </Routes>

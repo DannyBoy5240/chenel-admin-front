@@ -1,20 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Carousel } from "react-bootstrap";
 
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
-export default function Dashboard() {
+import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
+
+interface Props {
+  auth: any;
+}
+function Dashboard(props: Props) {
   const [index, setIndex] = useState(0);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // authorization
+  const decoded_token = props.auth.token ? jwt_decode(props.auth.token) : null;
+  const isAuthorized = decoded_token && (decoded_token as any).user;
 
   const handleSelect = (selectedIndex: any, e: any) => {
     setIndex(selectedIndex);
   };
 
   return (
-    <div>
-      <Header />
-      <section id="hero" className="d-flex align-items-center">
+    <div className="h-100" style={{ backgroundColor: "#f4fbfe" }}>
+      <Header isAuthorized={isAuthorized} />
+      <section id="hero" className="d-flex align-items-center mt-4">
         <div className="container">
           <div className="row justify-content-between">
             <div className="col-lg-5 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center p-4">
@@ -203,3 +219,13 @@ export default function Dashboard() {
     </div>
   );
 }
+
+Dashboard.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state: any) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(Dashboard);

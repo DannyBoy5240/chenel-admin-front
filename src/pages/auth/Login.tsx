@@ -2,9 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import axios from "axios";
-
 import { BACKEND_URL } from "../../constants";
+import axios from "axios";
 
 import "./auth.css";
 
@@ -59,7 +58,7 @@ function Login(props: Props) {
       );
       // navigate
       if (res.data.status === "EDITING")
-        navigate("/userInfo", { state: { email: email } });
+        navigate("/userinfo", { state: { email: email } });
       else navigate("/");
     } catch (err: any) {
       console.log(err.message);
@@ -90,8 +89,10 @@ function Login(props: Props) {
   const isAuthorized = decoded_token && (decoded_token as any).user;
 
   useEffect(() => {
-    if (isAuthorized) navigate(`/${(decoded_token as any).user.roles}`);
-    else navigate("/login");
+    if (isAuthorized) {
+      const role = (decoded_token as any).user.roles;
+      navigate(`/${role === "CUSTOMER" ? "" : role}`);
+    } else navigate("/login");
   }, [isAuthorized, navigate]);
 
   return (
@@ -155,9 +156,9 @@ function Login(props: Props) {
                     onClick={() => signInHandler()}
                   />
                 </div>
-                <a href="#!" className="forgot-password-link">
+                {/* <a href="#!" className="forgot-password-link">
                   Forgot password?
-                </a>
+                </a> */}
                 <p className="login-card-footer-text">
                   Don't have an account?{" "}
                   <a className="text-reset" href="/signUp">

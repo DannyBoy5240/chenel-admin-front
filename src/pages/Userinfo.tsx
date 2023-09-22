@@ -50,10 +50,9 @@ export default function Userinfo() {
     "Have you ever been a member of or associated with any terrorist organizations?",
     "Have you ever engaged in espionage or sabotage?",
   ];
-
   const [info, setInfo] = useState(new Array(36).fill(""));
 
-  const userInfoSaveFunc = async (mode: any) => {
+  const submitDataHandler = async () => {
     const data = {
       email: location.state.email,
       qusans: defaultQuestions.map((qus, idx) => {
@@ -75,20 +74,13 @@ export default function Userinfo() {
       if (res.data.success) {
         // return to main manager page
         console.log("userdoc update succeed!");
+        navigate("/");
       } else {
         console.log("userdoc update failed!");
       }
     } catch (err: any) {
       console.log(err.message);
     }
-  };
-
-  const saveDataHandler = async () => {
-    userInfoSaveFunc(1);
-  };
-
-  const submitDataHandler = () => {
-    userInfoSaveFunc(2);
   };
 
   return (
