@@ -5,7 +5,7 @@ import axios from "axios";
 
 import { BACKEND_URL } from "../../constants";
 
-export default function UserInfo() {
+export default function UserInfo(props: any) {
   const [key, setKey] = useState("home");
   const navigate = useNavigate();
 
@@ -76,7 +76,8 @@ export default function UserInfo() {
       </div>
       <div style={{ overflowY: "auto", height: "60vh" }}>
         {userList
-          .filter((user: any) => user.roles === "WRITER")
+          .filter((user: any) => user.roles.toLowerCase() === "writer")
+          .filter((user: any) => JSON.stringify(user).includes(props.searchKey))
           .map((idx: any, key: any) => {
             return (
               <div key={key} role="button" className="hover-row-bg-change">

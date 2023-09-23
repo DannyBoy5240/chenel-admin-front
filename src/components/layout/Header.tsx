@@ -75,7 +75,7 @@ export default function Header(props: any) {
                 }`}
                 href="/packages"
               >
-                Packages
+                Services
               </a>
             </li>
             <li>

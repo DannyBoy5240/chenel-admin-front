@@ -6,7 +6,7 @@ import axios from "axios";
 
 import { BACKEND_URL } from "../../constants";
 
-export default function Clerks() {
+export default function Clerks(props: any) {
   const [key, setKey] = useState("home");
 
   const navigate = useNavigate();
@@ -78,7 +78,8 @@ export default function Clerks() {
       </div>
       <div style={{ overflowY: "auto", height: "60vh" }}>
         {userList
-          .filter((user: any) => user.roles === "CLERK")
+          .filter((user: any) => user.roles.toLowerCase() === "clerk")
+          .filter((user: any) => JSON.stringify(user).includes(props.searchKey))
           .map((idx: any, key: any) => {
             return (
               <div key={key} role="button" className="hover-row-bg-change">

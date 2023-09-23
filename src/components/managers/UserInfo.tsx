@@ -111,7 +111,6 @@ export default function UserInfo(props: any) {
         data,
         config
       );
-      console.log("result -> ", res.data);
     } catch (err: any) {
       console.log(err.message);
     }
@@ -147,7 +146,6 @@ export default function UserInfo(props: any) {
         data,
         config
       );
-      console.log("result -> ", res.data);
     } catch (err: any) {
       console.log(err.message);
     }

@@ -8,7 +8,6 @@ import toWritersIcon from "../../assets/icons/to-writers.svg";
 import toClerksIcon from "../../assets/icons/to-clerks.svg";
 import backIcon from "../../assets/icons/back.svg";
 import removeIcon from "../../assets/icons/delete.svg";
-import Editor from "../common/ManagerEditor";
 import addPlusIcon from "../../assets/icons/add-new-user.svg";
 
 export default function WriterDocsInfo(props: any) {

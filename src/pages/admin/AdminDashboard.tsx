@@ -107,18 +107,18 @@ function AdminDashboard(props: Props) {
                 src={testAvatar}
                 className="avatar-default-sz rounded-circle profile-avatar"
               />
-              {/* Dropdown Profile */}
-              {isProfileDropdown && (
-                <div
-                  style={{ backgroundColor: "#4A4A4A38", borderRadius: "10px" }}
-                  className="text-center"
-                  role="button"
-                  onClick={() => logoutHandler()}
-                >
-                  Logout
-                </div>
-              )}
             </div>
+            {/* Dropdown Profile */}
+            {isProfileDropdown && (
+              <div
+                style={{ backgroundColor: "#4A4A4A38", borderRadius: "10px" }}
+                className="text-center"
+                role="button"
+                onClick={() => logoutHandler()}
+              >
+                Logout
+              </div>
+            )}
           </div>
         </div>
       </div>

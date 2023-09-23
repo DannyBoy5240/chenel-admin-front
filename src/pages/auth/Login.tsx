@@ -106,7 +106,12 @@ function Login(props: Props) {
       <div className="container">
         <div className="card login-card">
           <div className="row no-gutters">
-            <div className="col-md-5">
+            <div
+              className="col-md-5"
+              style={{
+                alignSelf: "center",
+              }}
+            >
               <img
                 src="http://localhost:3000/assets/img/signIn.jpg"
                 alt="login"

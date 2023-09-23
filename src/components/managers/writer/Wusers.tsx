@@ -1,9 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { BACKEND_URL } from "../../../constants";
+import axios from "axios";
 
 export default function Wusers(props: any) {
   const [key, setKey] = useState("home");
   const navigate = useNavigate();
+
+  const [userList, setUserList] = useState([]);
+  const fetchWriterData = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(`${BACKEND_URL}/users/userList`, {}, config);
+
+      if (res.data.success) setUserList(res.data.users);
+      else setUserList([]);
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchWriterData();
+  }, []);
 
   const writerViewHandler = (idx: any) => {
     console.log(`user ${idx} view clicked!`);
@@ -57,11 +81,27 @@ export default function Wusers(props: any) {
               >
                 <div className="w-25 d-flex">
                   <div className="w-50">{key + 1}</div>
-                  <div className="w-50">{idx.user.fullName}</div>
+                  <div className="w-50">
+                    {
+                      (
+                        userList.filter(
+                          (user: any) => user.email === idx.userdoc.email
+                        )[0] as any
+                      )?.fullName
+                    }
+                  </div>
                 </div>
                 <div className="w-50 d-flex">
-                  <div className="w-50">{idx.user.email}</div>
-                  <div className="w-50">{idx.user.phoneNumber}</div>
+                  <div className="w-50">{idx.userdoc.email}</div>
+                  <div className="w-50">
+                    {
+                      (
+                        userList.filter(
+                          (user: any) => user.email === idx.userdoc.email
+                        )[0] as any
+                      )?.phoneNumber
+                    }
+                  </div>
                 </div>
                 <div className="w-25 text-end">
                   {convertToUSDateTime(idx.userdoc.createdAt)}
