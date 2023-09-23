@@ -5,12 +5,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { BACKEND_URL } from "../../constants";
 import axios from "axios";
 
+import backIcon from "../../assets/icons/back.jpg";
 import "./auth.css";
 
 import { login } from "../../actions/auth";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
+
+import Privacy from "../../components/layout/Privacy";
 
 interface Props {
   auth: any;
@@ -95,6 +98,9 @@ function Login(props: Props) {
     } else navigate("/login");
   }, [isAuthorized, navigate]);
 
+  // terms policy status
+  const [isPolicyStatus, setIsPolicyStatus] = useState(false);
+
   return (
     <div className="d-flex align-items-center vh-100">
       <div className="container">
@@ -108,70 +114,95 @@ function Login(props: Props) {
               />
             </div>
             <div className="col-md-7">
-              <div className="card-body">
-                <p className="login-card-description">Sign into your account</p>
-                <div>
-                  <div className="form-group">
-                    <label htmlFor="email" className="sr-only">
-                      Email
-                    </label>
+              {!isPolicyStatus ? (
+                <div className="card-body">
+                  <p className="login-card-description">
+                    Sign into your account
+                  </p>
+                  <div>
+                    <div className="form-group">
+                      <label htmlFor="email" className="sr-only">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        className="form-control"
+                        placeholder="Email address"
+                        value={email}
+                        onChange={handleEmailChange}
+                      />
+                    </div>
+                    {!isValidEmail && (
+                      <p className="text-danger">
+                        Please enter a valid email address.
+                      </p>
+                    )}
+                    <div className="form-group mb-4">
+                      <label htmlFor="password" className="sr-only">
+                        Password
+                      </label>
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        className="form-control"
+                        placeholder="***********"
+                        value={password}
+                        onChange={handlePasswordChange}
+                      />
+                    </div>
+                    {/* Show Sign In Error */}
+                    <div className="py-1 text-danger">{signInError}</div>
                     <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      className="form-control"
-                      placeholder="Email address"
-                      value={email}
-                      onChange={handleEmailChange}
+                      name="login"
+                      id="login"
+                      className="btn btn-block login-btn mb-4"
+                      type="button"
+                      value="Login"
+                      disabled={!isValidEmail}
+                      onClick={() => signInHandler()}
                     />
                   </div>
-                  {!isValidEmail && (
-                    <p className="text-danger">
-                      Please enter a valid email address.
-                    </p>
-                  )}
-                  <div className="form-group mb-4">
-                    <label htmlFor="password" className="sr-only">
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      className="form-control"
-                      placeholder="***********"
-                      value={password}
-                      onChange={handlePasswordChange}
-                    />
-                  </div>
-                  {/* Show Sign In Error */}
-                  <div className="py-1 text-danger">{signInError}</div>
-                  <input
-                    name="login"
-                    id="login"
-                    className="btn btn-block login-btn mb-4"
-                    type="button"
-                    value="Login"
-                    disabled={!isValidEmail}
-                    onClick={() => signInHandler()}
-                  />
-                </div>
-                {/* <a href="#!" className="forgot-password-link">
+                  {/* <a href="#!" className="forgot-password-link">
                   Forgot password?
-                </a> */}
-                <p className="login-card-footer-text">
-                  Don't have an account?{" "}
-                  <a className="text-reset" href="/signUp">
-                    Register here
-                  </a>
-                </p>
-                <nav className="login-card-footer-nav">
-                  <a href="#!" style={{ textDecoration: "none" }}>
-                    Terms of use.
-                  </a>{" "}
-                  <a href="#!">Privacy policy</a>
-                </nav>
-              </div>
+                  </a> */}
+                  <p className="login-card-footer-text">
+                    Don't have an account?{" "}
+                    <a className="text-reset" href="/signUp">
+                      Register here
+                    </a>
+                    <br />
+                    <br />
+                    <a className="text-reset" href="/">
+                      Return to Homepage
+                    </a>
+                  </p>
+                  <nav className="login-card-footer-nav">
+                    <a style={{ textDecoration: "none" }}>Terms of use.</a>{" "}
+                    <a
+                      style={{ textDecoration: "underline" }}
+                      onClick={() => setIsPolicyStatus(true)}
+                      role="button"
+                    >
+                      Privacy policy
+                    </a>
+                  </nav>
+                </div>
+              ) : (
+                <div>
+                  <Privacy />
+                  <div
+                    className="position-absolute"
+                    style={{ top: "12px", right: "32px" }}
+                    role="button"
+                    onClick={() => setIsPolicyStatus(false)}
+                  >
+                    <img src={backIcon} className="icon-default-sz" />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

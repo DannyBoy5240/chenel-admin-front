@@ -28,7 +28,7 @@ function AdminDashboard(props: Props) {
   const decoded_token = props.auth.token ? jwt_decode(props.auth.token) : null;
   const isAuthorized = decoded_token
     ? (decoded_token as any).user &&
-      (decoded_token as any).user.roles === "ADMIN"
+      (decoded_token as any).user.roles.toLowerCase() === "admin"
     : false;
 
   useEffect(() => {
@@ -43,6 +43,9 @@ function AdminDashboard(props: Props) {
     await dispatch(logout());
     navigate("/login");
   };
+
+  // search function
+  const [searchKey, setSearchKey] = useState("");
 
   return (
     isAuthorized && (
@@ -72,6 +75,8 @@ function AdminDashboard(props: Props) {
                 className="form-control border-0 rounded-pill bg-white"
                 placeholder="Search User"
                 style={{ padding: "12px 12px" }}
+                value={searchKey}
+                onChange={(ev) => setSearchKey(ev.target.value)}
               />
               <div style={{ position: "absolute", top: "10px", right: "18px" }}>
                 <img src={searchIcon} className="icon-default-sz" />
@@ -84,8 +89,10 @@ function AdminDashboard(props: Props) {
             <Sidebutton page={page} setPage={setPage} />
           </div>
           <div className="col-md-10 col-lg-10 pe-5">
-            {page == "employee" && <EmployeeManagement setPage={setPage} />}
-            {page == "customer" && <CustomerManagement />}
+            {page == "employee" && (
+              <EmployeeManagement setPage={setPage} searchKey={searchKey} />
+            )}
+            {page == "customer" && <CustomerManagement searchKey={searchKey} />}
           </div>
         </div>
         {/* Profile Icon */}

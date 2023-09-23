@@ -27,6 +27,16 @@ function Dashboard(props: Props) {
     setIndex(selectedIndex);
   };
 
+  // payment handling
+  const paymentHandler = (method: number) => {
+    if (!isAuthorized) {
+      navigate("/login");
+      return;
+    }
+    // payment integration
+    navigate("/packages");
+  };
+
   return (
     <div className="h-100" style={{ backgroundColor: "#f4fbfe" }}>
       <Header isAuthorized={isAuthorized} title="home" />
@@ -157,7 +167,11 @@ function Dashboard(props: Props) {
         <div className="container">
           <div className="row">
             <div className="col-lg-4 col-md-6">
-              <div className="icon-box">
+              <div
+                className="icon-box"
+                role="button"
+                onClick={() => paymentHandler(1)}
+              >
                 <div className="icon"></div>
                 <h4 className="title">
                   <a href="">Simple Asylum: $799.00</a>
@@ -174,7 +188,11 @@ function Dashboard(props: Props) {
               </div>
             </div>
             <div className="col-lg-4 col-md-6">
-              <div className="icon-box">
+              <div
+                className="icon-box"
+                role="button"
+                onClick={() => paymentHandler(2)}
+              >
                 <div className="icon"></div>
                 <h4 className="title">
                   <a href="">Advanced Asylum: $999.00</a>
@@ -182,16 +200,18 @@ function Dashboard(props: Props) {
                 <div className="description">
                   <ul>
                     <li>All features of the Simple Asylum package.</li>
-                    <br></br>
                     <li>Flexible multiple payment options.</li>
-                    <br></br>
                     <li>Complimentary change of address once.</li>
                   </ul>
                 </div>
               </div>
             </div>
             <div className="col-lg-4 col-md-6" data-wow-delay="0.1s">
-              <div className="icon-box">
+              <div
+                className="icon-box"
+                role="button"
+                onClick={() => paymentHandler(3)}
+              >
                 <div className="icon"></div>
                 <h4 className="title">
                   <a href="">Accompanied Asylum: $1,299.00</a>

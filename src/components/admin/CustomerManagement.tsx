@@ -8,7 +8,7 @@ import axios from "axios";
 
 import { BACKEND_URL } from "../../constants";
 
-export default function CustomerManagement() {
+export default function CustomerManagement(props: any) {
   const [key, setKey] = useState("customer");
   const [usersList, setUsersList] = useState([]);
 
@@ -125,6 +125,7 @@ export default function CustomerManagement() {
       <div style={{ overflowY: "auto", height: "60vh" }}>
         {usersList
           .filter((user: any) => user.roles === key.toUpperCase())
+          .filter((user: any) => JSON.stringify(user).includes(props.searchKey))
           .map((idx: any, key: any) => {
             return (
               <div className="hover-row-bg-change" key={key} role="button">

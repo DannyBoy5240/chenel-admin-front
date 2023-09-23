@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { BACKEND_URL } from "../../constants";
 
-export default function UserInfo() {
+export default function CompletedDocs(props: any) {
   const [key, setKey] = useState("home");
 
   const [userList, setUserList] = useState([]);
@@ -62,7 +62,7 @@ export default function UserInfo() {
           <div style={{ width: "5%" }}>No</div>
           <div style={{ width: "20%" }}>Name</div>
           <div style={{ width: "20%" }}>Email</div>
-          <div style={{ width: "20%" }}>Writer</div>
+          <div style={{ width: "20%" }}>Phone</div>
           <div style={{ width: "20%" }}>Clerk</div>
           <div style={{ width: "15%", textAlign: "end" }}>Status</div>
         </div>
@@ -70,6 +70,15 @@ export default function UserInfo() {
       <div style={{ overflowY: "auto", height: "60vh" }}>
         {docList
           .filter((doc: any) => doc.status === "WRITERCONFIRM")
+          .filter(
+            (doc: any) =>
+              JSON.stringify(doc).includes(props.searchKey) ||
+              JSON.stringify(
+                userList.filter((user: any) => user.email === doc.email)[0]
+                  ? userList.filter((user: any) => user.email === doc.email)[0]
+                  : ""
+              ).includes(props.searchKey)
+          )
           .map((idx: any, key: any) => {
             return (
               <div key={key} role="button" className="hover-row-bg-change">
@@ -84,19 +93,11 @@ export default function UserInfo() {
                         userList.filter(
                           (idx1: any) => idx1.email === idx.email
                         )[0] as any
-                      ).fullName
+                      )?.fullName
                     }
                   </div>
                   <div style={{ width: "20%" }}>{idx.email}</div>
-                  <div style={{ width: "20%" }}>
-                    {
-                      (
-                        userList.filter(
-                          (idx1: any) => idx1.email === idx.writer
-                        )[0] as any
-                      ).fullName
-                    }
-                  </div>
+                  <div style={{ width: "20%" }}>{idx.phoneNumber}</div>
                   <div style={{ width: "20%" }}>
                     {
                       (

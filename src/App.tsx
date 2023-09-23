@@ -20,17 +20,12 @@ import ManagerDashboard from "./pages/manager/ManagerDashboard";
 import ManagerWriterProfile from "./pages/manager/ManagerWriterProfile";
 import Writerboard from "./pages/writers";
 
-// import WriterDashboard from "./pages/writer";
-// import WriterProfiles from "./pages/profiles/WriterProfiles";
-// import Admin from "./pages/admin";
-
 // Redux
 import { Provider, useSelector } from "react-redux";
 import store from "./store/store";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 
-// import PrivateRoute from "./routing/PrivateRoute";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -64,13 +59,10 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/manager/" element={<ManagerDashboard />} />
             <Route path="/manager/writer" element={<ManagerWriterProfile />} />
-            <Route path="/writer/" element={<Writerboard />} />
 
-            {/* <Route path="/writer/" element={<WriterDashboard />} /> */}
-            {/* <Route path="/profiles/" element={<WriterProfiles />} /> */}
             <Route path="/userinfo/" element={<Userinfo />} />
-
             <Route path="/admin/" element={<AdminDashBoard />} />
+            <Route path="/writer/" element={<Writerboard />} />
           </Routes>
         </div>
       </Router>

@@ -136,7 +136,7 @@ export default function Header(props: any) {
                   role="button"
                   data-bs-toggle="dropdown"
                 >
-                  Sign In/Out
+                  Sign In/Up
                 </a>
                 <ul className="dropdown-menu">
                   <li>

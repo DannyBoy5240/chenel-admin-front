@@ -310,7 +310,7 @@ export default function EmployeeRegister() {
                     <img
                       src={URL.createObjectURL(selectedImage)}
                       alt="Selected"
-                      style={{ maxWidth: "100%" }}
+                      style={{ maxWidth: "120px" }}
                     />
                   </div>
                 )}

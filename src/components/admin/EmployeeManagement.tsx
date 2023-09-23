@@ -188,6 +188,7 @@ export default function EmployeeManagement(props: any) {
       <div style={{ overflowY: "auto", height: "70vh" }}>
         {usersList
           .filter((user: any) => user.roles === key.toUpperCase())
+          .filter((user: any) => JSON.stringify(user).includes(props.searchKey))
           .map((idx: any, key: any) => {
             return (
               <div className="hover-row-bg-change" key={key} role="button">

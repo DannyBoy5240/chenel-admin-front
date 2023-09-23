@@ -81,7 +81,7 @@ export default function UserInfo() {
                       userList.filter(
                         (idx1: any) => idx1.email === idx.email
                       )[0] as any
-                    ).fullName
+                    )?.fullName
                   }
                 </div>
                 <div style={{ width: "20%" }}>{idx.email}</div>

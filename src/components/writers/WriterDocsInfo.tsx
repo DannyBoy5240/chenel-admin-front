@@ -11,7 +11,7 @@ import removeIcon from "../../assets/icons/delete.svg";
 import Editor from "../common/ManagerEditor";
 import addPlusIcon from "../../assets/icons/add-new-user.svg";
 
-export default function UserInfo(props: any) {
+export default function WriterDocsInfo(props: any) {
   const MAX_VALUE = 10005;
   const [key, setKey] = useState("home");
   // const [selectedName, setSelectedName] = useState("");
@@ -78,13 +78,17 @@ export default function UserInfo(props: any) {
   }, []);
 
   const userDocViewHandler = (key: any, email: string) => {
-    console.log(`user doc ${key} view clicked! ${email}`);
     setUserViewFlag(key);
     setSelectedUser({
       email: email,
       fullName: (userList.filter((user: any) => user.email === email)[0] as any)
-        .fullName,
+        ?.fullName,
     });
+    // set information doc of selected email
+    const tempWriterDoc = (
+      docList.filter((doc: any) => doc.email === email)[0] as any
+    ).writerdoc;
+    setInfo(tempWriterDoc);
   };
 
   const removeUserHandler = () => {
@@ -110,7 +114,7 @@ export default function UserInfo(props: any) {
     const data = {
       email: (selectedUser as any).email,
       writerdoc: defaultQuestions.map((doc, idx) => {
-        return { qus: doc, ans: info[idx] };
+        return { qus: doc, ans: info[idx].ans };
       }),
       status: isSubmit ? "WRITERCONFIRM" : "WRITERCHECKING",
     };
@@ -166,57 +170,72 @@ export default function UserInfo(props: any) {
             className="py-2"
           >
             <div className="d-inline-flex w-100 px-3 py-2">
-              <div className="w-25 d-flex">
-                <div className="w-50">No</div>
-                <div className="w-50">Name</div>
+              <div style={{ width: "5%" }}>No</div>
+              <div style={{ width: "20%" }}>Name</div>
+              <div style={{ width: "20%" }}>Email</div>
+              <div style={{ width: "20%" }}>Phone</div>
+              <div style={{ width: "20%", textAlign: "end" }}>
+                Registered Time
               </div>
-              <div className="w-50 d-flex">
-                <div className="w-50">Email</div>
-                <div className="w-50">Phone</div>
-              </div>
-              <div className="w-25 text-end">Registered Time</div>
+              <div style={{ width: "15%", textAlign: "end" }}>Status</div>
             </div>
           </div>
           <div style={{ overflowY: "auto", height: "80vh" }}>
             {docList
+              .filter((doc: any) =>
+                doc.writer === props.curWriter ? props.curWriter : ""
+              )
               .filter(
-                (doc: any, key1: any) =>
-                  doc.writer === "dannyboy05241@gmail.com"
-                // doc.status === "WRITERCHECKING"
+                (doc: any) =>
+                  JSON.stringify(doc).includes(props.searchKey) ||
+                  JSON.stringify(
+                    userList.filter((user: any) => user.email === doc.email)[0]
+                      ? userList.filter(
+                          (user: any) => user.email === doc.email
+                        )[0]
+                      : ""
+                  ).includes(props.searchKey)
               )
               .map((doc: any, key2: any) => {
                 return (
                   <div key={key2} role="button" className="hover-row-bg-change">
                     <div
-                      className="d-flex w-100 px-3 py-2"
+                      className="d-inline-flex w-100 px-3 py-2"
                       onClick={() => userDocViewHandler(key2 + 1, doc.email)}
                     >
-                      <div className="w-25 d-flex">
-                        <div className="w-50">{key2 + 1}</div>
-                        <div className="w-50">
-                          {
-                            (
-                              userList.filter(
-                                (user: any) => user.email === doc.email
-                              )[0] as any
-                            ).fullName
-                          }
-                        </div>
+                      <div style={{ width: "5%" }}>{key2 + 1}</div>
+                      <div style={{ width: "20%" }}>
+                        {
+                          (
+                            userList.filter(
+                              (user: any) => user.email === doc.email
+                            )[0] as any
+                          )?.fullName
+                        }
                       </div>
-                      <div className="w-50 d-flex">
-                        <div className="w-50">{doc.email}</div>
-                        <div className="w-50">
-                          {
-                            (
-                              userList.filter(
-                                (user: any) => user.email === doc.email
-                              )[0] as any
-                            ).phoneNumber
-                          }
-                        </div>
+                      <div style={{ width: "20%" }}>{doc.email}</div>
+                      <div style={{ width: "20%" }}>
+                        {
+                          (
+                            userList.filter(
+                              (user: any) => user.email === doc.email
+                            )[0] as any
+                          )?.phoneNumber
+                        }
                       </div>
-                      <div className="w-25 text-end">
+                      <div style={{ width: "20%", textAlign: "end" }}>
                         {convertToUSDateTime(doc.createdAt)}
+                      </div>
+                      <div style={{ width: "15%", textAlign: "end" }}>
+                        <div
+                          className="d-inline-flex row-send-btn"
+                          style={{ zIndex: 50 }}
+                          onClick={() => console.log("view button clicked!")}
+                        >
+                          {doc.status.toLowerCase() === "writerchecking"
+                            ? "Pending"
+                            : "Completed"}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -233,7 +252,6 @@ export default function UserInfo(props: any) {
                 <input
                   type="text"
                   className="user-input-title-box"
-                  placeholder="Robert Austin"
                   value={(selectedUser as any).fullName}
                   disabled
                 />
@@ -243,7 +261,6 @@ export default function UserInfo(props: any) {
                 <input
                   type="email"
                   className="user-input-title-box"
-                  placeholder="customer@gmail.com"
                   value={(selectedUser as any).email}
                   disabled
                 />
@@ -290,10 +307,10 @@ export default function UserInfo(props: any) {
                   <div>
                     <textarea
                       className="user-input-box"
-                      value={info[key]}
+                      value={info[key].ans}
                       onChange={(e) => {
                         const updatedInfo = [...info];
-                        updatedInfo[key] = e.target.value;
+                        updatedInfo[key].ans = e.target.value;
                         setInfo(updatedInfo);
                       }}
                     />
