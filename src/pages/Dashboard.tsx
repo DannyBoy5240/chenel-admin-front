@@ -11,6 +11,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 
+import { useTranslation } from "react-i18next";
+
 interface Props {
   auth: any;
 }
@@ -18,6 +20,8 @@ function Dashboard(props: Props) {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { t, i18n } = useTranslation();
 
   // authorization
   const decoded_token = props.auth.token ? jwt_decode(props.auth.token) : null;
@@ -44,35 +48,21 @@ function Dashboard(props: Props) {
         <div className="container">
           <div className="row justify-content-between">
             <div className="col-lg-5 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center p-4">
-              <h1>Work Permit or Residence Card For All</h1>
-              <h2>
-                Chenel Gets You Settled: Your Work Permit & Residency Made Easy!
-              </h2>
+              <h1>{t("project_title")}</h1>
+              <h2>{t("project_subtitle")}</h2>
               <div style={{ marginBottom: "10px" }}>
                 <a href="#about" className="btn-get-started scrollto">
-                  Call To US
+                  {t("call_to_us")}
                 </a>
               </div>
               <div className="row" style={{ fontSize: "14px" }}>
                 <div className="col-lg-12" style={{ textAlign: "justify" }}>
-                  At Chenel Super Service, we understand the challenges of
-                  navigating life in the US without proper documentation. Our
-                  mission is to simplify your journey by assisting you in
-                  obtaining your work permit or residence card, enabling you to
-                  live and work with confidence and peace of mind.
+                  {t("project_summary")}
                 </div>
               </div>
             </div>
             <div className="col-lg-7 order-1 order-lg-2 hero-img">
-              <div className="pt-5 pb-3">
-                Navigating life in the U.S. without the proper documentation is
-                a daily challenge for many illegal immigrants. Constantly living
-                in the shadows, they are at risk of deportation at any moment.
-                Obtaining essential items, such as a work permit, driver's
-                license, or travel document, becomes an uphill battle. The
-                emotional weight is heavy, especially when they struggle to
-                reunite with family members who remain overseas.
-              </div>
+              <div className="pt-5 pb-3">{t("project_summary_beta")}</div>
 
               <Carousel
                 activeIndex={index}
@@ -174,15 +164,13 @@ function Dashboard(props: Props) {
               >
                 <div className="icon"></div>
                 <h4 className="title">
-                  <a href="">Simple Asylum: $799.00</a>
+                  <a href="">{t("simple_asylum_title")}</a>
                 </h4>
                 <div className="description">
                   <ul>
-                    <li>
-                      Comprehensive asylum application, including narrative.
-                    </li>
-                    <li>Checks for both defensive and affirmative asylum.</li>
-                    <li>Online submission capabilities if required.</li>
+                    <li>{t("simple_asylum_item1")}</li>
+                    <li>{t("simple_asylum_item2")}</li>
+                    <li>{t("simple_asylum_item3")}</li>
                   </ul>
                 </div>
               </div>
@@ -195,13 +183,13 @@ function Dashboard(props: Props) {
               >
                 <div className="icon"></div>
                 <h4 className="title">
-                  <a href="">Advanced Asylum: $999.00</a>
+                  <a href="">{t("advanced_asylum_title")}</a>
                 </h4>
                 <div className="description">
                   <ul>
-                    <li>All features of the Simple Asylum package.</li>
-                    <li>Flexible multiple payment options.</li>
-                    <li>Complimentary change of address once.</li>
+                    <li>{t("advanced_asylum_item1")}</li>
+                    <li>{t("advanced_asylum_item2")}</li>
+                    <li>{t("advanced_asylum_item3")}</li>
                   </ul>
                 </div>
               </div>
@@ -214,20 +202,13 @@ function Dashboard(props: Props) {
               >
                 <div className="icon"></div>
                 <h4 className="title">
-                  <a href="">Accompanied Asylum: $1,299.00</a>
+                  <a href="">{t("accompained_asylum_title")}</a>
                 </h4>
                 <div className="description">
                   <ul>
-                    <li>
-                      Includes everything from the Advanced Asylum package.
-                    </li>
-                    <li>
-                      Legal representation through our affiliated attorneys.
-                    </li>
-                    <li>
-                      Complimentary Change of Venue" in the Accompanied Asylum
-                      package
-                    </li>
+                    <li>{t("accompained_asylum_item1")}</li>
+                    <li>{t("accompained_asylum_item2")}</li>
+                    <li>{t("accompained_asylum_item3")}</li>
                   </ul>
                 </div>
               </div>

@@ -15,12 +15,16 @@ import jwt_decode from "jwt-decode";
 
 import Privacy from "../../components/layout/Privacy";
 
+import { useTranslation } from "react-i18next";
+
 interface Props {
   auth: any;
 }
 function Login(props: Props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { t, i18n } = useTranslation();
 
   const [signInError, setSignInError] = useState("");
 
@@ -122,31 +126,31 @@ function Login(props: Props) {
               {!isPolicyStatus ? (
                 <div className="card-body">
                   <p className="login-card-description">
-                    Sign into your account
+                    {t("sign_into_your_account")}
                   </p>
                   <div>
                     <div className="form-group">
                       <label htmlFor="email" className="sr-only">
-                        Email
+                        {t("email")}
                       </label>
                       <input
                         type="email"
                         name="email"
                         id="email"
                         className="form-control"
-                        placeholder="Email address"
+                        placeholder={t("email_address")}
                         value={email}
                         onChange={handleEmailChange}
                       />
                     </div>
                     {!isValidEmail && (
                       <p className="text-danger">
-                        Please enter a valid email address.
+                        {t("please_enter_valid_address")}
                       </p>
                     )}
                     <div className="form-group mb-4">
                       <label htmlFor="password" className="sr-only">
-                        Password
+                        {t("password")}
                       </label>
                       <input
                         type="password"
@@ -165,7 +169,7 @@ function Login(props: Props) {
                       id="login"
                       className="btn btn-block login-btn mb-4"
                       type="button"
-                      value="Login"
+                      value={t("login")}
                       disabled={!isValidEmail}
                       onClick={() => signInHandler()}
                     />
@@ -174,24 +178,24 @@ function Login(props: Props) {
                   Forgot password?
                   </a> */}
                   <p className="login-card-footer-text">
-                    Don't have an account?{" "}
+                    {t("dont_you_have_account")}{" "}
                     <a className="text-reset" href="/signUp">
-                      Register here
+                      {t("register_here")}
                     </a>
                     <br />
                     <br />
                     <a className="text-reset" href="/">
-                      Return to Homepage
+                      {t("return_to_homepage")}
                     </a>
                   </p>
                   <nav className="login-card-footer-nav">
-                    <a style={{ textDecoration: "none" }}>Terms of use.</a>{" "}
+                    <a style={{ textDecoration: "none" }}>{t("term_of_use")}</a>{" "}
                     <a
                       style={{ textDecoration: "underline" }}
                       onClick={() => setIsPolicyStatus(true)}
                       role="button"
                     >
-                      Privacy policy
+                      {t("privacy_policy")}
                     </a>
                   </nav>
                 </div>

@@ -29,13 +29,21 @@ import { loadUser } from "./actions/auth";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+import { useTranslation } from "react-i18next";
+
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
 function App() {
+  const { t, i18n } = useTranslation();
+
   useEffect(() => {
     store.dispatch(loadUser());
+
+    // load language mode and save
+    const savedLanguageMode = localStorage.getItem("chenel_lang");
+    i18n.changeLanguage(savedLanguageMode ? savedLanguageMode : "en");
   }, []);
 
   return (

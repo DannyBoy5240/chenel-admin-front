@@ -9,12 +9,16 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 
+import { useTranslation } from "react-i18next";
+
 interface Props {
   auth: any;
 }
 function Contact(props: Props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { t, i18n } = useTranslation();
 
   // authorization
   const decoded_token =
@@ -26,7 +30,7 @@ function Contact(props: Props) {
       <Header isAuthorized={isAuthorized} title="contact" />{" "}
       <div className="container">
         <div className="section-title">
-          <h2>Contact</h2>
+          <h2>{t("contact")}</h2>
         </div>
         <div>
           {" "}
@@ -35,7 +39,7 @@ function Contact(props: Props) {
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
             frameBorder={0}
             allowFullScreen
-            title="asdf"
+            title="map"
           ></iframe>{" "}
         </div>
         <div className="row mt-3">
@@ -43,19 +47,19 @@ function Contact(props: Props) {
             <div className="info">
               <div className="address">
                 <i className="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
+                <h4>{t("location")}:</h4>
                 <p>A108 Adam Street, New York, NY 535022</p>
               </div>
 
               <div className="email">
                 <i className="bi bi-envelope"></i>
-                <h4>Email:</h4>
+                <h4>{t("email")}:</h4>
                 <p>info@example.com</p>
               </div>
 
               <div className="phone">
                 <i className="bi bi-phone"></i>
-                <h4>Call:</h4>
+                <h4>{t("call")}:</h4>
                 <p>+1 5589 55488 55s</p>
               </div>
             </div>
@@ -75,7 +79,7 @@ function Contact(props: Props) {
                     name="name"
                     className="form-control"
                     id="name"
-                    placeholder="Your Name"
+                    placeholder={t("your_name")}
                     required
                   />
                 </div>
@@ -85,7 +89,7 @@ function Contact(props: Props) {
                     className="form-control"
                     name="email"
                     id="email"
-                    placeholder="Your Email"
+                    placeholder={t("your_email")}
                     required
                   />
                 </div>
@@ -96,7 +100,7 @@ function Contact(props: Props) {
                   className="form-control"
                   name="subject"
                   id="subject"
-                  placeholder="Subject"
+                  placeholder={t("subject")}
                   required
                 />
               </div>
@@ -105,19 +109,19 @@ function Contact(props: Props) {
                   className="form-control"
                   name="message"
                   rows={5}
-                  placeholder="Message"
+                  placeholder={t("message")}
                   required
                 ></textarea>
               </div>
               <div className="my-3">
-                <div className="loading">Loading</div>
+                <div className="loading">{t("loading")}</div>
                 <div className="error-message"></div>
                 <div className="sent-message">
-                  Your message has been sent. Thank you!
+                  {t("your_message_sent_thank_you")}
                 </div>
               </div>
               <div className="text-center">
-                <button type="submit">Send Message</button>
+                <button type="submit">{t("send_message")}</button>
               </div>
             </form>
           </div>

@@ -3,16 +3,19 @@ import React, { useState, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import axios from "axios";
-
 import { BACKEND_URL } from "../../constants";
 
 import "./auth.css";
+
+import { useTranslation } from "react-i18next";
 
 export default function EmployeeRegister() {
   const location = useLocation();
   const context = location.state;
 
   const navigate = useNavigate();
+
+  const { t, i18n } = useTranslation();
 
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -72,13 +75,13 @@ export default function EmployeeRegister() {
       addressRef.current.value === "" ||
       relationshipRef.current.value === ""
     ) {
-      setRegisterError("All the fields must be filled!");
+      setRegisterError(t("all_the_fields_must_be_filled"));
       return;
     }
 
     // passport upload checking
     if (!selectedImage) {
-      setRegisterError("Passport upload failed!");
+      setRegisterError(t("passport_upload_failed"));
       return;
     }
 
@@ -124,7 +127,7 @@ export default function EmployeeRegister() {
         if (response.data.success == true) {
           navigate("/login");
         } else {
-          setRegisterError("Register failed! Please try again!");
+          setRegisterError(t("register_failed_failed"));
           flag = false;
           return;
         }
@@ -174,34 +177,34 @@ export default function EmployeeRegister() {
                   />
                 </div> */}
             <p className="register-card-description">
-              Register as Company Employee
+              {t("register_as_company_employee")}
             </p>
             <div className="row">
               {/* Email */}
               <div className="col-6 form-group">
                 <label htmlFor="email" className="sr-only">
-                  Email
+                  {t("email")}
                 </label>
                 <input
                   type="email"
                   name="email"
                   id="email"
-                  value={context.email}
+                  value={context?.email}
                   disabled
                   className="form-control"
-                  placeholder="Email address"
+                  placeholder={t("email_address")}
                 />
               </div>
               {/* Full Name */}
               <div className="col-6 form-group">
                 <label htmlFor="name" className="sr-only">
-                  Full Name
+                  {t("full_name")}
                 </label>
                 <input
                   type="text"
                   name="name"
                   id="name"
-                  value={context.name}
+                  value={context?.name}
                   disabled
                   className="form-control"
                   placeholder="John Doe"
@@ -211,7 +214,7 @@ export default function EmployeeRegister() {
               <div className="col-6 form-group">
                 <div>
                   <label htmlFor="gender" className="sr-only">
-                    Gender
+                    {t("gender")}
                   </label>
                 </div>
                 <div className="w-100 d-flex">
@@ -223,7 +226,7 @@ export default function EmployeeRegister() {
                       value="gender_male"
                       ref={genderMaleRef}
                     />
-                    <label htmlFor="gender_male">Male</label>
+                    <label htmlFor="gender_male">{t("male")}</label>
                   </div>
 
                   <div className="w-50 ps-4">
@@ -234,14 +237,14 @@ export default function EmployeeRegister() {
                       value="gender_female"
                       ref={genderFemaleRef}
                     />
-                    <label htmlFor="gender_female">Female</label>
+                    <label htmlFor="gender_female">{t("female")}</label>
                   </div>
                 </div>
               </div>
               {/* Birthday */}
               <div className="col-6 form-group">
                 <label htmlFor="birthday" className="sr-only">
-                  Birthday
+                  {t("birthday")}
                 </label>
                 <input
                   type="text"
@@ -255,42 +258,42 @@ export default function EmployeeRegister() {
               {/* Phone Number */}
               <div className="col-6 form-group">
                 <label htmlFor="phone" className="sr-only">
-                  Phone
+                  {t("phone")}
                 </label>
                 <input
                   type="text"
                   name="phone"
                   id="phone"
                   className="form-control"
-                  placeholder="Your phone number"
+                  placeholder={t("your_phone_number")}
                   ref={phoneRef}
                 />
               </div>
               {/* Address */}
               <div className="col-6 form-group">
                 <label htmlFor="address" className="sr-only">
-                  Address
+                  {t("address")}
                 </label>
                 <input
                   type="text"
                   name="address"
                   id="address"
                   className="form-control"
-                  placeholder="Your address"
+                  placeholder={t("your_address")}
                   ref={addressRef}
                 />
               </div>
               {/* Relationship */}
               <div className="col-6 form-group">
                 <label htmlFor="relationship" className="sr-only">
-                  Relationship
+                  {t("relationship")}
                 </label>
                 <input
                   type="text"
                   name="relationship"
                   id="relationship"
                   className="form-control"
-                  placeholder="Your relationship Name"
+                  placeholder={t("your_relationship_name")}
                   ref={relationshipRef}
                 />
               </div>
@@ -302,7 +305,7 @@ export default function EmployeeRegister() {
                     accept="image/*"
                     onChange={handleImageChange}
                   />
-                  Passport Upload
+                  {t("passport_upload")}
                 </label>
 
                 {selectedImage && (
@@ -319,7 +322,7 @@ export default function EmployeeRegister() {
               <div className="col-12 form-group">
                 <div className="pb-2">
                   <label htmlFor="gender" className="sr-only">
-                    Employee Type
+                    {t("employee_type")}
                   </label>
                 </div>
                 <div className="w-100 d-flex justify-content-around">
@@ -330,7 +333,7 @@ export default function EmployeeRegister() {
                       name="employee"
                       value="e_admin"
                     />
-                    <label htmlFor="e_admin">Admin</label>
+                    <label htmlFor="e_admin">{t("admin")}</label>
                   </div>
                   <div>
                     <input
@@ -339,7 +342,7 @@ export default function EmployeeRegister() {
                       name="employee"
                       value="e_manager"
                     />
-                    <label htmlFor="e_manager">Manager</label>
+                    <label htmlFor="e_manager">{t("manager")}</label>
                   </div>
                   <div>
                     <input
@@ -348,7 +351,7 @@ export default function EmployeeRegister() {
                       name="employee"
                       value="e_writer"
                     />
-                    <label htmlFor="e_writer">Writer</label>
+                    <label htmlFor="e_writer">{t("writer")}</label>
                   </div>
                   <div>
                     <input
@@ -357,7 +360,7 @@ export default function EmployeeRegister() {
                       name="employee"
                       value="e_clerk"
                     />
-                    <label htmlFor="e_clerk">Clerk</label>
+                    <label htmlFor="e_clerk">{t("writer")}</label>
                   </div>
                 </div>
               </div>
@@ -373,19 +376,22 @@ export default function EmployeeRegister() {
               />
             </div>
             <p className="register-card-footer-text">
-              You already have an account?{" "}
+              {t("you_already_have_account")}{" "}
               <a href="/login" className="text-reset">
-                Login here
+                {t("login_here")}
               </a>
             </p>
             <nav
               className="register-card-footer-nav"
               style={{ textAlign: "center" }}
             >
-              <a href="#!" style={{ textDecoration: "none" }}>
-                Terms of use.
+              <a
+                style={{ textDecoration: "none" }}
+                onClick={() => navigate("")}
+              >
+                {t("term_of_use")}
               </a>{" "}
-              <a href="#!">Privacy policy</a>
+              <a href="#!">{t("privacy_policy")}</a>
             </nav>
           </div>
           {/* <div className="col-md-5">

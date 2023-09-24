@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Dropdown } from "react-bootstrap";
@@ -14,6 +14,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 
+import { useTranslation } from "react-i18next";
+
 interface Props {
   isAuthorized: any;
   title: any;
@@ -24,9 +26,17 @@ export default function Header(props: any) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const { t, i18n } = useTranslation();
+
   const logoutHandler = async () => {
     await dispatch(logout());
     navigate("/login");
+  };
+
+  const languageChangeHandler = (lang: string) => {
+    i18n.changeLanguage(lang);
+    // save language settings to local storage
+    localStorage.setItem("chenel_lang", lang);
   };
 
   return (
@@ -50,7 +60,7 @@ export default function Header(props: any) {
                 }`}
                 href="/"
               >
-                Home
+                {t("home")}
               </a>
             </li>
             <li>
@@ -60,7 +70,7 @@ export default function Header(props: any) {
                 }`}
                 href="/about"
               >
-                About US
+                {t("aboutus")}
               </a>
             </li>
             {/* <li>
@@ -75,7 +85,7 @@ export default function Header(props: any) {
                 }`}
                 href="/packages"
               >
-                Services
+                {t("services")}
               </a>
             </li>
             <li>
@@ -85,7 +95,7 @@ export default function Header(props: any) {
                 }`}
                 href="/faq"
               >
-                FAQ
+                {t("FAQ")}
               </a>
             </li>
             <li>
@@ -95,8 +105,53 @@ export default function Header(props: any) {
                 }`}
                 href="/contact"
               >
-                Contact US
+                {t("contactus")}
               </a>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                {i18n.language.toLowerCase() === "en"
+                  ? "English"
+                  : i18n.language.toLowerCase() === "hat"
+                  ? "Haitian"
+                  : i18n.language.toLowerCase() === "spa"
+                  ? "Spanish"
+                  : "French"}
+              </a>
+              <ul className="dropdown-menu">
+                <li
+                  className="dropdown-item"
+                  role="button"
+                  onClick={() => languageChangeHandler("en")}
+                >
+                  English
+                </li>
+                <li
+                  className="dropdown-item"
+                  role="button"
+                  onClick={() => languageChangeHandler("spa")}
+                >
+                  Spanish
+                </li>
+                <li
+                  className="dropdown-item"
+                  role="button"
+                  onClick={() => languageChangeHandler("fr")}
+                >
+                  French
+                </li>
+                <li
+                  className="dropdown-item"
+                  role="button"
+                  onClick={() => languageChangeHandler("hat")}
+                >
+                  Haitian
+                </li>
+              </ul>
             </li>
             {/* Header Auth Avatar */}
             {props.isAuthorized ? (
@@ -124,7 +179,7 @@ export default function Header(props: any) {
                       className="dropdown-item"
                       onClick={() => logoutHandler()}
                     >
-                      LogOut
+                      {t("logout")}
                     </div>
                   </li>
                 </ul>
@@ -136,17 +191,17 @@ export default function Header(props: any) {
                   role="button"
                   data-bs-toggle="dropdown"
                 >
-                  Sign In/Up
+                  {t("signin_up")}
                 </a>
                 <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to="/login">
-                      SignIn
+                      {t("signin")}
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/signUp">
-                      SignUp
+                      {t("signup")}
                     </Link>
                   </li>
                 </ul>

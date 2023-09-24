@@ -20,12 +20,16 @@ import jwt_decode from "jwt-decode";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
+import { useTranslation } from "react-i18next";
+
 interface Props {
   auth: any;
 }
 function Packages(props: Props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { t, i18n } = useTranslation();
 
   // authorization
   const decoded_token =
@@ -80,18 +84,16 @@ function Packages(props: Props) {
               />
               <Card.Body>
                 <Card.Title style={{ textAlign: "center" }}>
-                  <h2>Simple Asylum</h2>
+                  <h2>{t("simple_asylum")}</h2>
                   <h4>
-                    <sup>$</sup>799.00<span> / month</span>
+                    <sup>$</sup>799.00<span> / {t("month")}</span>
                   </h4>
                 </Card.Title>
                 <Card.Text>
                   <ul>
-                    <li>
-                      Comprehensive asylum application, including narrative.
-                    </li>
-                    <li>Checks for both defensive and affirmative asylum.</li>
-                    <li>Online submission capabilities if required.</li>
+                    <li>{t("simple_asylum_item1")}</li>
+                    <li>{t("simple_asylum_item2")}</li>
+                    <li>{t("simple_asylum_item3")}</li>
                     <br></br>
                   </ul>
                 </Card.Text>
@@ -104,7 +106,7 @@ function Packages(props: Props) {
                   }}
                 >
                   <Button variant="primary" onClick={() => paymentHandler(1)}>
-                    I Choose This
+                    {t("select_plan")}
                   </Button>
                 </div>
               </Card.Body>
@@ -127,16 +129,16 @@ function Packages(props: Props) {
               />
               <Card.Body>
                 <Card.Title style={{ textAlign: "center" }}>
-                  <h2>Advanced Asylum</h2>
+                  <h2>{t("advanced_asylum")}</h2>
                   <h4>
-                    <sup>$</sup>999.00<span> / month</span>
+                    <sup>$</sup>999.00<span> / {t("month")}</span>
                   </h4>
                 </Card.Title>
                 <Card.Text>
                   <ul>
-                    <li>All features of the Simple Asylum package.</li>
-                    <li>Flexible multiple payment options.</li>
-                    <li>Complimentary change of address once.</li>
+                    <li>{t("advanced_asylum_item1")}</li>
+                    <li>{t("advanced_asylum_item2")}</li>
+                    <li>{t("advanced_asylum_item3")}</li>
                   </ul>
                 </Card.Text>
                 <div
@@ -148,7 +150,7 @@ function Packages(props: Props) {
                   }}
                 >
                   <Button variant="primary" onClick={() => paymentHandler(2)}>
-                    I Choose This
+                    {t("select_plan")}
                   </Button>
                 </div>
               </Card.Body>
@@ -171,23 +173,16 @@ function Packages(props: Props) {
               />
               <Card.Body>
                 <Card.Title style={{ textAlign: "center" }}>
-                  <h2>Accompanied Asylum</h2>
+                  <h2>{t("accompanied_asylum")}</h2>
                   <h4>
-                    <sup>$</sup>1,299.00<span> / month</span>
+                    <sup>$</sup>1,299.00<span> / {t("month")}</span>
                   </h4>
                 </Card.Title>
                 <Card.Text className="pb-4">
                   <ul>
-                    <li>
-                      Includes everything from the Advanced Asylum package.
-                    </li>
-                    <li>
-                      Legal representation through our affiliated attorneys.
-                    </li>
-                    <li>
-                      Complimentary Change of Venue" in the Accompanied Asylum
-                      package
-                    </li>
+                    <li>{t("accompained_asylum_item1")}</li>
+                    <li>{t("accompained_asylum_item2")}</li>
+                    <li>{t("accompained_asylum_item3")}</li>
                   </ul>
                 </Card.Text>
                 <div
@@ -199,7 +194,7 @@ function Packages(props: Props) {
                   }}
                 >
                   <Button variant="primary" onClick={() => paymentHandler(3)}>
-                    I Choose This
+                    {t("select_plan")}
                   </Button>
                 </div>
               </Card.Body>

@@ -16,12 +16,16 @@ import jwt_decode from "jwt-decode";
 
 import Privacy from "../../components/layout/Privacy";
 
+import { useTranslation } from "react-i18next";
+
 interface Props {
   auth: any;
 }
 function Register(props: Props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { t, i18n } = useTranslation();
 
   // authorization
   const decoded_token = props.auth.token ? jwt_decode(props.auth.token) : null;
@@ -170,31 +174,31 @@ function Register(props: Props) {
               {!isPolicyStatus ? (
                 <div className="card-body">
                   <p className="register-card-description">
-                    Sign up to your account
+                    {t("sign_up_to_your_account")}
                   </p>
                   <form action="#!">
                     <div className="form-group">
                       <label htmlFor="email" className="sr-only">
-                        Email
+                        {t("email")}
                       </label>
                       <input
                         type="email"
                         name="email"
                         id="email"
                         className="form-control"
-                        placeholder="Email address"
+                        placeholder={t("email_address")}
                         value={email}
                         onChange={handleEmailChange}
                       />
                     </div>
                     {!isValidEmail && (
                       <p className="text-danger">
-                        Please enter a valid email address.
+                        {t("please_enter_valid_email_address")}
                       </p>
                     )}
                     <div className="form-group">
                       <label htmlFor="email" className="sr-only">
-                        Full Name
+                        {t("full_name")}
                       </label>
                       <input
                         type="text"
@@ -208,12 +212,12 @@ function Register(props: Props) {
                     </div>
                     {!isValidFullName && (
                       <p className="text-danger">
-                        Please enter a your full name.
+                        {t("please_enter_your_full_name")}
                       </p>
                     )}
                     <div className="form-group mb-4">
                       <label htmlFor="password" className="sr-only">
-                        Password
+                        {t("password")}
                       </label>
                       <input
                         type="password"
@@ -227,7 +231,7 @@ function Register(props: Props) {
                     </div>
                     <div className="form-group">
                       <label htmlFor="password" className="sr-only">
-                        Confirm Password
+                        {t("confirm_password")}
                       </label>
                       <input
                         type="password"
@@ -242,7 +246,7 @@ function Register(props: Props) {
                     {/* Show Confirm Password Error */}
                     {!isValidPassword && (
                       <p className="text-danger">
-                        Please enter password correctly.
+                        {t("please_enter_password_correctly")}
                       </p>
                     )}
                     <div className="form-group mt-2 mb-4">
@@ -253,7 +257,7 @@ function Register(props: Props) {
                         value="membershipValue"
                         ref={checkboxMembershipRef}
                       />
-                      <label htmlFor="membership">Be an employee?</label>
+                      <label htmlFor="membership">{t("be_an_employee")}</label>
                     </div>
                     {/* Register Status Represent */}
                     <div className="pb-2 text-danger">{signUpError}</div>
@@ -262,14 +266,14 @@ function Register(props: Props) {
                       id="register"
                       className="btn btn-block register-btn mb-4"
                       type="button"
-                      value="register"
+                      value={t("register")}
                       onClick={() => signUpHandler()}
                     />
                   </form>
                   <p className="register-card-footer-text">
-                    You already have an account?{" "}
+                    {t("you_already_have_account")}{" "}
                     <a href="/login" className="text-reset">
-                      Login here
+                      {t("login_here")}
                     </a>
                   </p>
                   <nav
@@ -277,14 +281,14 @@ function Register(props: Props) {
                     style={{ textAlign: "center" }}
                   >
                     <a href="#!" style={{ textDecoration: "none" }}>
-                      Terms of use.
+                      {t("term_of_use")}
                     </a>{" "}
                     <a
                       style={{ textDecoration: "underline" }}
                       onClick={() => setIsPolicyStatus(true)}
                       role="button"
                     >
-                      Privacy policy
+                      {t("privacy_policy")}
                     </a>
                   </nav>
                 </div>
