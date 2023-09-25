@@ -6,6 +6,7 @@ import { BACKEND_URL } from "../../constants";
 import axios from "axios";
 
 import backIcon from "../../assets/icons/back.jpg";
+import signInImage from "../../assets/assets/img/signIn.jpg";
 import "./auth.css";
 
 import { login } from "../../actions/auth";
@@ -117,7 +118,8 @@ function Login(props: Props) {
               }}
             >
               <img
-                src="http://localhost:3000/assets/img/signIn.jpg"
+                // src="http://195.201.246.182:3000/assets/img/signIn.jpg"
+                src={signInImage}
                 alt="login"
                 width={500}
               />

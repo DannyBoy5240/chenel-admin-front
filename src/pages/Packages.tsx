@@ -16,9 +16,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 
-// stripe payment
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+import p1image from "../assets/assets/img/p1.jpg";
+import p2image from "../assets/assets/img/p2.jpg";
+import p3image from "../assets/assets/img/p3.jpg";
 
 import { useTranslation } from "react-i18next";
 
@@ -46,20 +46,24 @@ function Packages(props: Props) {
   };
 
   const paymentHandler = async (method: number) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    try {
-      const res = await axios.post(
-        `${BACKEND_URL}/stripepayment/create-checkout-session`,
-        {},
-        config
-      );
-    } catch (err: any) {
-      console.log(err.message);
+    if (isAuthorized) {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      try {
+        const res = await axios.post(
+          `${BACKEND_URL}/stripepayment/create-checkout-session`,
+          {method},
+          config
+        );
+        window.location.href = res.data.url;
+      } catch (err: any) {
+        console.log(err.message);
+      }
     }
+    else navigate("/login");
   };
 
   return (
@@ -80,7 +84,8 @@ function Packages(props: Props) {
             >
               <Card.Img
                 variant="top"
-                src="http://localhost:3000/assets/img/p1.jpg"
+                // src="http://195.201.246.182:3000/assets/img/p1.jpg"
+                src={p1image}
               />
               <Card.Body>
                 <Card.Title style={{ textAlign: "center" }}>
@@ -125,7 +130,8 @@ function Packages(props: Props) {
             >
               <Card.Img
                 variant="top"
-                src="http://localhost:3000/assets/img/p2.jpg"
+                // src="http://195.201.246.182:3000/assets/img/p2.jpg"
+                src={p2image}
               />
               <Card.Body>
                 <Card.Title style={{ textAlign: "center" }}>
@@ -169,7 +175,8 @@ function Packages(props: Props) {
             >
               <Card.Img
                 variant="top"
-                src="http://localhost:3000/assets/img/p3.jpg"
+                // src="http://195.201.246.182:3000/assets/img/p3.jpg"
+                src={p3image}
               />
               <Card.Body>
                 <Card.Title style={{ textAlign: "center" }}>

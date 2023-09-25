@@ -7,9 +7,9 @@ import { BACKEND_URL } from "../../constants";
 import "./auth.css";
 
 import backIcon from "../../assets/icons/back.jpg";
+import signUpImage from "../../assets/assets/img/signUp.jpg";
 
 import { useDispatch } from "react-redux";
-import { logout } from "../../actions/auth";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
@@ -308,7 +308,8 @@ function Register(props: Props) {
             </div>
             <div className="col-md-5 align-self-center">
               <img
-                src="http://localhost:3000/assets/img/signUp.jpg"
+                // src="http://195.201.246.182:3000/assets/img/signUp.jpg"
+                src={signUpImage}
                 alt="register"
                 width={555}
               />

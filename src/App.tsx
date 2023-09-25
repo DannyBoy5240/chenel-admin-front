@@ -26,9 +26,6 @@ import store from "./store/store";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-
 import { useTranslation } from "react-i18next";
 
 if (localStorage.token) {

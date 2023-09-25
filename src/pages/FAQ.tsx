@@ -212,12 +212,12 @@ function FAQ(props: Props) {
             </div>
             {/* <div className="col-xl-4">
               <img
-                src="http://localhost:3000/assets/img/faq1.jpg"
+                src="http://195.201.246.182:3000/assets/img/faq1.jpg"
                 alt="faq1"
                 style={{ width: "100%", marginBottom: "10px" }}
               />
               <img
-                src="http://localhost:3000/assets/img/faq2.jpg"
+                src="http://195.201.246.182:3000/assets/img/faq2.jpg"
                 alt="faq2"
                 style={{ width: "100%" }}
               />

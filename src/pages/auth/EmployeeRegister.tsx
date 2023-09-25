@@ -171,7 +171,7 @@ export default function EmployeeRegister() {
           <div className="card-body">
             {/* <div className="brand-wrapper">
                   <img
-                    src="http://localhost:3000/assets/img/logo.png"
+                    src="http://195.201.246.182:3000/assets/img/logo.png"
                     alt="logo"
                     className="logo"
                   />
@@ -360,7 +360,7 @@ export default function EmployeeRegister() {
                       name="employee"
                       value="e_clerk"
                     />
-                    <label htmlFor="e_clerk">{t("writer")}</label>
+                    <label htmlFor="e_clerk">{t("clerk")}</label>
                   </div>
                 </div>
               </div>
@@ -396,7 +396,7 @@ export default function EmployeeRegister() {
           </div>
           {/* <div className="col-md-5">
               <img
-                src="http://localhost:3000/assets/img/signUp.jpg"
+                src="http://195.201.246.182:3000/assets/img/signUp.jpg"
                 alt="register"
                 // className="login-card-img"
                 width={555}

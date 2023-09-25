@@ -5,6 +5,8 @@ import BlogItem from "../components/blog/BlogItem";
 import FloatingButton from "../components/common/FloatingButton";
 import CreateBlogModal from "../components/modals/CreateBlogModal";
 
+
+
 const blogs: Array<Blog> = [
   {
     title: "Hello, world!",
@@ -15,8 +17,8 @@ const blogs: Array<Blog> = [
     views: 10,
     votes: 15,
     category: "Greeting",
-    banner_img: "http://localhost:3000/assets/img/p1.jpg",
-    avatar: "http://localhost:3000/assets/img/team/team-1.jpg",
+    banner_img: "http://195.201.246.182:3000/assets/img/p1.jpg",
+    avatar: "http://195.201.246.182:3000/assets/img/team/team-1.jpg",
   },
   {
     title: "Hello, world!",
@@ -27,8 +29,8 @@ const blogs: Array<Blog> = [
     views: 10,
     votes: 15,
     category: "Greeting",
-    banner_img: "http://localhost:3000/assets/img/p1.jpg",
-    avatar: "http://localhost:3000/assets/img/team/team-2.jpg",
+    banner_img: "http://195.201.246.182:3000/assets/img/p1.jpg",
+    avatar: "http://195.201.246.182:3000/assets/img/team/team-2.jpg",
   },
   {
     title: "Hello, world!",
@@ -39,8 +41,8 @@ const blogs: Array<Blog> = [
     views: 10,
     votes: 15,
     category: "Greeting",
-    banner_img: "http://localhost:3000/assets/img/p1.jpg",
-    avatar: "http://localhost:3000/assets/img/team/team-3.jpg",
+    banner_img: "http://195.201.246.182:3000/assets/img/p1.jpg",
+    avatar: "http://195.201.246.182:3000/assets/img/team/team-3.jpg",
   },
 ];
 
