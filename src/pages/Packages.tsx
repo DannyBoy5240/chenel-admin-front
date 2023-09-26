@@ -20,6 +20,11 @@ import p1image from "../assets/assets/img/p1.jpg";
 import p2image from "../assets/assets/img/p2.jpg";
 import p3image from "../assets/assets/img/p3.jpg";
 
+import ticktokIcon from "../assets/icons/ticktok_ico.png";
+import facebookIcon from "../assets/icons/facebook_ico.png";
+import instagramIcon from "../assets/icons/instagram_ico.png";
+import youtubeIcon from "../assets/icons/youtube_ico.png";
+
 import { useTranslation } from "react-i18next";
 
 interface Props {
@@ -206,6 +211,21 @@ function Packages(props: Props) {
                 </div>
               </Card.Body>
             </Card>
+          </div>
+        </div>
+        {/* Social Media Links */}
+        <div className="d-flex justify-content-around pt-4">
+          <div role="button">
+            <img src={ticktokIcon} className="avatar-default-sz" />
+          </div>
+          <div role="button">
+            <img src={facebookIcon} className="avatar-default-sz" />
+          </div>
+          <div role="button">
+            <img src={instagramIcon} className="avatar-default-sz" />
+          </div>
+          <div role="button">
+            <img src={youtubeIcon} className="avatar-default-sz" />
           </div>
         </div>
       </div>

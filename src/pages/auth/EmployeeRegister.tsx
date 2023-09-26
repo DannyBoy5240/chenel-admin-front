@@ -17,7 +17,9 @@ export default function EmployeeRegister() {
 
   const { t, i18n } = useTranslation();
 
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedPassportImage, setSelectedPassportImage] = useState(null);
+  const [selectedWorkpermitImage, setSelectedWorkpermitImage] = useState(null);
+  const [selectedSecurityImage, setSelectedSecurityImage] = useState(null);
 
   const genderMaleRef = useRef<HTMLInputElement>(null);
   const genderFemaleRef = useRef<HTMLInputElement>(null);
@@ -41,10 +43,22 @@ export default function EmployeeRegister() {
       document.getElementById("e_admin")?.setAttribute("checked", "true");
   }, []);
 
-  const handleImageChange = (event: any) => {
+  const handlePassportImageChange = (event: any) => {
     const file = event.target.files[0];
 
-    setSelectedImage(file);
+    setSelectedPassportImage(file);
+  };
+
+  const handleWorkPermitImageChange = (event: any) => {
+    const file = event.target.files[0];
+
+    setSelectedWorkpermitImage(file);
+  };
+
+  const handleSecurityImageChange = (event: any) => {
+    const file = event.target.files[0];
+
+    setSelectedSecurityImage(file);
   };
 
   const registerHandler = async () => {
@@ -79,9 +93,17 @@ export default function EmployeeRegister() {
       return;
     }
 
-    // passport upload checking
-    if (!selectedImage) {
+    // work documents upload checking
+    if (!selectedPassportImage) {
       setRegisterError(t("passport_upload_failed"));
+      return;
+    }
+    if (!selectedWorkpermitImage) {
+      setRegisterError(t("workpermit_upload_failed"));
+      return;
+    }
+    if (!selectedSecurityImage) {
+      setRegisterError(t("security_upload_failed"));
       return;
     }
 
@@ -141,7 +163,7 @@ export default function EmployeeRegister() {
 
     // Passport Upload
     const formData = new FormData();
-    formData.append("passport", selectedImage);
+    formData.append("passport", selectedPassportImage);
     formData.append("email", context.email);
 
     try {
@@ -284,7 +306,7 @@ export default function EmployeeRegister() {
                 />
               </div>
               {/* Relationship */}
-              <div className="col-6 form-group">
+              {/* <div className="col-6 form-group">
                 <label htmlFor="relationship" className="sr-only">
                   {t("relationship")}
                 </label>
@@ -296,30 +318,76 @@ export default function EmployeeRegister() {
                   placeholder={t("your_relationship_name")}
                   ref={relationshipRef}
                 />
-              </div>
-              {/* Passport */}
-              <div className="col-6 form-group pt-4">
-                <label className="custom-file-upload">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                  />
-                  {t("passport_upload")}
-                </label>
+              </div> */}
+              {/* Work Documents */}
+              <div className="col-12 form-group">
+                <div className="row">
+                  {/* Passport */}
+                  <div className="col-4 form-group">
+                    <label className="custom-file-upload">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handlePassportImageChange}
+                      />
+                      {t("passport_upload")}
+                    </label>
+                    {selectedPassportImage && (
+                      <div className="p-2">
+                        <img
+                          src={URL.createObjectURL(selectedPassportImage)}
+                          alt="Selected"
+                          style={{ maxWidth: "120px" }}
+                        />
+                      </div>
+                    )}
+                  </div>  
+                  {/* Work Permission */}
+                  <div className="col-4 form-group">
+                    <label className="custom-file-upload">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleWorkPermitImageChange}
+                      />
+                      {t("workpermit_upload")}
+                    </label>
 
-                {selectedImage && (
-                  <div className="p-2">
-                    <img
-                      src={URL.createObjectURL(selectedImage)}
-                      alt="Selected"
-                      style={{ maxWidth: "120px" }}
-                    />
+                    {selectedWorkpermitImage && (
+                      <div className="p-2">
+                        <img
+                          src={URL.createObjectURL(selectedWorkpermitImage)}
+                          alt="Selected"
+                          style={{ maxWidth: "120px" }}
+                        />
+                      </div>
+                    )}
                   </div>
-                )}
+                  {/* Security Card */}
+                  <div className="col-4 form-group">
+                    <label className="custom-file-upload">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleSecurityImageChange}
+                      />
+                      {t("security_card_upload")}
+                    </label>
+
+                    {selectedSecurityImage && (
+                      <div className="p-2">
+                        <img
+                          src={URL.createObjectURL(selectedSecurityImage)}
+                          alt="Selected"
+                          style={{ maxWidth: "120px" }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
               {/* Employee Type */}
-              <div className="col-12 form-group">
+              <div className="col-12 form-group pt-4">
                 <div className="pb-2">
                   <label htmlFor="gender" className="sr-only">
                     {t("employee_type")}
