@@ -26,7 +26,7 @@ export default function EmployeeRegister() {
   const birthdayRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const addressRef = useRef<HTMLInputElement>(null);
-  const relationshipRef = useRef<HTMLInputElement>(null);
+  // const relationshipRef = useRef<HTMLInputElement>(null);
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const handleDateChange = (date: Date | null) => {
@@ -74,9 +74,7 @@ export default function EmployeeRegister() {
         phoneRef &&
         phoneRef.current &&
         addressRef &&
-        addressRef.current &&
-        relationshipRef &&
-        relationshipRef.current
+        addressRef.current
       )
     ) {
       return;
@@ -86,33 +84,32 @@ export default function EmployeeRegister() {
     if (
       birthdayRef.current.value === "" ||
       phoneRef.current.value === "" ||
-      addressRef.current.value === "" ||
-      relationshipRef.current.value === ""
+      addressRef.current.value === ""
     ) {
       setRegisterError(t("all_the_fields_must_be_filled"));
       return;
     }
 
     // work documents upload checking
-    if (!selectedPassportImage) {
-      setRegisterError(t("passport_upload_failed"));
-      return;
-    }
-    if (!selectedWorkpermitImage) {
-      setRegisterError(t("workpermit_upload_failed"));
-      return;
-    }
-    if (!selectedSecurityImage) {
-      setRegisterError(t("security_upload_failed"));
-      return;
-    }
+    // if (!selectedPassportImage) {
+    //   setRegisterError(t("passport_upload_failed"));
+    //   return;
+    // }
+    // if (!selectedWorkpermitImage) {
+    //   setRegisterError(t("workpermit_upload_failed"));
+    //   return;
+    // }
+    // if (!selectedSecurityImage) {
+    //   setRegisterError(t("security_upload_failed"));
+    //   return;
+    // }
 
     // get values
     const curGender = genderMaleRef.current.checked; // true: male, false: female
     const curBirthday = birthdayRef.current.value;
     const curPhone = phoneRef.current.value;
     const curAddress = addressRef.current.value;
-    const curRelationship = relationshipRef.current.value;
+    // const curRelationship = relationshipRef.current.value;
 
     const selectedEmployee = document.querySelector(
       'input[name="employee"]:checked'
@@ -127,7 +124,7 @@ export default function EmployeeRegister() {
       birthday: curBirthday,
       phoneNumber: curPhone,
       address: curAddress,
-      relationship: curRelationship,
+      relationship: "",
       roles:
         curEmployeeType === "e_admin"
           ? "ADMIN"
@@ -163,7 +160,7 @@ export default function EmployeeRegister() {
 
     // Passport Upload
     const formData = new FormData();
-    formData.append("passport", selectedPassportImage);
+    formData.append("passport", selectedPassportImage || "");
     formData.append("email", context.email);
 
     try {
@@ -445,7 +442,7 @@ export default function EmployeeRegister() {
             </div>
             <p className="register-card-footer-text">
               {t("you_already_have_account")}{" "}
-              <a href="/login" className="text-reset">
+              <a onClick={() => navigate("/login")} className="text-reset">
                 {t("login_here")}
               </a>
             </p>

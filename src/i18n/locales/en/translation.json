@@ -27,7 +27,7 @@
   "full_name": "Full Name",
   "please_enter_your_full_name": "Please enter a your full name.",
   "cofirm_password": "Confirm Password",
-  "please_enter_password_correctly": "Please enter password correctly.",
+  "please_enter_password_correctly": "Please enter password correctly. Password must be over 8 letters.",
   "be_an_employee": "Be an employee?",
   "you_already_have_account": "You already have an account?",
   "login_here": "Login here",

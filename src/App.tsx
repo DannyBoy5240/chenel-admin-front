@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import EmployeeRegister from "./pages/auth/EmployeeRegister";
+import VerifyEmail from "./pages/auth/VerifyEmail";
 
 import FAQ from "./pages/FAQ";
 import AboutUs from "./pages/AboutUs";
@@ -54,6 +55,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signUp" element={<Register />} />
             <Route path="/signUp/Employee" element={<EmployeeRegister />} />
+            <Route path="/verify-email/:token" element={<VerifyEmail />} />
 
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />

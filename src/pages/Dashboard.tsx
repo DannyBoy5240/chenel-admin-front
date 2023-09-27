@@ -51,7 +51,7 @@ function Dashboard(props: Props) {
               <h1>{t("project_title")}</h1>
               <h2>{t("project_subtitle")}</h2>
               <div style={{ marginBottom: "10px" }}>
-                <a href="#about" className="btn-get-started scrollto">
+                <a onClick={() => navigate("/about")} className="btn-get-started scrollto">
                   {t("call_to_us")}
                 </a>
               </div>

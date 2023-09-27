@@ -181,12 +181,12 @@ function Login(props: Props) {
                   </a> */}
                   <p className="login-card-footer-text">
                     {t("dont_you_have_account")}{" "}
-                    <a className="text-reset" href="/signUp">
+                    <a className="text-reset" onClick={() => navigate("/signUp")}>
                       {t("register_here")}
                     </a>
                     <br />
                     <br />
-                    <a className="text-reset" href="/">
+                    <a className="text-reset" onClick={() => navigate("/")}>
                       {t("return_to_homepage")}
                     </a>
                   </p>

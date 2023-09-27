@@ -27,7 +27,7 @@
   "full_name": "Nom complet",
   "please_enter_your_full_name": "Veuillez entrer votre nom complet.",
   "confirm_password": "Confirmez le mot de passe",
-  "please_enter_password_correctly": "Veuillez entrer le mot de passe correctement.",
+  "please_enter_password_correctly": "Veuillez entrer le mot de passe correctement. Le mot de passe doit contenir plus de 8 lettres.",
   "be_an_employee": "Être un employé?",
   "you_already_have_account": "Vous avez déjà un compte?",
   "login_here": "Connectez-vous ici",

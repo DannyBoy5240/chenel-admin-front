@@ -16,12 +16,12 @@ export default function Footer() {
           . {t("all_rights_reserved")}
         </div>
         <div>
-          <strong>{t("phone")}:</strong> +1 5589 55488 55
+          <strong>{t("phone")}:</strong> +1 239-657-7000
         </div>
         <div>
-          <strong>{t("email")}:</strong> info@example.com
+          <strong>{t("email")}:</strong> Taxgration@gmail.com
         </div>
-        <div>www.reallygreatsite.com</div>
+        <div>chenelsuperservice.com</div>
       </div>
     </div>
   );

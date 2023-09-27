@@ -42,7 +42,7 @@ export default function Header(props: any) {
   return (
     <header id="header" className="fixed-top" style={{ padding: "0px" }}>
       <div className="container d-flex align-items-center justify-content-between">
-        <a href="/" className="logo">
+        <a onClick={() => navigate("/")} className="logo">
           <img
             src={logoImage}
             className="img-fluid"
@@ -58,7 +58,7 @@ export default function Header(props: any) {
                 className={`nav-link scrollto ${
                   props.title === "home" && "active"
                 }`}
-                href="/"
+                onClick={() => navigate("/")}
               >
                 {t("home")}
               </a>
@@ -68,13 +68,13 @@ export default function Header(props: any) {
                 className={`nav-link scrollto ${
                   props.title === "about" && "active"
                 }`}
-                href="/about"
+                onClick={() => navigate("/about")}
               >
                 {t("aboutus")}
               </a>
             </li>
             {/* <li>
-              <a className="nav-link scrollto" href="/blog">
+              <a className="nav-link scrollto" onClick={() => navigate("/blog")}>
                 Blog
               </a>
             </li> */}
@@ -83,7 +83,7 @@ export default function Header(props: any) {
                 className={`nav-link scrollto ${
                   props.title === "packages" && "active"
                 }`}
-                href="/packages"
+                onClick={() => navigate("/packages")}
               >
                 {t("services")}
               </a>
@@ -93,7 +93,7 @@ export default function Header(props: any) {
                 className={`nav-link scrollto ${
                   props.title === "faq" && "active"
                 }`}
-                href="/faq"
+                onClick={() => navigate("/faq")}
               >
                 {t("FAQ")}
               </a>
@@ -103,7 +103,7 @@ export default function Header(props: any) {
                 className={`nav-link scrollto ${
                   props.title === "contact" && "active"
                 }`}
-                href="/contact"
+                onClick={() => navigate("/contact")}
               >
                 {t("contactus")}
               </a>

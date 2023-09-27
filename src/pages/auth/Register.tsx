@@ -272,7 +272,7 @@ function Register(props: Props) {
                   </form>
                   <p className="register-card-footer-text">
                     {t("you_already_have_account")}{" "}
-                    <a href="/login" className="text-reset">
+                    <a onClick={() => navigate("/login")} className="text-reset">
                       {t("login_here")}
                     </a>
                   </p>
