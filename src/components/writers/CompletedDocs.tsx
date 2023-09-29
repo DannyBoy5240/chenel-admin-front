@@ -83,7 +83,7 @@ export default function CompletedDocs(props: any) {
             return (
               <div key={key} role="button" className="hover-row-bg-change">
                 <div
-                  className="d-inline-flex w-100 px-3 py-2"
+                  className="d-inline-flex w-100 px-3 py-2 align-items-center"
                   onClick={() => documentViewHandler(key + 1)}
                 >
                   <div style={{ width: "5%" }}>{key + 1}</div>

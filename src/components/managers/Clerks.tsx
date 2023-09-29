@@ -35,7 +35,7 @@ export default function Clerks(props: any) {
 
   const clerkViewHandler = (idx: any, data: any) => {
     console.log(`clerk ${idx} view clicked!`);
-    navigate("/manager/writer", { state: { data: data, status: "clerk" } });
+    navigate("/manager/employee", { state: { data: data, status: "clerk" } });
   };
 
   function convertToUSDateTime(dateString: string): string {
@@ -84,7 +84,7 @@ export default function Clerks(props: any) {
             return (
               <div key={key} role="button" className="hover-row-bg-change">
                 <div
-                  className="d-flex w-100 px-3 py-2"
+                  className="d-flex w-100 px-3 py-2 align-items-center"
                   onClick={() => clerkViewHandler(key + 1, idx)}
                 >
                   <div className="w-25 d-flex">

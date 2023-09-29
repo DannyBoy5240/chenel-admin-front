@@ -2,12 +2,45 @@ import React, { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
+import { BACKEND_URL, FRONTEND_URL } from "../../../constants";
+
 import tempAvatar from "../../../assets/img/avatar.jpg";
 
 export default function WriterInfo(props: any) {
   const [key, setKey] = useState("home");
 
+  const [passport, setPassport] = useState("");
+  const [workpermit, setWorkpermit] = useState("");
+  const [security, setSecurity] = useState("");
+
   const navigate = useNavigate();
+
+  const fetchDocumentsData = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/users/getdocuments`,
+        {email: props.data.email},
+        config
+      );
+      if (res.data.success) {
+        setPassport(res.data.passport);
+        setWorkpermit(res.data.workpermit);
+        setSecurity(res.data.security);
+      }
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchDocumentsData();
+  }, []);
 
   function convertToUSDateTime(dateString: string): string {
     const date = new Date(dateString);
@@ -23,20 +56,36 @@ export default function WriterInfo(props: any) {
   }
 
   return (
-    <div className="d-flex default-component-back">
-      <div className="col-sm-12 col-lg-6 py-2">
-        <img src={tempAvatar} style={{ height: "60%", paddingLeft: "48px" }} />
-      </div>
-      <div className="col-sm-12 col-lg-6 pt-4" style={{ fontSize: "24px" }}>
-        <div className="py-3">Name : {props.data.fullName}</div>
-        <div className="py-3">
-          Gender : {props.data.gender ? "Male" : "Female"}
+    <div className="default-component-back">
+      <div className="d-flex">
+        <div className="col-sm-12 col-lg-6 py-2">
+          <img src={tempAvatar} style={{ height: "450px", paddingLeft: "48px" }} />
         </div>
-        <div className="py-3">Email : {props.data.email}</div>
-        <div className="py-3">Phone : {props.data.phoneNumber}</div>
-        <div className="py-3">Address : {props.data.address}</div>
-        <div className="py-3">
-          Registration Time : {convertToUSDateTime(props.data.regTime)}
+        <div className="col-sm-12 col-lg-6 pt-4" style={{ fontSize: "24px" }}>
+          <div className="py-3">Name : {props.data.fullName}</div>
+          <div className="py-3">
+            Gender : {props.data.gender ? "Male" : "Female"}
+          </div>
+          <div className="py-3">Email : {props.data.email}</div>
+          <div className="py-3">Phone : {props.data.phoneNumber}</div>
+          <div className="py-3">Address : {props.data.address}</div>
+          <div className="py-3">
+            Registration Time : {convertToUSDateTime(props.data.regTime)}
+          </div>
+        </div>
+      </div>
+      <div className="row p-2">
+        <div className="col-sm-12 col-lg-4 text-center">
+          <div>Passport</div>
+          {passport !== "" && <img src={`${FRONTEND_URL}/${passport}`} style={{ width: '100%' }} />}
+        </div>
+        <div className="col-sm-12 col-lg-4 text-center">
+          <div>Work permit</div>
+          {workpermit !== "" && <img src={`${FRONTEND_URL}/${workpermit}`} style={{ width: '100%' }} />}
+        </div>
+        <div className="col-sm-12 col-lg-4 text-center">
+          <div>Security Card</div>
+          {security !== "" && <img src={`${FRONTEND_URL}/${security}`} style={{ width: '100%' }} />}
         </div>
       </div>
     </div>

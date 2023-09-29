@@ -129,7 +129,7 @@ export default function CustomerManagement(props: any) {
           .map((idx: any, key: any) => {
             return (
               <div className="hover-row-bg-change" key={key} role="button">
-                <div className="d-flex w-100 px-3 py-2">
+                <div className="d-flex w-100 px-3 py-2 align-items-center">
                   <div style={{ width: "10%" }}>{key + 1}</div>
                   <div style={{ width: "20%" }}>{idx.fullName}</div>
                   <div style={{ width: "25%" }}>{idx.email}</div>

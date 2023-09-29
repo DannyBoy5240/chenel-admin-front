@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { BACKEND_URL } from "../constants";
 
@@ -33,6 +33,7 @@ interface Props {
 function Packages(props: Props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const payment_success = useParams<{ success?: string }>().success;
 
   const { t, i18n } = useTranslation();
 
@@ -49,6 +50,10 @@ function Packages(props: Props) {
   const handleMouseLeave = () => {
     setHoveredElement(0);
   };
+
+  useEffect(() => {
+    console.log("payment handle status --> ", payment_success);
+  }, [])
 
   const paymentHandler = async (method: number) => {
     if (isAuthorized) {
@@ -214,7 +219,7 @@ function Packages(props: Props) {
           </div>
         </div>
         {/* Social Media Links */}
-        <div className="d-flex justify-content-around pt-4">
+        <div className="d-flex justify-content-around py-4">
           <div role="button">
             <img src={ticktokIcon} className="avatar-default-sz" />
           </div>

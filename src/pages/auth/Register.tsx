@@ -108,7 +108,7 @@ function Register(props: Props) {
       if (checkboxMembershipRef.current.checked == true) {
         navigate("/signUp/Employee", {
           state: {
-            email: curEmail,
+            email: curEmail.toLowerCase(),
             name: curFullName,
             password: curPassword,
           },
@@ -116,7 +116,7 @@ function Register(props: Props) {
       } else {
         // Sign Up the User
         const data = {
-          email: curEmail,
+          email: curEmail.toLowerCase(),
           fullName: curFullName,
           password: curPassword,
         };

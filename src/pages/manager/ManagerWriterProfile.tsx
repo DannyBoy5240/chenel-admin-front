@@ -43,7 +43,7 @@ function ManagerWriterProfile(props: Props) {
 
   useEffect(() => {
     if (isAuthorized)
-      navigate("/manager/writer", { state: { data: data, status: "writer" } });
+      navigate("/manager/employee", { state: { data: data, status: statusMode === "writer" ? "writer" : "clerk" } });
     else navigate("/login");
   }, [isAuthorized, navigate]);
 
@@ -109,7 +109,7 @@ function ManagerWriterProfile(props: Props) {
         <div className="col-md-2 col-lg-2">
           <Sidebutton page={page} setPage={setPage} status={statusMode} />
         </div>
-        <div className="col-md-10 col-lg-10 pe-5">
+        <div className="col-md-10 col-lg-10 pe-5" style={{height: "80vh", overflowY: "auto"}}>
           {page == "info" && <WriterInfo setPage={setPage} data={data} />}
           {page == "writer" && (
             <Wusers

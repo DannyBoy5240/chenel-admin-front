@@ -78,7 +78,7 @@ export const login =
       },
     };
 
-    const body = JSON.stringify({ email, password });
+    const body = JSON.stringify({ email: email.toLowerCase(), password });
     try {
       const res = await axios.post(`${BACKEND_URL}/users/signIn`, body, config);
       if (res.data.success) {

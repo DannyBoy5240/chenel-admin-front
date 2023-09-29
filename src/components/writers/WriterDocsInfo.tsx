@@ -199,7 +199,7 @@ export default function WriterDocsInfo(props: any) {
                 return (
                   <div key={key2} role="button" className="hover-row-bg-change">
                     <div
-                      className="d-inline-flex w-100 px-3 py-2"
+                      className="d-inline-flex w-100 px-3 py-2 align-items-center"
                       onClick={() => userDocViewHandler(key2 + 1, doc.email)}
                     >
                       <div style={{ width: "5%" }}>{key2 + 1}</div>

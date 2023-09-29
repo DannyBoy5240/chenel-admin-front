@@ -192,7 +192,7 @@ export default function EmployeeManagement(props: any) {
           .map((idx: any, key: any) => {
             return (
               <div className="hover-row-bg-change" key={key} role="button">
-                <div className="d-flex w-100 px-3 py-2">
+                <div className="d-flex w-100 px-3 py-2 align-items-center">
                   <div style={{ width: "4%" }}>{key + 1}</div>
                   <div style={{ width: "15%" }}>{idx.fullName}</div>
                   <div style={{ width: "6%" }}>{idx.gender ? "M" : "W"}</div>

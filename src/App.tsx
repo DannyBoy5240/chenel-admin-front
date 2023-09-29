@@ -48,7 +48,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <div
-          className="position-relative vh-100 overflow-hidden"
+          className="position-relative vh-100 overflow-auto"
           style={{ fontFamily: "Dosis" }}
         >
           <Routes>
@@ -65,7 +65,7 @@ function App() {
 
             <Route path="/" element={<Dashboard />} />
             <Route path="/manager/" element={<ManagerDashboard />} />
-            <Route path="/manager/writer" element={<ManagerWriterProfile />} />
+            <Route path="/manager/employee" element={<ManagerWriterProfile />} />
 
             <Route path="/userinfo/" element={<Userinfo />} />
             <Route path="/admin/" element={<AdminDashBoard />} />

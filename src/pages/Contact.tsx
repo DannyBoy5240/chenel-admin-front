@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../components/layout/Header";
@@ -9,7 +9,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 
+import axios from "axios";
+
 import { useTranslation } from "react-i18next";
+import { BACKEND_URL } from "../constants";
 
 interface Props {
   auth: any;
@@ -20,13 +23,41 @@ function Contact(props: Props) {
 
   const { t, i18n } = useTranslation();
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
   // authorization
   const decoded_token =
     props.auth && props.auth.token ? jwt_decode(props.auth.token) : null;
   const isAuthorized = decoded_token && (decoded_token as any).user;
 
+  const sendMessageHandler = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/users/contactus`,
+        {name, email, subject, message},
+        config
+      );
+
+      if (res.data.success) {
+        console.log("message sent successfully!");
+      } else {
+        console.log("message sent failed!");
+      }
+    } catch (err: any) {
+      console.log(err.message);
+    }
+  }
+
   return (
-    <section id="contact" className="contact" style={{ paddingTop: "150px" }}>
+    <section id="contact" className="contact h-100" style={{ padding: "120px 0px 120px 0px", overflowY: "auto" }}>
       <Header isAuthorized={isAuthorized} title="contact" />{" "}
       <div className="container">
         <div className="section-title">
@@ -48,27 +79,25 @@ function Contact(props: Props) {
               <div className="address">
                 <i className="bi bi-geo-alt"></i>
                 <h4>{t("location")}:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>709 W Main Street  Unit 1, Immokalee FL 34142</p>
               </div>
 
               <div className="email">
                 <i className="bi bi-envelope"></i>
                 <h4>{t("email")}:</h4>
-                <p>info@example.com</p>
+                <p>Taxgration@gmail.com</p>
               </div>
 
               <div className="phone">
                 <i className="bi bi-phone"></i>
                 <h4>{t("call")}:</h4>
-                <p>+1 5589 55488 55s</p>
+                <p>+1 239-657-7000</p>
               </div>
             </div>
           </div>
 
           <div className="col-lg-8 mt-5 mt-lg-0">
-            <form
-              action="forms/contact.php"
-              method="post"
+            <div
               role="form"
               className="php-email-form"
             >
@@ -80,6 +109,8 @@ function Contact(props: Props) {
                     className="form-control"
                     id="name"
                     placeholder={t("your_name")}
+                    value={name}
+                    onChange={(ev) => setName(ev.target.value)}
                     required
                   />
                 </div>
@@ -90,6 +121,8 @@ function Contact(props: Props) {
                     name="email"
                     id="email"
                     placeholder={t("your_email")}
+                    value={email}
+                    onChange={(ev) => setEmail(ev.target.value)}
                     required
                   />
                 </div>
@@ -101,6 +134,8 @@ function Contact(props: Props) {
                   name="subject"
                   id="subject"
                   placeholder={t("subject")}
+                  value={subject}
+                  onChange={(ev) => setSubject(ev.target.value)}
                   required
                 />
               </div>
@@ -110,6 +145,8 @@ function Contact(props: Props) {
                   name="message"
                   rows={5}
                   placeholder={t("message")}
+                  value={message}
+                  onChange={(ev) => setMessage(ev.target.value)}
                   required
                 ></textarea>
               </div>
@@ -121,9 +158,9 @@ function Contact(props: Props) {
                 </div>
               </div>
               <div className="text-center">
-                <button type="submit">{t("send_message")}</button>
+                <button onClick={() => sendMessageHandler()}>{t("send_message")}</button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

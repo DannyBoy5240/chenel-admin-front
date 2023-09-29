@@ -1131,7 +1131,7 @@ section {
 .about {
   margin-top: 110px;
   height: 80vh;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
 }
 
 .team .member {

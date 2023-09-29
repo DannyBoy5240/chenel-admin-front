@@ -28,7 +28,7 @@ function AboutUs(props: Props) {
     <section
       id="team"
       className="team section-bg h-100"
-      style={{ backgroundColor: "#f4fbfe", marginTop: "80px" }}
+      style={{ backgroundColor: "#f4fbfe", marginTop: "80px", paddingBottom: "100px" }}
     >
       <Header isAuthorized={isAuthorized} title="about" />
       <div className="container">

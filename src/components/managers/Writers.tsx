@@ -33,7 +33,7 @@ export default function UserInfo(props: any) {
 
   const writerViewHandler = (idx: any, data: any) => {
     console.log(`writer ${idx} view clicked!`);
-    navigate("/manager/writer", { state: { data: data, status: "writer" } });
+    navigate("/manager/employee", { state: { data: data, status: "writer" } });
   };
 
   function convertToUSDateTime(dateString: string): string {
@@ -82,7 +82,7 @@ export default function UserInfo(props: any) {
             return (
               <div key={key} role="button" className="hover-row-bg-change">
                 <div
-                  className="d-flex w-100 px-3 py-2"
+                  className="d-flex w-100 px-3 py-2 align-items-center"
                   onClick={() => writerViewHandler(key + 1, idx)}
                 >
                   <div className="w-25 d-flex">

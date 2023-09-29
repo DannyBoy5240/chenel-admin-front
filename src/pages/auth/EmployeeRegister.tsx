@@ -61,6 +61,29 @@ export default function EmployeeRegister() {
     setSelectedSecurityImage(file);
   };
 
+  const documentUploadHandler = async (image: any, email: any, type: any) => {
+    const formData = new FormData();
+    formData.append(type, image || "");
+    formData.append("email", email);
+
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/users/upload/${type}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      // Handle the response from the server (e.g., display a success message)
+      console.log("File uploaded successfully", response.data);
+      // Clear the uploaded file
+    } catch (error) {
+      console.error("Error uploading file", error);
+    }
+  }
+
   const registerHandler = async () => {
     // null exception handler
     if (
@@ -158,29 +181,13 @@ export default function EmployeeRegister() {
 
     if (!flag) return;
 
-    // Passport Upload
-    const formData = new FormData();
-    formData.append("passport", selectedPassportImage || "");
-    formData.append("email", context.email);
-
-    try {
-      const response = await axios.post(
-        `${BACKEND_URL}/users/upload/passport`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      // Handle the response from the server (e.g., display a success message)
-      console.log("File uploaded successfully", response.data);
-
-      // Clear the uploaded file
-    } catch (error) {
-      console.error("Error uploading file", error);
-    }
+    // Documents Upload
+    if (selectedPassportImage && selectedPassportImage !== "")
+      await documentUploadHandler(selectedPassportImage, context.email, "passport");
+    if (selectedWorkpermitImage && selectedWorkpermitImage !== "")
+      await documentUploadHandler(selectedWorkpermitImage, context.email, "workpermit");
+    if (selectedSecurityImage && selectedSecurityImage !== "")
+      await documentUploadHandler(selectedSecurityImage, context.email, "security");    
   };
 
   return (

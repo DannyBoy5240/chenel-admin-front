@@ -131,11 +131,13 @@ code {
   padding: 5px 5px;
   background: #a3a3a355;
   border-radius: 18px;
+  height: 24px;
 }
 .row-remove-btn:hover {
   padding: 5px 5px;
   background: #a3a3a3;
   border-radius: 18px;
+  height: 24px;
 }
 
 /* default Component background */
