@@ -73,7 +73,7 @@ function Register(props: Props) {
     setIsValidFullName(value !== "");
   };
 
-  const passwordPattern = /^.{8,}$/;
+  const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setPassword(value);

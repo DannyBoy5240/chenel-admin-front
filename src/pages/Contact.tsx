@@ -18,15 +18,13 @@ interface Props {
   auth: any;
 }
 function Contact(props: Props) {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   const { t, i18n } = useTranslation();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [messageResult, setMessageResult] = useState("");
 
   // authorization
   const decoded_token =
@@ -48,30 +46,36 @@ function Contact(props: Props) {
 
       if (res.data.success) {
         console.log("message sent successfully!");
+        setMessageResult(t("contact_message_result_succeed"));
       } else {
         console.log("message sent failed!");
+        setMessageResult(t("contact_message_result_failed"));
       }
     } catch (err: any) {
       console.log(err.message);
     }
+
+    setTimeout(() => {
+      setMessageResult("");
+    }, 2000);
   }
 
   return (
     <section id="contact" className="contact h-100" style={{ padding: "120px 0px 120px 0px", overflowY: "auto" }}>
-      <Header isAuthorized={isAuthorized} title="contact" />{" "}
+      <Header isAuthorized={isAuthorized} title="contact" />
       <div className="container">
         <div className="section-title">
           <h2>{t("contact")}</h2>
         </div>
         <div>
-          {" "}
           <iframe
             style={{ border: "0", width: "100%", height: "270px" }}
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+            // src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+            src="https://www.google.com/maps/embed/v1/place?q=709+W+Main+St+%231,+Immokalee,+FL+34142&key=AIzaSyB_33--qCwuW0gqGY9ScKAzFeZiaBaRm70"
             frameBorder={0}
             allowFullScreen
             title="map"
-          ></iframe>{" "}
+          ></iframe>
         </div>
         <div className="row mt-3">
           <div className="col-lg-4">
@@ -79,7 +83,7 @@ function Contact(props: Props) {
               <div className="address">
                 <i className="bi bi-geo-alt"></i>
                 <h4>{t("location")}:</h4>
-                <p>709 W Main Street  Unit 1, Immokalee FL 34142</p>
+                <p>709 W. Main Street</p><p>Unit 1</p><p>Immokalee FL, 34142</p>
               </div>
 
               <div className="email">
@@ -158,8 +162,9 @@ function Contact(props: Props) {
                 </div>
               </div>
               <div className="text-center">
-                <button onClick={() => sendMessageHandler()}>{t("send_message")}</button>
+                <button className="btn btn-dark" onClick={() => sendMessageHandler()} disabled={email===""}>{t("send_message")}</button>
               </div>
+              <div className="py-1 text-center"><p>{messageResult}</p></div>
             </div>
           </div>
         </div>

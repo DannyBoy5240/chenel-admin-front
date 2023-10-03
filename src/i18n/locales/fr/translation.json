@@ -6,8 +6,8 @@
   "faq": "FAQ",
   "contactus": "Contactez-nous",
   "logout": "Déconnexion",
-  "signin_up": "Se connecter/S'inscrire",
-  "signin": "Se connecter",
+  "signin_up": "Connexion/Inscription",
+  "signin": "Connexion",
   "signup": "S'inscrire",
   "copyright": "Droits d'auteur",
   "all_rights_reserved": "Tous droits réservés",
@@ -27,7 +27,7 @@
   "full_name": "Nom complet",
   "please_enter_your_full_name": "Veuillez entrer votre nom complet.",
   "confirm_password": "Confirmez le mot de passe",
-  "please_enter_password_correctly": "Veuillez entrer le mot de passe correctement. Le mot de passe doit contenir plus de 8 lettres.",
+  "please_enter_password_correctly": "Les mots de passe doivent contenir une combinaison de lettres majuscules, de lettres minuscules, de chiffres, de caractères spéciaux et avoir une longueur minimale de 8 caractères pour une sécurité renforcée.",
   "be_an_employee": "Être un employé?",
   "you_already_have_account": "Vous avez déjà un compte?",
   "login_here": "Connectez-vous ici",
@@ -168,5 +168,7 @@
   "faq_qus_21": "21. Pourquoi devrais-je choisir Chenel Super Service LLC pour ma demande d'asile plutôt qu'un avocat ?",
   "faq_ans_21": "Chenel Super Service LLC propose une approche globale du processus d'asile qui va au-delà de la simple représentation légale. Voici quelques-uns des principaux avantages de choisir Chenel Super Service LLC pour déposer votre demande d'asile plutôt qu'un simple avocat : <br /> <br /> 1. **Équipe multidisciplinaire d'experts** : Chenel Super Service LLC réunit une équipe d'experts de différents domaines, notamment des psychologues, des économistes, des journalistes et des professeurs, en plus des avocats. Cette approche multidisciplinaire garantit que chaque aspect de votre dossier est traité de manière exhaustive et que votre demande est aussi solide que possible. <br /> <br /> 2. **Service proactif et attentif** : L'équipe de Chenel Super Service LLC adopte une approche proactive en vérifiant régulièrement auprès du ministère de la Justice et du tribunal que votre dossier progresse comme il se doit. Ce niveau d'attention et de soin contribue à éviter les retards et garantit que le bon type de demande d'asile, qu'il s'agisse d'une demande affirmative ou défensive, est soumis. <br /> <br /> 3. **Récit cohérent et compréhensible** : L'équipe de Chenel Super Service LLC écoute attentivement vos expériences et vous aide à élaborer un récit cohérent et compréhensible pour le juge. Cela améliore vos chances d'être compris et, en fin de compte, de gagner l'asile. <br /> <br /> 4. **Soutien complet** : Chenel Super Service LLC fournit un soutien complet tout au long du processus d'asile. De la préparation et du dépôt de votre demande à la préparation aux entretiens ou aux comparutions devant le tribunal et au soutien continu, Chenel Super Service LLC est là pour vous à chaque étape. <br /> <br /> 5. **Accès aux meilleurs avocats en immigration** : Chenel Super Service LLC dispose d'un réseau de grands avocats en immigration et négocie des réductions en votre nom, garantissant que vous bénéficiez de la représentation légale de la plus haute qualité à des tarifs abordables. <br /> <br /> 6. **Approche axée sur le client** : Chez Chenel Super Service LLC, les clients sont traités comme de la famille. L'équipe est toujours disponible pour répondre à vos appels et pour répondre à tous les besoins urgents qui peuvent survenir. Avec plus de dix lignes téléphoniques et deux réceptionnistes dédiés, vous pouvez toujours joindre quelqu'un lorsque vous avez besoin d'aide. <br /> <br /> En résumé, Chenel Super Service LLC propose une approche globale, proactive et axée sur le client du processus d'asile qui va au-delà de la simple représentation légale. Avec une équipe multidisciplinaire d'experts, un service attentif et proactif, un soutien complet et une approche axée sur le client, Chenel Super Service LLC est un excellent choix pour toute personne cherchant à déposer une demande d'asile. <br />",
   "workpermit_upload": "Téléchargement du Permis de Travail",
-  "security_card_upload": "Téléchargement de la Carte de Sécurité"
+  "security_card_upload": "Téléchargement de la Carte de Sécurité",
+  "contact_message_result_succeed": "Message de contact envoyé avec succès!",
+  "contact_message_result_failed": "Échec de l'envoi du message de contact!"
 }

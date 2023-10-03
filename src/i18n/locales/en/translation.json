@@ -6,9 +6,9 @@
   "faq": "FAQ",
   "contactus": "Contact US",
   "logout": "LogOut",
-  "signin_up": "Sign In/Up",
-  "signin": "SignIn",
-  "signup": "SignUp",
+  "signin_up": "Sign in/up",
+  "signin": "Sign in",
+  "signup": "Sign up",
   "copyright": "Copyright",
   "all_rights_reserved": "All Rights Reserved",
   "phone": "Phone",
@@ -27,7 +27,7 @@
   "full_name": "Full Name",
   "please_enter_your_full_name": "Please enter a your full name.",
   "cofirm_password": "Confirm Password",
-  "please_enter_password_correctly": "Please enter password correctly. Password must be over 8 letters.",
+  "please_enter_password_correctly": "Passwords must be a mix of uppercase, lowercase, digits, special characters, and a minimum length of 8 characters for added security.",
   "be_an_employee": "Be an employee?",
   "you_already_have_account": "You already have an account?",
   "login_here": "Login here",
@@ -168,5 +168,7 @@
   "faq_qus_21": "21. Why should I choose Chenel Super Service LLC do my asylum application over an attorney?",
   "faq_ans_21": "Chenel Super Service LLC provides a comprehensive approach to the asylum process that goes beyond just legal representation. Here are some of the key advantages of choosing Chenel Super Service LLC to file your asylum application instead of just an attorney: <br /> <br /> 1. **Multidisciplinary Team of Experts**: Chenel Super Service LLC brings together a team of experts from various fields, including psychologists, economists, journalists, and professors, in addition to attorneys. This multidisciplinary approach ensures that every aspect of your case is addressed comprehensively and that your application is as strong as possible. <br /> <br /> 2. **Proactive and Attentive Service**: The team at Chenel Super Service LLC takes a proactive approach by regularly checking with the Justice Department and the court to ensure that your case is progressing as it should. This level of attention and care helps to avoid delays and ensures that the proper type of asylum application, whether affirmative or defensive, is submitted. <br /> <br /> 3. **Coherent and Understandable Story**: The team at Chenel Super Service LLC listens attentively to your experiences and helps craft a coherent and understandable narrative for the judge. This enhances your chances of being understood and ultimately winning asylum. <br /> <br /> 4. **Comprehensive Support**: Chenel Super Service LLC provides comprehensive support throughout the entire asylum process. From preparing and filing your application to preparing you for interviews or court appearances and providing ongoing support, Chenel Super Service LLC is there for you every step of the way. <br /> <br /> 5. **Access to the Best Immigration Attorneys**: Chenel Super Service LLC has a network of top immigration attorneys and negotiates discounts on your behalf, ensuring that you receive the highest quality legal representation at the most affordable rates. <br /> <br /> 6. **Client-Focused Approach**: At Chenel Super Service LLC, clients are treated like family. The team is always available to answer your calls and address any urgent needs that may arise. With over ten phone lines and two dedicated receptionists, you can always reach someone when you need assistance. <br /> <br /> In summary, Chenel Super Service LLC provides a comprehensive, proactive, and client-focused approach to the asylum process that goes beyond just legal representation. With a multidisciplinary team of experts, attentive and proactive service, comprehensive support, and a client-focused approach, Chenel Super Service LLC is an excellent choice for anyone seeking to file an asylum application. <br />",
   "workpermit_upload": "Work Permit Upload",
-  "security_card_upload": "Security Card Upload"
+  "security_card_upload": "Security Card Upload",
+  "contact_message_result_succeed": "Contact Message Sent Succeed!",
+  "contact_message_result_failed": "Contact Message Sent Failed!"
 }

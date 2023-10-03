@@ -27,7 +27,7 @@
   "full_name": "Non Konplè",
   "please_enter_your_full_name": "Tanpri antre non ou konplè.",
   "cofirm_password": "Konfime Modpas",
-  "please_enter_password_correctly": "Tanpri antre modpas ou kòrèkteman. Modpas dwe gen plis pase 8 lèt.",
+  "please_enter_password_correctly": "Passwords must be a mix of uppercase, lowercase, digits, special characters, and a minimum length of 8 characters for added security.",
   "be_an_employee": "Vin yon anplwaye?",
   "you_already_have_account": "Ou gen deja yon kont?",
   "login_here": "Konekte isit la",
@@ -168,5 +168,7 @@
   "faq_qus_21": "21. Poukisa mwen ta dwe chwazi Chenel Super Service LLC pou aplike pou azil mwen an olye pou yon avoka?",
   "faq_ans_21": "Chenel Super Service LLC ofri yon apwòch konpransif nan pwosesis azil la ki ale pi lwen pase sèlman reprezantasyon legal. Men kèk nan avantaj kle yo nan chwazi Chenel Super Service LLC pou depoze aplikasyon azil ou a nan plas sèlman yon avoka: <br /> <br /> 1. **Ekip Pliridisciplinè nan Eksper**: Chenel Super Service LLC met ansanm yon ekip nan divès domèn, tankou psikolog, ekonomis, jounalis, ak pwofesè, ansanm ak avoka yo. Aproch pliridisciplinè sa asire ke chak aspè nan dosye ou a rive jwenn yon trè bon konpreyansyon ak ke aplikasyon ou a se pi fò posib. <br /> <br /> 2. **Sèvis Pwodiktif ak Atenyon Manif**: Ekip la nan Chenel Super Service LLC pran yon apwòch pwodiktif pa t'ap tcheke avèk Depatman Jistis la ak tribinal la nan fason redilye pou asire ke dosye ou a ap pwogrese tankou li dwe. Nivo atansyon ak swen sa yo ede evite reta ak asire ke bon kalite aplikasyon azil, ke se aplikasyon afimatif oswa defansif, yo soumèt. <br /> <br /> 3. **Istoryè Koeran ak Konpreyansib**: Ekip la nan Chenel Super Service LLC koute ou eksperyans ak ede kreye yon istwa koeran ak konpreyansib pou jij la. Sa ogmante chans ou pou yo konprann ou epi nan fen fè ou genyen azil. <br /> <br /> 4. **Sipò Konpransif**: Chenel Super Service LLC bay sipò konpransif nan tout pwosesis azil la. Depi yo prepare ak depoze aplikasyon ou jiska yo prepare ou pou entèvyou oswa prezans nan tribinal ak bay sipò kontinye, Chenel Super Service LLC la pou ou nan chak etap nan wout la. <br /> <br /> 5. **Aksè nan Pi Bon Avoka nan Imigrasyon**: Chenel Super Service LLC gen yon rezo nan pi bon avoka nan imigrasyon ak negosye rabè pou ou nan non ou, asire ke ou resevwa reprezantasyon legal nan pi bon kalite nan ta ki pi bon pri. <br /> <br /> 6. **Aproch Kliyan-Oriante**: Nan Chenel Super Service LLC, kliyan yo trete tankou fanmi. Ekip la toujou disponib pou reponn nan apèl ou ak adrese nenpòt bezwen ijans ki ka soti. Avèk plis pase disnan liy telefòn ak de moun resepsyon ki dedye, ou ka toujou jwenn yon moun lè ou bezwen sipò. <br /> <br /> En rezime, Chenel Super Service LLC ofri yon apwòch konpransif, pwodiktif, ak kliyan-oriante nan pwosesis azil la ki ale pi lwen pase sèlman reprezantasyon legal. Avèk yon ekip pliridisciplinè nan eksper, sèvis atantif ak pwodiktif, sipò konpransif, ak yon apwòch kliyan-oriante, Chenel Super Service LLC se yon bon chwa pou nenpòt moun kap chèche depoze aplikasyon azil. <br />",
   "workpermit_upload": "Telechajman Pèmi Travay",
-  "security_card_upload": "Telechajman Kat Sekirite"
+  "security_card_upload": "Telechajman Kat Sekirite",
+  "contact_message_result_succeed": "Mesaj Kontak a Te Voye Siksè!",
+  "contact_message_result_failed": "Mesaj Kontak a Pa Te Ka Voye!"
 }
