@@ -398,7 +398,7 @@ export default function EmployeeRegister() {
                   </label>
                 </div>
                 <div className="w-100 d-flex justify-content-around">
-                  <div>
+                  {/* <div>
                     <input
                       type="radio"
                       id="e_admin"
@@ -406,7 +406,7 @@ export default function EmployeeRegister() {
                       value="e_admin"
                     />
                     <label htmlFor="e_admin">{t("admin")}</label>
-                  </div>
+                  </div> */}
                   <div>
                     <input
                       type="radio"

@@ -33,10 +33,10 @@ function Dashboard(props: Props) {
 
   // payment handling
   const paymentHandler = (method: number) => {
-    if (!isAuthorized) {
-      navigate("/login");
-      return;
-    }
+    // if (!isAuthorized) {
+    //   navigate("/login");
+    //   return;
+    // }
     // payment integration
     navigate("/packages");
   };

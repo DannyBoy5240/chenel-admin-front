@@ -33,7 +33,15 @@ interface Props {
 function Packages(props: Props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const payment_success = useParams<{ success?: string }>().success;
+  // const payment_success = useParams<{ success?: string }>().success;
+
+  // Get the current URL
+  var currentURL = window.location.href;
+  // Use the URLSearchParams API to parse the URL
+  var url = new URL(currentURL);
+  var params = new URLSearchParams(url.search);
+  // Get the value of the "success" parameter
+  var payment_success = params.get("success");
 
   const { t, i18n } = useTranslation();
 
@@ -53,27 +61,26 @@ function Packages(props: Props) {
 
   useEffect(() => {
     console.log("payment handle status --> ", payment_success);
+    if (payment_success)
+      navigate("/signUp");
   }, [])
 
   const paymentHandler = async (method: number) => {
-    if (isAuthorized) {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      try {
-        const res = await axios.post(
-          `${BACKEND_URL}/stripepayment/create-checkout-session`,
-          {method},
-          config
-        );
-        window.location.href = res.data.url;
-      } catch (err: any) {
-        console.log(err.message);
-      }
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/stripepayment/create-checkout-session`,
+        {method},
+        config
+      );
+      window.location.href = res.data.url;
+    } catch (err: any) {
+      console.log(err.message);
     }
-    else navigate("/login");
   };
 
   return (
@@ -94,7 +101,6 @@ function Packages(props: Props) {
             >
               <Card.Img
                 variant="top"
-                // src="http://195.201.246.182:3000/assets/img/p1.jpg"
                 src={p1image}
               />
               <Card.Body>
@@ -104,14 +110,14 @@ function Packages(props: Props) {
                     <sup>$</sup>799.00<span> / {t("month")}</span>
                   </h4>
                 </Card.Title>
-                <Card.Text>
+                <div>
                   <ul>
                     <li>{t("simple_asylum_item1")}</li>
                     <li>{t("simple_asylum_item2")}</li>
                     <li>{t("simple_asylum_item3")}</li>
                     <br></br>
                   </ul>
-                </Card.Text>
+                </div>
                 <div
                   style={{
                     textAlign: "center",
@@ -140,7 +146,6 @@ function Packages(props: Props) {
             >
               <Card.Img
                 variant="top"
-                // src="http://195.201.246.182:3000/assets/img/p2.jpg"
                 src={p2image}
               />
               <Card.Body>
@@ -150,13 +155,13 @@ function Packages(props: Props) {
                     <sup>$</sup>999.00<span> / {t("month")}</span>
                   </h4>
                 </Card.Title>
-                <Card.Text>
+                <div>
                   <ul>
                     <li>{t("advanced_asylum_item1")}</li>
                     <li>{t("advanced_asylum_item2")}</li>
                     <li>{t("advanced_asylum_item3")}</li>
                   </ul>
-                </Card.Text>
+                </div>
                 <div
                   style={{
                     textAlign: "center",
@@ -185,7 +190,6 @@ function Packages(props: Props) {
             >
               <Card.Img
                 variant="top"
-                // src="http://195.201.246.182:3000/assets/img/p3.jpg"
                 src={p3image}
               />
               <Card.Body>
@@ -195,13 +199,13 @@ function Packages(props: Props) {
                     <sup>$</sup>1,299.00<span> / {t("month")}</span>
                   </h4>
                 </Card.Title>
-                <Card.Text className="pb-4">
+                <div className="pb-4">
                   <ul>
                     <li>{t("accompained_asylum_item1")}</li>
                     <li>{t("accompained_asylum_item2")}</li>
                     <li>{t("accompained_asylum_item3")}</li>
                   </ul>
-                </Card.Text>
+                </div>
                 <div
                   style={{
                     textAlign: "center",
