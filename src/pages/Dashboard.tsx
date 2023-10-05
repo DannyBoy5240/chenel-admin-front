@@ -42,13 +42,14 @@ function Dashboard(props: Props) {
   };
 
   return (
-    <div className="h-100" style={{ backgroundColor: "#f4fbfe", overflowY: "auto" }}>
+    <div className="h-100 d-flex flex-column" style={{ backgroundColor: "#f4fbfe" }}>
       <Header isAuthorized={isAuthorized} title="home" />
-      <div style={{overflowY: "auto", height: "90vh"}}>
+      <div className="flex-grow-1">
         <section id="hero" className="d-flex align-items-center">
           <div className="container">
             <div className="row justify-content-between">
-              <div className="col-lg-5 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center p-4">
+              {/* <div className="col-lg-5 pt-4 pt-lg-0 order-1 d-flex flex-column justify-content-center p-4"> */}
+              <div className="col-lg-5 order-1 d-flex flex-column justify-content-center">
                 <h1>{t("project_title")}</h1>
                 <h2>{t("project_subtitle")}</h2>
                 <div style={{ marginBottom: "10px" }}>
@@ -61,9 +62,12 @@ function Dashboard(props: Props) {
                     {t("project_summary")}
                   </div>
                 </div>
+                <div className="pt-5 pb-3 d-lg-none">
+                  {t("project_summary_beta")}
+                </div>
               </div>
-              <div className="col-lg-7 order-1 order-lg-2 hero-img">
-                <div className="pt-5 pb-3">{t("project_summary_beta")}</div>
+              <div className="col-lg-7 order-2 hero-img">
+                <div className="pt-5 pb-3 d-none d-lg-block">{t("project_summary_beta")}</div>
 
                 <Carousel
                   activeIndex={index}
@@ -156,8 +160,8 @@ function Dashboard(props: Props) {
 
         <section id="services" className="services section-bg">
           <div className="container">
-            <div className="row">
-              <div className="col-lg-4 col-md-6">
+            <div className="row justify-content-center">
+              <div className="col-lg-4 col-md-6 py-2">
                 <div
                   className="icon-box"
                   role="button"
@@ -176,7 +180,7 @@ function Dashboard(props: Props) {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-6">
+              <div className="col-lg-4 col-md-6 py-2">
                 <div
                   className="icon-box"
                   role="button"
@@ -195,7 +199,7 @@ function Dashboard(props: Props) {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-6" data-wow-delay="0.1s">
+              <div className="col-lg-4 col-md-6 py-2" data-wow-delay="0.1s">
                 <div
                   className="icon-box"
                   role="button"

@@ -48,7 +48,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <div
-          className="position-relative vh-100 overflow-auto"
+          className="position-relative vh-100"
           style={{ fontFamily: "Dosis" }}
         >
           <Routes>

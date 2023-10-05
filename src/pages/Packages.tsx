@@ -84,146 +84,148 @@ function Packages(props: Props) {
   };
 
   return (
-    <section id="about" className="about">
+    <div className="h-100 d-flex flex-column" style={{ backgroundColor: "#f4fbfe" }}>
       <Header isAuthorized={isAuthorized} title="packages" />
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-4 d-flex package">
-            <Card
-              style={{
-                border:
-                  hoveredElement === 1
-                    ? "3px solid cadetblue"
-                    : "3px solid gray",
-              }}
-              onMouseEnter={() => handleMouseEnter(1)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Card.Img
-                variant="top"
-                src={p1image}
-              />
-              <Card.Body>
-                <Card.Title style={{ textAlign: "center" }}>
-                  <h2>{t("simple_asylum")}</h2>
-                  <h4>
-                    <sup>$</sup>799.00<span> / {t("month")}</span>
-                  </h4>
-                </Card.Title>
-                <div>
-                  <ul>
-                    <li>{t("simple_asylum_item1")}</li>
-                    <li>{t("simple_asylum_item2")}</li>
-                    <li>{t("simple_asylum_item3")}</li>
-                    <br></br>
-                  </ul>
-                </div>
-                <div
-                  style={{
-                    textAlign: "center",
-                    position: "absolute",
-                    bottom: "10px",
-                    width: "100%",
-                  }}
-                >
-                  <Button variant="primary" onClick={() => paymentHandler(1)}>
-                    {t("select_plan")}
-                  </Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </div>
-          <div className="col-lg-4 d-flex package">
-            <Card
-              style={{
-                border:
-                  hoveredElement === 2
-                    ? "3px solid cadetblue"
-                    : "3px solid gray",
-              }}
-              onMouseEnter={() => handleMouseEnter(2)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Card.Img
-                variant="top"
-                src={p2image}
-              />
-              <Card.Body>
-                <Card.Title style={{ textAlign: "center" }}>
-                  <h2>{t("advanced_asylum")}</h2>
-                  <h4>
-                    <sup>$</sup>999.00<span> / {t("month")}</span>
-                  </h4>
-                </Card.Title>
-                <div>
-                  <ul>
-                    <li>{t("advanced_asylum_item1")}</li>
-                    <li>{t("advanced_asylum_item2")}</li>
-                    <li>{t("advanced_asylum_item3")}</li>
-                  </ul>
-                </div>
-                <div
-                  style={{
-                    textAlign: "center",
-                    position: "absolute",
-                    bottom: "10px",
-                    width: "100%",
-                  }}
-                >
-                  <Button variant="primary" onClick={() => paymentHandler(2)}>
-                    {t("select_plan")}
-                  </Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </div>
-          <div className="col-lg-4 d-flex package">
-            <Card
-              style={{
-                border:
-                  hoveredElement === 3
-                    ? "3px solid cadetblue"
-                    : "3px solid gray",
-              }}
-              onMouseEnter={() => handleMouseEnter(3)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Card.Img
-                variant="top"
-                src={p3image}
-              />
-              <Card.Body>
-                <Card.Title style={{ textAlign: "center" }}>
-                  <h2>{t("accompanied_asylum")}</h2>
-                  <h4>
-                    <sup>$</sup>1,299.00<span> / {t("month")}</span>
-                  </h4>
-                </Card.Title>
-                <div className="pb-4">
-                  <ul>
-                    <li>{t("accompained_asylum_item1")}</li>
-                    <li>{t("accompained_asylum_item2")}</li>
-                    <li>{t("accompained_asylum_item3")}</li>
-                  </ul>
-                </div>
-                <div
-                  style={{
-                    textAlign: "center",
-                    position: "absolute",
-                    bottom: "10px",
-                    width: "100%",
-                  }}
-                >
-                  <Button variant="primary" onClick={() => paymentHandler(3)}>
-                    {t("select_plan")}
-                  </Button>
-                </div>
-              </Card.Body>
-            </Card>
+      <div className="flex-grow-1 align-self-center">
+        <div className="container" style={{paddingTop: "100px"}}>
+          <div className="row">
+            <div className="col-md-4 px-3 d-flex package">
+              <Card
+                style={{
+                  border:
+                    hoveredElement === 1
+                      ? "3px solid cadetblue"
+                      : "3px solid gray",
+                }}
+                onMouseEnter={() => handleMouseEnter(1)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Card.Img
+                  variant="top"
+                  src={p1image}
+                />
+                <Card.Body>
+                  <Card.Title style={{ textAlign: "center" }}>
+                    <h3>{t("simple_asylum")}</h3>
+                    <h5>
+                      <sup>$</sup>799.00<span> / {t("month")}</span>
+                    </h5>
+                  </Card.Title>
+                  <div>
+                    <ul>
+                      <li>{t("simple_asylum_item1")}</li>
+                      <li>{t("simple_asylum_item2")}</li>
+                      <li>{t("simple_asylum_item3")}</li>
+                      <br></br>
+                    </ul>
+                  </div>
+                  <div
+                    style={{
+                      textAlign: "center",
+                      position: "absolute",
+                      bottom: "10px",
+                      width: "100%",
+                    }}
+                  >
+                    <Button variant="primary" onClick={() => paymentHandler(1)}>
+                      {t("select_plan")}
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </div>
+            <div className="col-md-4 px-3 d-flex package">
+              <Card
+                style={{
+                  border:
+                    hoveredElement === 2
+                      ? "3px solid cadetblue"
+                      : "3px solid gray",
+                }}
+                onMouseEnter={() => handleMouseEnter(2)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Card.Img
+                  variant="top"
+                  src={p2image}
+                />
+                <Card.Body>
+                  <Card.Title style={{ textAlign: "center" }}>
+                    <h3>{t("advanced_asylum")}</h3>
+                    <h5>
+                      <sup>$</sup>999.00<span> / {t("month")}</span>
+                    </h5>
+                  </Card.Title>
+                  <div>
+                    <ul>
+                      <li>{t("advanced_asylum_item1")}</li>
+                      <li>{t("advanced_asylum_item2")}</li>
+                      <li>{t("advanced_asylum_item3")}</li>
+                    </ul>
+                  </div>
+                  <div
+                    style={{
+                      textAlign: "center",
+                      position: "absolute",
+                      bottom: "10px",
+                      width: "100%",
+                    }}
+                  >
+                    <Button variant="primary" onClick={() => paymentHandler(2)}>
+                      {t("select_plan")}
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </div>
+            <div className="col-md-4 px-3 d-flex package">
+              <Card
+                style={{
+                  border:
+                    hoveredElement === 3
+                      ? "3px solid cadetblue"
+                      : "3px solid gray",
+                }}
+                onMouseEnter={() => handleMouseEnter(3)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Card.Img
+                  variant="top"
+                  src={p3image}
+                />
+                <Card.Body>
+                  <Card.Title style={{ textAlign: "center" }}>
+                    <h3>{t("accompanied_asylum")}</h3>
+                    <h5>
+                      <sup>$</sup>1,299.00<span> / {t("month")}</span>
+                    </h5>
+                  </Card.Title>
+                  <div className="pb-4">
+                    <ul>
+                      <li>{t("accompained_asylum_item1")}</li>
+                      <li>{t("accompained_asylum_item2")}</li>
+                      <li>{t("accompained_asylum_item3")}</li>
+                    </ul>
+                  </div>
+                  <div
+                    style={{
+                      textAlign: "center",
+                      position: "absolute",
+                      bottom: "10px",
+                      width: "100%",
+                    }}
+                  >
+                    <Button variant="primary" onClick={() => paymentHandler(3)}>
+                      {t("select_plan")}
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </div>
           </div>
         </div>
         {/* Social Media Links */}
-        <div className="d-flex justify-content-around py-4">
+        {/* <div className="d-flex justify-content-around py-4">
           <div role="button">
             <img src={ticktokIcon} className="avatar-default-sz" />
           </div>
@@ -236,10 +238,10 @@ function Packages(props: Props) {
           <div role="button">
             <img src={youtubeIcon} className="avatar-default-sz" />
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
-    </section>
+    </div>
   );
 }
 

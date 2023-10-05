@@ -166,17 +166,24 @@ function Register(props: Props) {
   const [isPolicyStatus, setIsPolicyStatus] = useState(false);
 
   return (
-    <div className="d-flex align-items-center vh-100">
+    <div className="d-flex align-items-center">
       <div className="container">
         <div className="card register-card">
           <div className="row no-gutters">
-            <div className="col-md-7">
+            {/* <div className="col-md-5 d-none d-md-block align-self-center">
+              <img
+                src={signUpImage}
+                alt="register"
+                width="100%"
+              />
+            </div> */}
+            <div className="col-12">
               {!isPolicyStatus ? (
-                <div className="card-body">
+                <div className="p-4 p-lg-5">
                   <p className="register-card-description">
                     {t("sign_up_to_your_account")}
                   </p>
-                  <form action="#!">
+                  <div>
                     <div className="form-group">
                       <label htmlFor="email" className="sr-only">
                         {t("email")}
@@ -269,7 +276,7 @@ function Register(props: Props) {
                       value={t("register")}
                       onClick={() => signUpHandler()}
                     />
-                  </form>
+                  </div>
                   <p className="register-card-footer-text">
                     {t("you_already_have_account")}{" "}
                     <a onClick={() => navigate("/login")} className="text-reset">
@@ -297,7 +304,7 @@ function Register(props: Props) {
                   <Privacy />
                   <div
                     className="position-absolute"
-                    style={{ top: "18px", left: "32px" }}
+                    style={{ top: "18px", left: "12px" }}
                     role="button"
                     onClick={() => setIsPolicyStatus(false)}
                   >
@@ -305,14 +312,6 @@ function Register(props: Props) {
                   </div>
                 </div>
               )}
-            </div>
-            <div className="col-md-5 align-self-center">
-              <img
-                // src="http://195.201.246.182:3000/assets/img/signUp.jpg"
-                src={signUpImage}
-                alt="register"
-                width={555}
-              />
             </div>
           </div>
         </div>

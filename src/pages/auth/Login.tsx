@@ -15,6 +15,7 @@ import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 
 import Privacy from "../../components/layout/Privacy";
+import Footer from "../../components/layout/Footer";
 
 import { useTranslation } from "react-i18next";
 
@@ -107,27 +108,23 @@ function Login(props: Props) {
   const [isPolicyStatus, setIsPolicyStatus] = useState(false);
 
   return (
-    <div className="d-flex align-items-center vh-100">
+    <div className="d-flex align-items-center h-100">
       <div className="container">
         <div className="card login-card">
           <div className="row no-gutters">
-            <div
-              className="col-md-5"
-              style={{
-                alignSelf: "center",
-              }}
+            {/* <div
+              className="col-md-5 d-none d-md-block align-self-center"
             >
               <img
-                // src="http://195.201.246.182:3000/assets/img/signIn.jpg"
                 src={signInImage}
                 alt="login"
-                width={500}
+                width="100%"
               />
-            </div>
-            <div className="col-md-7">
+            </div> */}
+            <div className="col-m12">
               {!isPolicyStatus ? (
-                <div className="card-body">
-                  <p className="login-card-description">
+                <div className="p-4 p-lg-5">
+                  <p className="login-card-description text-center">
                     {t("sign_into_your_account")}
                   </p>
                   <div>
@@ -206,7 +203,7 @@ function Login(props: Props) {
                   <Privacy />
                   <div
                     className="position-absolute"
-                    style={{ top: "12px", right: "32px" }}
+                    style={{ top: "12px", right: "12px" }}
                     role="button"
                     onClick={() => setIsPolicyStatus(false)}
                   >
@@ -216,6 +213,9 @@ function Login(props: Props) {
               )}
             </div>
           </div>
+          {/* <div className="d-block d-md-none">
+            <Footer />
+          </div> */}
         </div>
       </div>
     </div>

@@ -6,22 +6,22 @@ export default function Footer() {
   const { t, i18n } = useTranslation();
 
   return (
-    <div className="position-absolute bottom-0 vw-100 z-index-50 bg-white">
-      <div className="d-flex p-4 justify-content-between w-full footer">
-        <div>
-          &copy; {t("copyright")}{" "}
-          <strong>
-            <span>Chenel</span>
-          </strong>
-          . {t("all_rights_reserved")}
+    <div className="bg-white">
+      <div className="container-fluid">
+        <div className="row py-3">
+          <div className="col-12 col-md-6 col-lg-3 text-center">
+            &copy; Copyright <strong><span>Chenel</span></strong><small>. All Rights Reserved</small>
+          </div>
+          <div className="col-12 col-md-6 col-lg-3 text-center">
+            <strong>Phone:</strong> +1 239-657-7000
+          </div>
+          <div className="col-12 col-md-6 col-lg-3 text-center">
+            <strong>Email:</strong> Taxgration@gmail.com
+          </div>
+          <div className="col-12 col-md-6 col-lg-3 text-center">
+            chenelsuperservice.com
+          </div>
         </div>
-        <div>
-          <strong>{t("phone")}:</strong> +1 239-657-7000
-        </div>
-        <div>
-          <strong>{t("email")}:</strong> Taxgration@gmail.com
-        </div>
-        <div>chenelsuperservice.com</div>
       </div>
     </div>
   );

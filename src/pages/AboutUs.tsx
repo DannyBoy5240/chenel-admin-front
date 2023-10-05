@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
+import avatar_0 from "../assets/img/chenel_pierre.jpg";
+import avatar_1 from "../assets/img/m_y_francois.jpg";
+import avatar_2 from "../assets/img/yani_h.jpg";
+import avatar_3 from "../assets/img/minelson_a.jpg";
+
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -25,166 +30,170 @@ function AboutUs(props: Props) {
   const isAuthorized = decoded_token && (decoded_token as any).user;
 
   return (
-    <section
-      id="team"
-      className="team section-bg h-100"
-      style={{ backgroundColor: "#f4fbfe", marginTop: "80px", paddingBottom: "100px" }}
-    >
+    <div className="h-100 d-flex flex-column" style={{ backgroundColor: "#f4fbfe" }}>
       <Header isAuthorized={isAuthorized} title="about" />
-      <div className="container">
-        <div className="section-title">
-          <h4>
-            <i>{t("about_mission")}</i>
-          </h4>
-        </div>
-
-        <div className="row">
-          <div className="col-lg-4 row">
-            <div className="col-lg-6 col-md-6 d-flex align-items-stretch">
-              <div className="member">
-                <div className="member-img">
-                  <img
-                    src="assets/img/team/team-1.jpg"
-                    className="img-fluid"
-                    alt=""
-                  />
-                  <div className="social">
-                    <a href="">
-                      <i className="bi bi-twitter"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-facebook"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-instagram"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="member-info">
-                  <h4>Walter White</h4>
-                  <span>Chief Executive Officer</span>
-                </div>
-              </div>
+      <div className="flex-grow-1">
+        <section
+          id="team"
+          className="team section-bg h-100 d-flex flex-column"
+          style={{ backgroundColor: "#f4fbfe", padding: "100px 0px 0px 0px" }}
+        >
+          <div className="container">
+            <div className="section-title">
+              <h4>
+                <i>{t("about_mission")}</i>
+              </h4>
             </div>
 
-            <div className="col-lg-6 col-md-6 d-flex align-items-stretch">
-              <div className="member">
-                <div className="member-img">
-                  <img
-                    src="assets/img/team/team-2.jpg"
-                    className="img-fluid"
-                    alt=""
-                  />
-                  <div className="social">
-                    <a href="">
-                      <i className="bi bi-twitter"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-facebook"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-instagram"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-linkedin"></i>
-                    </a>
+            <div className="row justify-content-center">
+              <div className="col-lg-4 row">
+                <div className="col-lg-6 col-md-6 d-flex align-items-stretch justify-content-center">
+                  <div className="member">
+                    <div className="member-img">
+                      <img
+                        src={avatar_0}
+                        className="img-about-avatar-sz"
+                        alt=""
+                      />
+                      <div className="social">
+                        <a href="">
+                          <i className="bi bi-twitter"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-facebook"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-instagram"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-linkedin"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="member-info">
+                      <h4>Chenel Pierre</h4>
+                      <span>President</span>
+                    </div>
                   </div>
                 </div>
-                <div className="member-info">
-                  <h4>Sarah Jhonson</h4>
-                  <span>Product Manager</span>
+
+                <div className="col-lg-6 col-md-6 d-flex align-items-stretch justify-content-center">
+                  <div className="member">
+                    <div className="member-img">
+                      <img
+                        src={avatar_1}
+                        className="img-about-avatar-sz"
+                        alt=""
+                      />
+                      <div className="social">
+                        <a href="">
+                          <i className="bi bi-twitter"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-facebook"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-instagram"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-linkedin"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="member-info">
+                      <h4>M. Y. Francois</h4>
+                      <span>Office Manager</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-lg-6 col-md-6 d-flex align-items-stretch justify-content-center">
+                  <div className="member">
+                    <div className="member-img">
+                      <img
+                        src={avatar_2}
+                        className="img-about-avatar-sz"
+                        alt=""
+                      />
+                      <div className="social">
+                        <a href="">
+                          <i className="bi bi-twitter"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-facebook"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-instagram"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-linkedin"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="member-info">
+                      <h4>Yani H</h4>
+                      <span>Case Manager</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-lg-6 col-md-6 d-flex align-items-stretch justify-content-center">
+                  <div className="member">
+                    <div className="member-img">
+                      <img
+                        src={avatar_3}
+                        className="img-about-avatar-sz"
+                        alt=""
+                      />
+                      <div className="social">
+                        <a href="">
+                          <i className="bi bi-twitter"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-facebook"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-instagram"></i>
+                        </a>
+                        <a href="">
+                          <i className="bi bi-linkedin"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="member-info">
+                      <h4>Minelson A.</h4>
+                      <span>Social Media Expert</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="col-lg-6 col-md-6 d-flex align-items-stretch">
-              <div className="member">
-                <div className="member-img">
-                  <img
-                    src="assets/img/team/team-3.jpg"
-                    className="img-fluid"
-                    alt=""
-                  />
-                  <div className="social">
-                    <a href="">
-                      <i className="bi bi-twitter"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-facebook"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-instagram"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="member-info">
-                  <h4>William Anderson</h4>
-                  <span>CTO</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-6 col-md-6 d-flex align-items-stretch">
-              <div className="member">
-                <div className="member-img">
-                  <img
-                    src="assets/img/team/team-4.jpg"
-                    className="img-fluid"
-                    alt=""
-                  />
-                  <div className="social">
-                    <a href="">
-                      <i className="bi bi-twitter"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-facebook"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-instagram"></i>
-                    </a>
-                    <a href="">
-                      <i className="bi bi-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
-                <div className="member-info">
-                  <h4>Amanda Jepson</h4>
-                  <span>Accountant</span>
-                </div>
+              <div className="col-lg-8">
+                <p>
+                  <br />
+                  <br />
+                  {t("about_history_1")}
+                  <br />
+                  <br />
+                  {t("about_history_2")}
+                  <br />
+                  <br />
+                  {t("about_history_3")}
+                  <br />
+                  <br />
+                  {t("about_history_4")}
+                </p>
               </div>
             </div>
           </div>
-          <div className="col-lg-8">
+          <div className="section-title">
             <p>
-              <br />
-              <br />
-              {t("about_history_1")}
-              <br />
-              <br />
-              {t("about_history_2")}
-              <br />
-              <br />
-              {t("about_history_3")}
-              <br />
-              <br />
-              {t("about_history_4")}
+              <i>{t("about_mission_summary")}</i>
             </p>
           </div>
-        </div>
-      </div>
-      <div className="section-title">
-        <p>
-          <i>{t("about_mission_summary")}</i>
-        </p>
+        </section>
       </div>
       <Footer />
-    </section>
+    </div>
   );
 }
 

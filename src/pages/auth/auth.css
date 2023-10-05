@@ -119,7 +119,7 @@ main {
   object-fit: cover;
 }
 .register-card .card-body {
-  padding: 85px 60px 60px;
+  padding: 60px 60px 60px;
 }
 @media (max-width: 422px) {
   .register-card .card-body {

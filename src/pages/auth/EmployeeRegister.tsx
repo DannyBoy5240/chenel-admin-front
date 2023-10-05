@@ -191,17 +191,10 @@ export default function EmployeeRegister() {
   };
 
   return (
-    <div className="d-flex align-items-center vh-100">
+    <div className="d-flex align-items-center">
       <div className="container">
         <div className="card register-card">
           <div className="card-body">
-            {/* <div className="brand-wrapper">
-                  <img
-                    src="http://195.201.246.182:3000/assets/img/logo.png"
-                    alt="logo"
-                    className="logo"
-                  />
-                </div> */}
             <p className="register-card-description">
               {t("register_as_company_employee")}
             </p>
@@ -327,11 +320,11 @@ export default function EmployeeRegister() {
               <div className="col-12 form-group">
                 <div className="row">
                   {/* Passport */}
-                  <div className="col-4 form-group">
-                    <label className="custom-file-upload">
+                  <div className="col-12 col-sm-4 py-1 form-group">
+                    <label className="custom-file-upload w-100 text-center">
                       <input
                         type="file"
-                        accept="image/*"
+                        accept="image/*, application/pdf"
                         onChange={handlePassportImageChange}
                       />
                       {t("passport_upload")}
@@ -347,11 +340,11 @@ export default function EmployeeRegister() {
                     )}
                   </div>  
                   {/* Work Permission */}
-                  <div className="col-4 form-group">
-                    <label className="custom-file-upload">
+                  <div className="col-12 col-sm-4 py-1 form-group">
+                    <label className="custom-file-upload w-100 text-center">
                       <input
                         type="file"
-                        accept="image/*"
+                        accept="image/*, application/pdf"
                         onChange={handleWorkPermitImageChange}
                       />
                       {t("workpermit_upload")}
@@ -368,11 +361,11 @@ export default function EmployeeRegister() {
                     )}
                   </div>
                   {/* Security Card */}
-                  <div className="col-4 form-group">
-                    <label className="custom-file-upload">
+                  <div className="col-12 col-sm-4 py-1 form-group">
+                    <label className="custom-file-upload w-100 text-center">
                       <input
                         type="file"
-                        accept="image/*"
+                        accept="image/*, application/pdf"
                         onChange={handleSecurityImageChange}
                       />
                       {t("security_card_upload")}

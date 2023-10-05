@@ -7,8 +7,8 @@ export default function Privacy() {
 
   return (
     <div
-      className="card-body position-relative"
-      style={{ height: "632px", overflow: "auto", padding: "42px" }}
+      className="card-body position-relative py-5 px-2 px-md-5"
+      style={{height: "auto", maxHeight: "570px", overflowY: "auto"}}
     >
       <h3 className="text-center">{t("privacy_note_header")}</h3>{" "}
       {t("privacy_note_summary")}
