@@ -166,7 +166,7 @@ function Register(props: Props) {
   const [isPolicyStatus, setIsPolicyStatus] = useState(false);
 
   return (
-    <div className="d-flex align-items-center">
+    <div className="d-flex align-items-center h-100">
       <div className="container">
         <div className="card register-card">
           <div className="row no-gutters">

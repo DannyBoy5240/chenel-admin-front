@@ -82,7 +82,7 @@ function Dashboard(props: Props) {
                           className="testimonial-img"
                           alt=""
                         />
-                        <h4>Wiberson Delva</h4>
+                        <h4>Wiberson</h4>
                       </div>
                       <div className="col-8 d-flex flex-column justify-content-center align-items-center flex-wrap">
                         <p>
@@ -99,11 +99,11 @@ function Dashboard(props: Props) {
                     <div className="row">
                       <div className="col-4 d-flex flex-column justify-content-center align-items-center flex-wrap">
                         <img
-                          src="assets/img/testimonials/testimonials-1.jpg"
+                          src="assets/img/testimonials/testimonials-2.jpg"
                           className="testimonial-img"
                           alt=""
                         />
-                        <h4>Jean Louis Estimable</h4>
+                        <h4>Bermane</h4>
                       </div>
                       <div className="col-8 d-flex flex-column justify-content-center align-items-center flex-wrap">
                         <p>
@@ -119,35 +119,16 @@ function Dashboard(props: Props) {
                     <div className="row">
                       <div className="col-4 d-flex flex-column justify-content-center align-items-center flex-wrap">
                         <img
-                          src="assets/img/testimonials/testimonials-1.jpg"
+                          src="assets/img/testimonials/testimonials-3.jpg"
                           className="testimonial-img"
                           alt=""
                         />
-                        <h4>Laniese Francois</h4>
+                        <h4>Estimable</h4>
                       </div>
                       <div className="col-8 d-flex flex-column justify-content-center align-items-center flex-wrap">
                         <p>
                           Thank you so much. I don't regret choosing you for your
                           services.
-                        </p>
-                      </div>
-                    </div>
-                  </Carousel.Item>
-                  <Carousel.Item interval={3000}>
-                    <div className="row">
-                      <div className="col-4 d-flex flex-column justify-content-center align-items-center flex-wrap">
-                        <img
-                          src="assets/img/testimonials/testimonials-1.jpg"
-                          className="testimonial-img"
-                          alt=""
-                        />
-                        <h4>Bermane Rene</h4>
-                      </div>
-                      <div className="col-8 d-flex flex-column justify-content-center align-items-center flex-wrap">
-                        <p>
-                          These individuals provide excellent service in asylum
-                          cases. Even in setting up appointments, they are
-                          exceptional. In fact, they handled my asylum process.
                         </p>
                       </div>
                     </div>
@@ -169,13 +150,14 @@ function Dashboard(props: Props) {
                 >
                   <div className="icon"></div>
                   <h4 className="title">
-                    <a href="">{t("simple_asylum_title")}</a>
+                    <a href="">{t("simple_asylum")}</a>
                   </h4>
                   <div className="description">
                     <ul>
                       <li>{t("simple_asylum_item1")}</li>
                       <li>{t("simple_asylum_item2")}</li>
                       <li>{t("simple_asylum_item3")}</li>
+                      <li>{t("simple_asylum_item4")}</li>
                     </ul>
                   </div>
                 </div>
@@ -188,13 +170,14 @@ function Dashboard(props: Props) {
                 >
                   <div className="icon"></div>
                   <h4 className="title">
-                    <a href="">{t("advanced_asylum_title")}</a>
+                    <a href="">{t("advanced_asylum")}</a>
                   </h4>
                   <div className="description">
                     <ul>
                       <li>{t("advanced_asylum_item1")}</li>
                       <li>{t("advanced_asylum_item2")}</li>
                       <li>{t("advanced_asylum_item3")}</li>
+                      <li>{t("advanced_asylum_item4")}</li>
                     </ul>
                   </div>
                 </div>
@@ -207,13 +190,14 @@ function Dashboard(props: Props) {
                 >
                   <div className="icon"></div>
                   <h4 className="title">
-                    <a href="">{t("accompained_asylum_title")}</a>
+                    <a href="">{t("accompanied_asylum")}</a>
                   </h4>
                   <div className="description">
                     <ul>
                       <li>{t("accompained_asylum_item1")}</li>
                       <li>{t("accompained_asylum_item2")}</li>
                       <li>{t("accompained_asylum_item3")}</li>
+                      <li>{t("accompained_asylum_item4")}</li>
                     </ul>
                   </div>
                 </div>

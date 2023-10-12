@@ -65,6 +65,26 @@ function Packages(props: Props) {
       navigate("/signUp");
   }, [])
 
+  // stripe payment handler
+  // const paymentHandler = async (method: number) => {
+  //   const config = {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   };
+  //   try {
+  //     const res = await axios.post(
+  //       `${BACKEND_URL}/stripepayment/create-checkout-session`,
+  //       {method},
+  //       config
+  //     );
+  //     window.location.href = res.data.url;
+  //   } catch (err: any) {
+  //     console.log(err.message);
+  //   }
+  // };
+
+  // paypal payment handler
   const paymentHandler = async (method: number) => {
     const config = {
       headers: {
@@ -73,7 +93,7 @@ function Packages(props: Props) {
     };
     try {
       const res = await axios.post(
-        `${BACKEND_URL}/stripepayment/create-checkout-session`,
+        `${BACKEND_URL}/paypal/makePayment`,
         {method},
         config
       );
@@ -104,26 +124,27 @@ function Packages(props: Props) {
                   variant="top"
                   src={p1image}
                 />
-                <Card.Body>
+                <Card.Body className="d-flex flex-column h-100">
                   <Card.Title style={{ textAlign: "center" }}>
                     <h3>{t("simple_asylum")}</h3>
                     <h5>
                       <sup>$</sup>799.00<span> / {t("month")}</span>
                     </h5>
                   </Card.Title>
-                  <div>
+                  <div className="flex-grow-1">
                     <ul>
                       <li>{t("simple_asylum_item1")}</li>
                       <li>{t("simple_asylum_item2")}</li>
                       <li>{t("simple_asylum_item3")}</li>
+                      <li>{t("simple_asylum_item4")}</li>
                       <br></br>
                     </ul>
                   </div>
                   <div
                     style={{
                       textAlign: "center",
-                      position: "absolute",
-                      bottom: "10px",
+                      // position: "absolute",
+                      // bottom: "10px",
                       width: "100%",
                     }}
                   >
@@ -149,25 +170,26 @@ function Packages(props: Props) {
                   variant="top"
                   src={p2image}
                 />
-                <Card.Body>
+                <Card.Body className="d-flex flex-column h-100">
                   <Card.Title style={{ textAlign: "center" }}>
                     <h3>{t("advanced_asylum")}</h3>
                     <h5>
                       <sup>$</sup>999.00<span> / {t("month")}</span>
                     </h5>
                   </Card.Title>
-                  <div>
+                  <div className="flex-grow-1">
                     <ul>
                       <li>{t("advanced_asylum_item1")}</li>
                       <li>{t("advanced_asylum_item2")}</li>
                       <li>{t("advanced_asylum_item3")}</li>
+                      <li>{t("advanced_asylum_item4")}</li>
                     </ul>
                   </div>
                   <div
                     style={{
                       textAlign: "center",
-                      position: "absolute",
-                      bottom: "10px",
+                      // position: "absolute",
+                      // bottom: "10px",
                       width: "100%",
                     }}
                   >
@@ -193,25 +215,26 @@ function Packages(props: Props) {
                   variant="top"
                   src={p3image}
                 />
-                <Card.Body>
+                <Card.Body className="d-flex flex-column h-100">
                   <Card.Title style={{ textAlign: "center" }}>
                     <h3>{t("accompanied_asylum")}</h3>
                     <h5>
                       <sup>$</sup>1,299.00<span> / {t("month")}</span>
                     </h5>
                   </Card.Title>
-                  <div className="pb-4">
+                  <div className="pb-4 flex-grow-1">
                     <ul>
                       <li>{t("accompained_asylum_item1")}</li>
                       <li>{t("accompained_asylum_item2")}</li>
                       <li>{t("accompained_asylum_item3")}</li>
+                      <li>{t("accompained_asylum_item4")}</li>
                     </ul>
                   </div>
                   <div
                     style={{
                       textAlign: "center",
-                      position: "absolute",
-                      bottom: "10px",
+                      // position: "absolute",
+                      // bottom: "10px",
                       width: "100%",
                     }}
                   >
