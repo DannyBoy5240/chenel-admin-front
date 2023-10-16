@@ -18,7 +18,7 @@ import Docs from "../../components/managers/writer/Docs";
 import searchIcon from "../../assets/icons/search-icon.svg";
 import logoImage from "../../assets/img/logo.png";
 import testAvatar from "../../assets/img/avatar.jpg";
-import backIcon from "../../assets/icons/back.jpg";
+import backIcon from "../../assets/icons/back.png";
 
 interface Props {
   auth: any;
@@ -43,7 +43,12 @@ function ManagerWriterProfile(props: Props) {
 
   useEffect(() => {
     if (isAuthorized)
-      navigate("/manager/employee", { state: { data: data, status: statusMode === "writer" ? "writer" : "clerk" } });
+      navigate("/manager/employee", {
+        state: {
+          data: data,
+          status: statusMode === "writer" ? "writer" : "clerk",
+        },
+      });
     else navigate("/login");
   }, [isAuthorized, navigate]);
 
@@ -92,7 +97,7 @@ function ManagerWriterProfile(props: Props) {
         <div
           className="col-lg-2 d-flex align-items-center"
           role="button"
-          onClick={() => navigate("/manager")}
+          onClick={() => navigate("/")}
         >
           <div className="px-3">
             <img
@@ -109,7 +114,10 @@ function ManagerWriterProfile(props: Props) {
         <div className="col-md-2 col-lg-2">
           <Sidebutton page={page} setPage={setPage} status={statusMode} />
         </div>
-        <div className="col-md-10 col-lg-10 pe-5" style={{height: "80vh", overflowY: "auto"}}>
+        <div
+          className="col-md-10 col-lg-10 pe-5 bg-white"
+          style={{ height: "calc(100vh - 96px)", overflowY: "auto" }}
+        >
           {page == "info" && <WriterInfo setPage={setPage} data={data} />}
           {page == "writer" && (
             <Wusers
@@ -126,7 +134,7 @@ function ManagerWriterProfile(props: Props) {
             />
           )}
         </div>
-        <div className="col-lg-1 mt-5"></div>
+        {/* <div className="col-lg-1 mt-5"></div> */}
       </div>
       {/* Profile Icon */}
       <div style={{ position: "absolute", top: "18px", right: "18px" }}>
@@ -144,7 +152,7 @@ function ManagerWriterProfile(props: Props) {
           {/* Dropdown Profile */}
           {isProfileDropdown && (
             <div
-              style={{ backgroundColor: "#4A4A4A38", borderRadius: "10px" }}
+              style={{ backgroundColor: "#4A4A4A18", borderRadius: "10px" }}
               className="text-center"
               role="button"
               onClick={() => logoutHandler()}

@@ -100,7 +100,7 @@
   "accompained_asylum_item1": "Toutes les fonctionnalités du forfait Tranquil Refuge.",
   "accompained_asylum_item2": "📖 Guide exclusif : 'Asile dévoilé : Votre guide étape par étape des procédures d'asile aux États-Unis.'",
   "accompained_asylum_item3": "🎓 Représentation légale : Accès aux services d'avocat (disponible pour le moment en Floride).",
-  "accompained_asylum_item4": "🎯 Idéal pour : Les personnes souhaitant un soutien complet, une orientation approfondie et une représentation légale.",  
+  "accompained_asylum_item4": "🎯 Idéal pour : Les personnes souhaitant un soutien complet, une orientation approfondie et une représentation légale.",
   "about_mission": "Pour une modeste somme, nous guidons les immigrants sans papiers à travers l'asile, défendons leurs droits et soutenons leur parcours vers un statut légal et un avenir meilleur.",
   "about_history_1": "En janvier 2001, Chenel Pierre a fondé Chenel Super Service, LLC à Immokalee, en Floride, proposant initialement de l'aide pour divers documents tels que des lettres, des formulaires, des appels téléphoniques, des traductions et principalement des déclarations de revenus et des documents d'immigration. La demande pour ses services fiscaux a explosé, le poussant à travailler sans relâche de 7h00 à 22h00 pendant les saisons fiscales. Son dévouement envers la communauté a favorisé une affection mutuelle et assuré un flux constant de clients qui payaient toujours à temps.",
   "about_history_2": "Chenel, tout en gérant son entreprise, a poursuivi ses études en sciences du comportement appliqué et en gestion des sciences commerciales à l'Université Nationale Louis, a obtenu un diplôme associé au Collège Edison et a brièvement fréquenté l'Université de la Côte du Golfe de Floride. Malgré ses réussites académiques, le succès de Chenel Super Service était principalement attribué à sa capacité innée à apprendre, à s'adapter et à enseigner aux autres, car il n'avait jamais reçu de formation formelle dans les services offerts par son entreprise.",
@@ -170,5 +170,7 @@
   "workpermit_upload": "Téléchargement du Permis de Travail",
   "security_card_upload": "Téléchargement de la Carte de Sécurité",
   "contact_message_result_succeed": "Message de contact envoyé avec succès!",
-  "contact_message_result_failed": "Échec de l'envoi du message de contact!"
+  "contact_message_result_failed": "Échec de l'envoi du message de contact!",
+  "document_required_at_least_one": "Vous devez télécharger au moins 1 document !",
+  "uploaded": "Téléchargé!"
 }

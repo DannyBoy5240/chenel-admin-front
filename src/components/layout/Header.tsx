@@ -24,13 +24,12 @@ interface Props {
 export default function Header(props: any) {
   // authorization
   const navigate = useNavigate();
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
 
   const { t, i18n } = useTranslation();
 
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
   const toggleMobileMenu = () => {
-    console.log("-0-");
     setMobileMenuVisible(!mobileMenuVisible);
   };
 
@@ -56,17 +55,37 @@ export default function Header(props: any) {
           />
         </a>
 
-        <nav id="navbar" className={`navbar ${mobileMenuVisible ? "mobile-menu active" : ""}`}>
+        <nav
+          id="navbar"
+          className={`navbar ${mobileMenuVisible ? "mobile-menu active" : ""}`}
+        >
           <ul>
             <li>
-              <a
-                className={`nav-link scrollto ${
-                  props.title === "home" && "active"
-                }`}
-                onClick={() => navigate("/")}
-              >
-                {t("home")}
-              </a>
+              {(props.isAuthorized as any)?.roles === "CUSTOMER" ? (
+                <a
+                  className={`nav-link scrollto ${
+                    props.title === "home" && "active"
+                  }`}
+                  onClick={() => navigate("/")}
+                >
+                  {t("home")}
+                </a>
+              ) : (
+                <a
+                  className={`nav-link scrollto ${
+                    props.title === "home" && "active"
+                  }`}
+                  onClick={() =>
+                    navigate(
+                      `/${(
+                        (props.isAuthorized as any)?.roles as any
+                      ).toLowerCase()}`
+                    )
+                  }
+                >
+                  {t("dashboard")}
+                </a>
+              )}
             </li>
             <li>
               <a
@@ -218,18 +237,21 @@ export default function Header(props: any) {
             className="bi bi-list mobile-nav-toggle"
             onClick={toggleMobileMenu}
           ></i>
-          {
-            mobileMenuVisible && <div className="position-absolute"  style={{top: "50px", right: "-20px", width: "50vw"}}>
+          {mobileMenuVisible && (
+            <div
+              className="position-absolute"
+              style={{ top: "50px", right: "-20px", width: "50vw" }}
+            >
               <div className="position-relative d-flex flex-column bg-white">
                 <div>
-                    <a
-                      className={`nav-link scrollto ${
-                        props.title === "home" && "active"
-                      }`}
-                      onClick={() => navigate("/")}
-                    >
-                      {t("home")}
-                    </a>
+                  <a
+                    className={`nav-link scrollto ${
+                      props.title === "home" && "active"
+                    }`}
+                    onClick={() => navigate("/")}
+                  >
+                    {t("home")}
+                  </a>
                 </div>
                 <div>
                   <a
@@ -271,54 +293,57 @@ export default function Header(props: any) {
                     {t("contactus")}
                   </a>
                 </div>
-                <div className="position-relative" style={{paddingRight: "50px"}}>
-                    <a
-                      className="nav-link dropdown-toggle"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                    >
-                      {i18n.language.toLowerCase() === "en"
-                        ? "English"
-                        : i18n.language.toLowerCase() === "hat"
-                        ? "Haitian"
-                        : i18n.language.toLowerCase() === "spa"
-                        ? "Spanish"
-                        : "French"}
-                    </a>
-                    <div className="position-absolute bottom-0">
-                      <ul className="dropdown-menu">
-                        <li
-                          className="dropdown-item"
-                          role="button"
-                          onClick={() => languageChangeHandler("en")}
-                        >
-                          English
-                        </li>
-                        <li
-                          className="dropdown-item"
-                          role="button"
-                          onClick={() => languageChangeHandler("spa")}
-                        >
-                          Spanish
-                        </li>
-                        <li
-                          className="dropdown-item"
-                          role="button"
-                          onClick={() => languageChangeHandler("fr")}
-                        >
-                          French
-                        </li>
-                        <li
-                          className="dropdown-item"
-                          role="button"
-                          onClick={() => languageChangeHandler("hat")}
-                        >
-                          Haitian
-                        </li>
-                      </ul>
-                    </div>
+                <div
+                  className="position-relative"
+                  style={{ paddingRight: "50px" }}
+                >
+                  <a
+                    className="nav-link dropdown-toggle"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                  >
+                    {i18n.language.toLowerCase() === "en"
+                      ? "English"
+                      : i18n.language.toLowerCase() === "hat"
+                      ? "Haitian"
+                      : i18n.language.toLowerCase() === "spa"
+                      ? "Spanish"
+                      : "French"}
+                  </a>
+                  <div className="position-absolute bottom-0">
+                    <ul className="dropdown-menu">
+                      <li
+                        className="dropdown-item"
+                        role="button"
+                        onClick={() => languageChangeHandler("en")}
+                      >
+                        English
+                      </li>
+                      <li
+                        className="dropdown-item"
+                        role="button"
+                        onClick={() => languageChangeHandler("spa")}
+                      >
+                        Spanish
+                      </li>
+                      <li
+                        className="dropdown-item"
+                        role="button"
+                        onClick={() => languageChangeHandler("fr")}
+                      >
+                        French
+                      </li>
+                      <li
+                        className="dropdown-item"
+                        role="button"
+                        onClick={() => languageChangeHandler("hat")}
+                      >
+                        Haitian
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <div style={{paddingRight: "50px"}}>
+                <div style={{ paddingRight: "50px" }}>
                   {/* Header Auth Avatar */}
                   {props.isAuthorized ? (
                     <div>
@@ -376,7 +401,7 @@ export default function Header(props: any) {
                 </div>
               </div>
             </div>
-          }
+          )}
         </nav>
       </div>
     </header>

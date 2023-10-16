@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { BACKEND_URL } from "../../constants";
 import axios from "axios";
 
-import backIcon from "../../assets/icons/back.jpg";
+import backIcon from "../../assets/icons/back.png";
 import signInImage from "../../assets/assets/img/signIn.jpg";
 import "./auth.css";
 
@@ -178,7 +178,10 @@ function Login(props: Props) {
                   </a> */}
                   <p className="login-card-footer-text">
                     {t("dont_you_have_account")}{" "}
-                    <a className="text-reset" onClick={() => navigate("/signUp")}>
+                    <a
+                      className="text-reset"
+                      onClick={() => navigate("/signUp")}
+                    >
                       {t("register_here")}
                     </a>
                     <br />
@@ -203,7 +206,7 @@ function Login(props: Props) {
                   <Privacy />
                   <div
                     className="position-absolute"
-                    style={{ top: "12px", right: "12px" }}
+                    style={{ top: "12px", left: "12px" }}
                     role="button"
                     onClick={() => setIsPolicyStatus(false)}
                   >

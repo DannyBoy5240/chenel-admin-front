@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { BACKEND_URL } from "../../constants";
 
-export default function UserInfo(props: any) {
+export default function CompletedDocs(props: any) {
   const [key, setKey] = useState("home");
 
   const [userList, setUserList] = useState([]);
@@ -47,6 +47,7 @@ export default function UserInfo(props: any) {
 
   return (
     <div className="bg-white h-100 default-border-raidus">
+      {/* Table Header */}
       <div
         key={key}
         role="button"
@@ -61,14 +62,23 @@ export default function UserInfo(props: any) {
           <div style={{ width: "5%" }}>No</div>
           <div style={{ width: "20%" }}>Name</div>
           <div style={{ width: "20%" }}>Email</div>
-          <div style={{ width: "20%" }}>Writer</div>
+          <div style={{ width: "20%" }}>Phone</div>
           <div style={{ width: "20%" }}>Clerk</div>
-          <div style={{ width: "15%", textAlign: "end" }}>View PDFs</div>
+          <div style={{ width: "15%", textAlign: "end" }}>Status</div>
         </div>
       </div>
-      <div style={{ overflowY: "auto", height: "calc(100vh - 150px)" }}>
+      <div style={{ overflowY: "auto", height: "60vh" }}>
         {docList
-          .filter((doc: any) => JSON.stringify(doc).includes(props.searchKey))
+          .filter((doc: any) => doc.status === "WRITERCONFIRM")
+          .filter(
+            (doc: any) =>
+              JSON.stringify(doc).includes(props.searchKey) ||
+              JSON.stringify(
+                userList.filter((user: any) => user.email === doc.email)[0]
+                  ? userList.filter((user: any) => user.email === doc.email)[0]
+                  : ""
+              ).includes(props.searchKey)
+          )
           .map((idx: any, key: any) => {
             return (
               <div key={key} role="button" className="hover-row-bg-change">
@@ -87,15 +97,7 @@ export default function UserInfo(props: any) {
                     }
                   </div>
                   <div style={{ width: "20%" }}>{idx.email}</div>
-                  <div style={{ width: "20%" }}>
-                    {
-                      (
-                        userList.filter(
-                          (idx1: any) => idx1.email === idx.writer
-                        )[0] as any
-                      )?.fullName
-                    }
-                  </div>
+                  <div style={{ width: "20%" }}>{idx.phoneNumber}</div>
                   <div style={{ width: "20%" }}>
                     {
                       (
@@ -111,7 +113,7 @@ export default function UserInfo(props: any) {
                       style={{ zIndex: 50 }}
                       onClick={() => console.log("view button clicked!")}
                     >
-                      View
+                      Completed
                     </div>
                   </div>
                 </div>

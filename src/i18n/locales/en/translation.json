@@ -170,5 +170,7 @@
   "workpermit_upload": "Work Permit Upload",
   "security_card_upload": "Security Card Upload",
   "contact_message_result_succeed": "Contact Message Sent Succeed!",
-  "contact_message_result_failed": "Contact Message Sent Failed!"
+  "contact_message_result_failed": "Contact Message Sent Failed!",
+  "document_required_at_least_one": "You must upload at least 1 document!",
+  "uploaded": "uploaded!"
 }

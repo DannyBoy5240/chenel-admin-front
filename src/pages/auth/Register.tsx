@@ -6,7 +6,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../../constants";
 import "./auth.css";
 
-import backIcon from "../../assets/icons/back.jpg";
+import backIcon from "../../assets/icons/back.png";
 import signUpImage from "../../assets/assets/img/signUp.jpg";
 
 import { useDispatch } from "react-redux";
@@ -73,7 +73,8 @@ function Register(props: Props) {
     setIsValidFullName(value !== "");
   };
 
-  const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const passwordPattern =
+    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setPassword(value);
@@ -279,7 +280,10 @@ function Register(props: Props) {
                   </div>
                   <p className="register-card-footer-text">
                     {t("you_already_have_account")}{" "}
-                    <a onClick={() => navigate("/login")} className="text-reset">
+                    <a
+                      onClick={() => navigate("/login")}
+                      className="text-reset"
+                    >
                       {t("login_here")}
                     </a>
                   </p>

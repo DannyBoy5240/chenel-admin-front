@@ -53,8 +53,20 @@ export default function AddNewUserDoc(props: any) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [info, setInfo] = useState(new Array(36).fill(""));
+  const [errorMessage, setErrorMessage] = useState("");
 
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const userInfoSaveFunc = async (mode: any) => {
+    // input validation
+    if (!name || name === "" || !email || email === "") {
+      setErrorMessage("Name and Email must be filled correctly!");
+      return;
+    }
+    if (!emailPattern.test(email)) {
+      setErrorMessage("Email format is invalid!");
+      return;
+    }
+
     const data = {
       name: name,
       email: email,
@@ -79,10 +91,11 @@ export default function AddNewUserDoc(props: any) {
         // return to main manager page
         props.setPage("info");
       } else {
-        alert("add new user failed!");
+        setErrorMessage(res.data.message);
       }
     } catch (err: any) {
       console.log(err.message);
+      setErrorMessage("Register Failed. Please try again.");
     }
   };
 
@@ -108,7 +121,7 @@ export default function AddNewUserDoc(props: any) {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="ps-4">
+          <div className="px-4">
             <span className="px-2">Email : </span>
             <input
               type="email"
@@ -117,6 +130,9 @@ export default function AddNewUserDoc(props: any) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+          </div>
+          <div className="px-2 align-self-center text-danger">
+            {errorMessage}
           </div>
         </div>
         <div

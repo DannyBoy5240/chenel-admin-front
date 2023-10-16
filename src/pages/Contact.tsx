@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../components/layout/Header";
@@ -40,7 +40,7 @@ function Contact(props: Props) {
     try {
       const res = await axios.post(
         `${BACKEND_URL}/users/contactus`,
-        {name, email, subject, message},
+        { name, email, subject, message },
         config
       );
 
@@ -58,15 +58,22 @@ function Contact(props: Props) {
     setTimeout(() => {
       setMessageResult("");
     }, 2000);
-  }
+  };
 
   return (
-    <div className="h-100 d-flex flex-column" style={{ backgroundColor: "#f4fbfe" }}>
+    <div
+      className="h-100 d-flex flex-column"
+      style={{ backgroundColor: "#f4fbfe" }}
+    >
       <Header isAuthorized={isAuthorized} title="contact" />
       <div className="flex-grow-1">
-        <section id="contact" className="contact h-100 d-flex flex-column" style={{ padding: "100px 0px 0px 0px", overflowY: "auto" }}>
+        <section
+          id="contact"
+          className="contact h-100 d-flex flex-column"
+          style={{ padding: "100px 0px 0px 0px", overflowY: "auto" }}
+        >
           <div className="container">
-            <div className="section-title">
+            <div className="section-title" style={{ paddingTop: "20px" }}>
               <h2>{t("contact")}</h2>
             </div>
             <div>
@@ -81,11 +88,16 @@ function Contact(props: Props) {
             </div>
             <div className="row mt-3">
               <div className="col-lg-4">
-                <div className="info">
+                <div
+                  className="info"
+                  style={{ backgroundColor: "rgb(244, 251, 254)" }}
+                >
                   <div className="address">
                     <i className="bi bi-geo-alt"></i>
                     <h4>{t("location")}:</h4>
-                    <p>709 W. Main Street</p><p>Unit 1</p><p>Immokalee FL, 34142</p>
+                    <p>709 W. Main Street</p>
+                    <p>Unit 1</p>
+                    <p>Immokalee FL, 34142</p>
                   </div>
 
                   <div className="email">
@@ -106,6 +118,7 @@ function Contact(props: Props) {
                 <div
                   role="form"
                   className="php-email-form"
+                  style={{ backgroundColor: "rgb(244, 251, 254)" }}
                 >
                   <div className="row">
                     <div className="col-md-6 form-group">
@@ -164,9 +177,17 @@ function Contact(props: Props) {
                     </div>
                   </div>
                   <div className="text-center">
-                    <button className="btn btn-dark" onClick={() => sendMessageHandler()} disabled={email===""}>{t("send_message")}</button>
+                    <button
+                      className="btn btn-dark"
+                      onClick={() => sendMessageHandler()}
+                      disabled={email === ""}
+                    >
+                      {t("send_message")}
+                    </button>
                   </div>
-                  <div className="py-1 text-center"><p>{messageResult}</p></div>
+                  <div className="py-1 text-center">
+                    <p>{messageResult}</p>
+                  </div>
                 </div>
               </div>
             </div>

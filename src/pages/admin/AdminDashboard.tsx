@@ -57,7 +57,7 @@ function AdminDashboard(props: Props) {
           <div
             className="col-lg-2 d-flex align-items-center"
             role="button"
-            onClick={() => navigate("/admin")}
+            onClick={() => navigate("/")}
           >
             <div className="ps-4 pe-2">
               <img

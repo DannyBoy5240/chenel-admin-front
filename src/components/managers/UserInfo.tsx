@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import houseSolidIcon from "../../assets/icons/house-solid.svg";
 import toWritersIcon from "../../assets/icons/to-writers.svg";
 import toClerksIcon from "../../assets/icons/to-clerks.svg";
-import backIcon from "../../assets/icons/back.jpg";
+import backIcon from "../../assets/icons/back.png";
 import removeIcon from "../../assets/icons/delete.svg";
 
 import axios from "axios";
@@ -260,7 +260,7 @@ export default function UserInfo(props: any) {
           {/* Table Body */}
           {key === "home" ? (
             <div>
-              <div style={{ overflowY: "auto", height: "60vh" }}>
+              <div style={{ overflowY: "auto", height: "calc(100vh - 170px)" }}>
                 {userList
                   .filter((user: any) => user.roles === "CUSTOMER")
                   .map((idx: any, key: any) => {
@@ -297,7 +297,7 @@ export default function UserInfo(props: any) {
                 <div
                   style={{
                     overflowY: "auto",
-                    height: "60vh",
+                    height: "calc(100vh - 170px)",
                     paddingRight: "2px",
                   }}
                 >
@@ -356,7 +356,9 @@ export default function UserInfo(props: any) {
                 </div>
               </div>
               <div className="w-50">
-                <div style={{ overflowY: "auto", height: "60vh" }}>
+                <div
+                  style={{ overflowY: "auto", height: "calc(100vh - 170px)" }}
+                >
                   {/* Writers Header */}
                   <div
                     key={key}
@@ -406,7 +408,7 @@ export default function UserInfo(props: any) {
                 <div
                   style={{
                     overflowY: "auto",
-                    height: "60vh",
+                    height: "calc(100vh - 170px)",
                     paddingRight: "2px",
                   }}
                 >
@@ -465,7 +467,9 @@ export default function UserInfo(props: any) {
                 </div>
               </div>
               <div className="w-50">
-                <div style={{ overflowY: "auto", height: "60vh" }}>
+                <div
+                  style={{ overflowY: "auto", height: "calc(100vh - 170px)" }}
+                >
                   {/* Clerks Header */}
                   <div
                     key={key}
@@ -542,7 +546,7 @@ export default function UserInfo(props: any) {
             </div>
           </div>
           {/* Main Content */}
-          <div style={{ height: "70vh", overflow: "auto" }}>
+          <div style={{ height: "calc(100vh - 180px)", overflow: "auto" }}>
             <div className="container pt-2 pb-4">
               <div className="row px-2" style={{ fontSize: "18px" }}>
                 <div className="col-12 col-sm-6 py-1">

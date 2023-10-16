@@ -25,7 +25,7 @@ export default function WriterInfo(props: any) {
     try {
       const res = await axios.post(
         `${BACKEND_URL}/users/getdocuments`,
-        {email: props.data.email},
+        { email: props.data.email },
         config
       );
       if (res.data.success) {
@@ -59,7 +59,10 @@ export default function WriterInfo(props: any) {
     <div className="default-component-back">
       <div className="d-flex">
         <div className="col-sm-12 col-lg-6 py-2">
-          <img src={tempAvatar} style={{ height: "450px", paddingLeft: "48px" }} />
+          <img
+            src={tempAvatar}
+            style={{ height: "450px", paddingLeft: "48px" }}
+          />
         </div>
         <div className="col-sm-12 col-lg-6 pt-4" style={{ fontSize: "24px" }}>
           <div className="py-3">Name : {props.data.fullName}</div>
@@ -76,16 +79,48 @@ export default function WriterInfo(props: any) {
       </div>
       <div className="row p-2">
         <div className="col-sm-12 col-lg-4 text-center">
-          <div>Passport</div>
-          {passport !== "" && <img src={`${FRONTEND_URL}/${passport}`} style={{ width: '100%' }} />}
+          {/* <div className="pb-2">Passport</div> */}
+          {passport !== "" && (
+            <div
+              className="py-2 border"
+              role="button"
+              onClick={() => {
+                console.log(`${BACKEND_URL}/uploads/${passport}`);
+                window.open(`${BACKEND_URL}/uploads/${passport}`, "_blank");
+              }}
+            >
+              View Passport
+            </div>
+          )}
         </div>
         <div className="col-sm-12 col-lg-4 text-center">
-          <div>Work permit</div>
-          {workpermit !== "" && <img src={`${FRONTEND_URL}/${workpermit}`} style={{ width: '100%' }} />}
+          {/* <div>Work permit</div> */}
+          {workpermit !== "" && (
+            <div
+              className="py-2 border"
+              role="button"
+              onClick={() => {
+                console.log(`${BACKEND_URL}/uploads/${passport}`);
+                window.open(`${BACKEND_URL}/uploads/${workpermit}`, "_blank");
+              }}
+            >
+              View Work-Permit
+            </div>
+          )}
         </div>
         <div className="col-sm-12 col-lg-4 text-center">
-          <div>Security Card</div>
-          {security !== "" && <img src={`${FRONTEND_URL}/${security}`} style={{ width: '100%' }} />}
+          {/* <div>Security Card</div> */}
+          {security !== "" && (
+            <div
+              className="py-2 border"
+              role="button"
+              onClick={() => {
+                window.open(`${FRONTEND_URL}/${security}`, "_blank");
+              }}
+            >
+              View Security-Card
+            </div>
+          )}
         </div>
       </div>
     </div>

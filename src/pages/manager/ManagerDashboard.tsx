@@ -61,7 +61,7 @@ function ManagerDashboard(props: Props) {
         <div
           className="col-lg-2 d-flex align-items-center"
           role="button"
-          onClick={() => navigate("/manager")}
+          onClick={() => navigate("/")}
         >
           <div className="px-3">
             <img
@@ -100,7 +100,7 @@ function ManagerDashboard(props: Props) {
           {page == "doc" && <Docs searchKey={searchKey} />}
           {page == "addnewuser" && <AddNewUserDoc setPage={setPage} />}
         </div>
-        <div className="col-lg-1 mt-5"></div>
+        {/* <div className="col-lg-1 mt-5"></div> */}
       </div>
       {/* Profile Icon */}
       <div style={{ position: "absolute", top: "18px", right: "18px" }}>
@@ -118,7 +118,7 @@ function ManagerDashboard(props: Props) {
           {/* Dropdown Profile */}
           {isProfileDropdown && (
             <div
-              style={{ backgroundColor: "#4A4A4A38", borderRadius: "10px" }}
+              style={{ backgroundColor: "#4A4A4A18", borderRadius: "10px" }}
               className="text-center"
               role="button"
               onClick={() => logoutHandler()}

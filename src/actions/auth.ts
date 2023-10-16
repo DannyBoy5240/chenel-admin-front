@@ -95,7 +95,7 @@ export const login =
       return res.data;
       // dispatch(loadUser());
     } catch (err: any) {
-      const errors = err.response.data.errors;
+      const errors = err.response?.data.errors;
       if (errors) {
         console.log(errors.msg);
       }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import searchIcon from "../../assets/icons/search-icon.svg";
-import backIcon from "../../assets/icons/back.jpg";
+import backIcon from "../../assets/icons/back.png";
 import logoImage from "../../assets/img/logo.png";
 import testAvatar from "../../assets/img/avatar.jpg";
 
@@ -59,7 +59,7 @@ function Writerboard(props: Props) {
         <div
           className="col-lg-2 d-flex align-items-center"
           role="button"
-          onClick={() => window.location.reload()}
+          onClick={() => navigate("/")}
         >
           <div className="px-3">
             <img
@@ -106,7 +106,7 @@ function Writerboard(props: Props) {
             />
           )}
         </div>
-        <div className="col-lg-1 mt-5"></div>
+        {/* <div className="col-lg-1 mt-5"></div> */}
       </div>
       {/* Profile Icon */}
       <div style={{ position: "absolute", top: "18px", right: "18px" }}>
@@ -122,7 +122,7 @@ function Writerboard(props: Props) {
           {/* Dropdown Profile */}
           {isProfileDropdown && (
             <div
-              style={{ backgroundColor: "#4A4A4A38", borderRadius: "10px" }}
+              style={{ backgroundColor: "#4A4A4A18", borderRadius: "10px" }}
               className="text-center"
               role="button"
               onClick={() => logoutHandler()}

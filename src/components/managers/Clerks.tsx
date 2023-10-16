@@ -76,7 +76,7 @@ export default function Clerks(props: any) {
           <div className="w-25 text-end">Registered Time</div>
         </div>
       </div>
-      <div style={{ overflowY: "auto", height: "60vh" }}>
+      <div style={{ overflowY: "auto", height: "calc(100vh - 150px)" }}>
         {userList
           .filter((user: any) => user.roles.toLowerCase() === "clerk")
           .filter((user: any) => JSON.stringify(user).includes(props.searchKey))

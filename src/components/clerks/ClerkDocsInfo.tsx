@@ -10,7 +10,7 @@ import backIcon from "../../assets/icons/back.svg";
 import removeIcon from "../../assets/icons/delete.svg";
 import addPlusIcon from "../../assets/icons/add-new-user.svg";
 
-export default function WriterDocsInfo(props: any) {
+export default function ClerkDocsInfo(props: any) {
   const MAX_VALUE = 10005;
   const [key, setKey] = useState("home");
   // const [selectedName, setSelectedName] = useState("");
@@ -183,7 +183,7 @@ export default function WriterDocsInfo(props: any) {
           <div style={{ overflowY: "auto", height: "80vh" }}>
             {docList
               .filter((doc: any) =>
-                doc.writer === props.curWriter ? props.curWriter : ""
+                doc.clerk === props.curClerk ? props.curClerk : ""
               )
               .filter(
                 (doc: any) =>
@@ -300,38 +300,73 @@ export default function WriterDocsInfo(props: any) {
               </div>
             )}
           </div>
-          <div
-            className="px-4"
-            style={{ paddingTop: "32px", height: "84vh", overflow: "auto" }}
-          >
-            {defaultQuestions.map((qus, key) => {
-              return (
-                <div key={`qus${key + 1}`}>
-                  <div>
-                    {key + 1}. {qus}
+          <div className="d-flex">
+            <div
+              className="px-4 w-50"
+              style={{
+                paddingTop: "32px",
+                height: "calc(100vh - 160px)",
+                overflow: "auto",
+              }}
+            >
+              {(
+                docList.filter(
+                  (doc: any) => doc.email === (selectedUser as any).email
+                )[0] as any
+              )?.qusans.map((data: any, key: any) => {
+                return (
+                  <div key={`qusans${key + 1}`}>
+                    <div>
+                      {key + 1}. {data.qus}
+                    </div>
+                    <div>
+                      <textarea
+                        className="user-input-box"
+                        value={data.ans}
+                        disabled
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <textarea
-                      className="user-input-box"
-                      value={info[key].ans}
-                      onChange={(e) => {
-                        const updatedInfo = [...info];
-                        updatedInfo[key].ans = e.target.value;
-                        setInfo(updatedInfo);
-                      }}
-                      disabled={
-                        (
-                          docList.filter(
-                            (doc: any) =>
-                              doc.email === (selectedUser as any).email
-                          )[0] as any
-                        )?.status.toLowerCase() === "writerconfirm"
-                      }
-                    />
+                );
+              })}
+            </div>
+            <div
+              className="px-4 w-50"
+              style={{
+                paddingTop: "32px",
+                height: "calc(100vh - 160px)",
+                overflow: "auto",
+              }}
+            >
+              {defaultQuestions.map((qus: any, key: any) => {
+                return (
+                  <div key={`qus${key + 1}`}>
+                    <div>
+                      {key + 1}. {qus}
+                    </div>
+                    <div>
+                      <textarea
+                        className="user-input-box"
+                        value={info[key].ans}
+                        onChange={(e) => {
+                          const updatedInfo = [...info];
+                          updatedInfo[key].ans = e.target.value;
+                          setInfo(updatedInfo);
+                        }}
+                        disabled={
+                          (
+                            docList.filter(
+                              (doc: any) =>
+                                doc.email === (selectedUser as any).email
+                            )[0] as any
+                          )?.status.toLowerCase() === "writerconfirm"
+                        }
+                      />
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       ) : (

@@ -20,6 +20,7 @@ import Userinfo from "./pages/Userinfo";
 import ManagerDashboard from "./pages/manager/ManagerDashboard";
 import ManagerWriterProfile from "./pages/manager/ManagerWriterProfile";
 import Writerboard from "./pages/writers";
+import Clerkboard from "./pages/clerk";
 
 // Redux
 import { Provider, useSelector } from "react-redux";
@@ -65,11 +66,15 @@ function App() {
 
             <Route path="/" element={<Dashboard />} />
             <Route path="/manager/" element={<ManagerDashboard />} />
-            <Route path="/manager/employee" element={<ManagerWriterProfile />} />
+            <Route
+              path="/manager/employee"
+              element={<ManagerWriterProfile />}
+            />
 
             <Route path="/userinfo/" element={<Userinfo />} />
             <Route path="/admin/" element={<AdminDashBoard />} />
             <Route path="/writer/" element={<Writerboard />} />
+            <Route path="/clerk/" element={<Clerkboard />} />
           </Routes>
         </div>
       </Router>

@@ -170,5 +170,7 @@
   "workpermit_upload": "Telechajman Pèmi Travay",
   "security_card_upload": "Telechajman Kat Sekirite",
   "contact_message_result_succeed": "Mesaj Kontak a Te Voye Siksè!",
-  "contact_message_result_failed": "Mesaj Kontak a Pa Te Ka Voye!"
+  "contact_message_result_failed": "Mesaj Kontak a Pa Te Ka Voye!",
+  "document_required_at_least_one": "Ou dwe telechaje omwen 1 dokiman!",
+  "uploaded": "Telechaje!"
 }

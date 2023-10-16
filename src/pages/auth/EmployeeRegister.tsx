@@ -82,7 +82,7 @@ export default function EmployeeRegister() {
     } catch (error) {
       console.error("Error uploading file", error);
     }
-  }
+  };
 
   const registerHandler = async () => {
     // null exception handler
@@ -134,6 +134,18 @@ export default function EmployeeRegister() {
     const curAddress = addressRef.current.value;
     // const curRelationship = relationshipRef.current.value;
 
+    // Document Required Validation : at least 1 required
+    let documentsCount = 0;
+    if (selectedPassportImage && selectedPassportImage !== "") documentsCount++;
+    if (selectedWorkpermitImage && selectedWorkpermitImage !== "")
+      documentsCount++;
+    if (selectedSecurityImage && selectedSecurityImage !== "") documentsCount++;
+
+    if (documentsCount === 0) {
+      setRegisterError(t("document_required_at_least_one"));
+      return;
+    }
+
     const selectedEmployee = document.querySelector(
       'input[name="employee"]:checked'
     ) as HTMLInputElement;
@@ -169,7 +181,7 @@ export default function EmployeeRegister() {
         if (response.data.success == true) {
           navigate("/login");
         } else {
-          setRegisterError(t("register_failed_failed"));
+          setRegisterError(response.data.message);
           flag = false;
           return;
         }
@@ -183,11 +195,31 @@ export default function EmployeeRegister() {
 
     // Documents Upload
     if (selectedPassportImage && selectedPassportImage !== "")
-      await documentUploadHandler(selectedPassportImage, context.email, "passport");
+      await documentUploadHandler(
+        selectedPassportImage,
+        context.email,
+        "passport"
+      );
     if (selectedWorkpermitImage && selectedWorkpermitImage !== "")
-      await documentUploadHandler(selectedWorkpermitImage, context.email, "workpermit");
+      await documentUploadHandler(
+        selectedWorkpermitImage,
+        context.email,
+        "workpermit"
+      );
     if (selectedSecurityImage && selectedSecurityImage !== "")
-      await documentUploadHandler(selectedSecurityImage, context.email, "security");    
+      await documentUploadHandler(
+        selectedSecurityImage,
+        context.email,
+        "security"
+      );
+  };
+
+  const getFileNameExtension = (fileName: string): string | null => {
+    const parts = fileName.split(".");
+    if (parts.length > 1) {
+      return parts[parts.length - 1];
+    }
+    return null; // No extension found
   };
 
   return (
@@ -329,16 +361,27 @@ export default function EmployeeRegister() {
                       />
                       {t("passport_upload")}
                     </label>
-                    {selectedPassportImage && (
-                      <div className="p-2">
-                        <img
-                          src={URL.createObjectURL(selectedPassportImage)}
-                          alt="Selected"
-                          style={{ maxWidth: "120px" }}
-                        />
-                      </div>
-                    )}
-                  </div>  
+                    {selectedPassportImage &&
+                      getFileNameExtension(
+                        (selectedPassportImage as any).name
+                      ) !== "pdf" && (
+                        <div className="p-2">
+                          <img
+                            src={URL.createObjectURL(selectedPassportImage)}
+                            alt="Selected"
+                            style={{ maxWidth: "120px" }}
+                          />
+                        </div>
+                      )}
+                    {selectedPassportImage &&
+                      getFileNameExtension(
+                        (selectedPassportImage as any).name
+                      ) === "pdf" && (
+                        <div className="p-2">
+                          {(selectedPassportImage as any).name} {t("uploaded")}
+                        </div>
+                      )}
+                  </div>
                   {/* Work Permission */}
                   <div className="col-12 col-sm-4 py-1 form-group">
                     <label className="custom-file-upload w-100 text-center">
@@ -349,16 +392,27 @@ export default function EmployeeRegister() {
                       />
                       {t("workpermit_upload")}
                     </label>
-
-                    {selectedWorkpermitImage && (
-                      <div className="p-2">
-                        <img
-                          src={URL.createObjectURL(selectedWorkpermitImage)}
-                          alt="Selected"
-                          style={{ maxWidth: "120px" }}
-                        />
-                      </div>
-                    )}
+                    {selectedWorkpermitImage &&
+                      getFileNameExtension(
+                        (selectedWorkpermitImage as any).name
+                      ) !== "pdf" && (
+                        <div className="p-2">
+                          <img
+                            src={URL.createObjectURL(selectedWorkpermitImage)}
+                            alt="Selected"
+                            style={{ maxWidth: "120px" }}
+                          />
+                        </div>
+                      )}
+                    {selectedWorkpermitImage &&
+                      getFileNameExtension(
+                        (selectedWorkpermitImage as any).name
+                      ) === "pdf" && (
+                        <div className="p-2">
+                          {(selectedWorkpermitImage as any).name}{" "}
+                          {t("uploaded")}
+                        </div>
+                      )}
                   </div>
                   {/* Security Card */}
                   <div className="col-12 col-sm-4 py-1 form-group">
@@ -370,16 +424,26 @@ export default function EmployeeRegister() {
                       />
                       {t("security_card_upload")}
                     </label>
-
-                    {selectedSecurityImage && (
-                      <div className="p-2">
-                        <img
-                          src={URL.createObjectURL(selectedSecurityImage)}
-                          alt="Selected"
-                          style={{ maxWidth: "120px" }}
-                        />
-                      </div>
-                    )}
+                    {selectedSecurityImage &&
+                      getFileNameExtension(
+                        (selectedSecurityImage as any).name
+                      ) !== "pdf" && (
+                        <div className="p-2">
+                          <img
+                            src={URL.createObjectURL(selectedSecurityImage)}
+                            alt="Selected"
+                            style={{ maxWidth: "120px" }}
+                          />
+                        </div>
+                      )}
+                    {selectedSecurityImage &&
+                      getFileNameExtension(
+                        (selectedSecurityImage as any).name
+                      ) === "pdf" && (
+                        <div className="p-2">
+                          {(selectedSecurityImage as any).name} {t("uploaded")}
+                        </div>
+                      )}
                   </div>
                 </div>
               </div>
@@ -406,6 +470,7 @@ export default function EmployeeRegister() {
                       id="e_manager"
                       name="employee"
                       value="e_manager"
+                      checked
                     />
                     <label htmlFor="e_manager">{t("manager")}</label>
                   </div>
