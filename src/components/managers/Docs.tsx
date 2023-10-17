@@ -69,6 +69,7 @@ export default function UserInfo(props: any) {
       <div style={{ overflowY: "auto", height: "calc(100vh - 150px)" }}>
         {docList
           .filter((doc: any) => JSON.stringify(doc).includes(props.searchKey))
+          .filter((doc: any) => doc.status.toLowerCase() === "clerkconfirm")
           .map((idx: any, key: any) => {
             return (
               <div key={key} role="button" className="hover-row-bg-change">

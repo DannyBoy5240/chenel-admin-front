@@ -139,7 +139,7 @@ export default function AddNewUserDoc(props: any) {
           className="position-absolute"
           style={{ top: "12px", right: "24px" }}
         >
-          <div
+          {/* <div
             className="px-0 py-2 d-inline-flex mx-2"
             style={{ background: "#c2e7ff", borderRadius: "12px" }}
             onClick={() => saveDataHandler()}
@@ -149,7 +149,7 @@ export default function AddNewUserDoc(props: any) {
               <img src={addPlusIcon} className="icon-default-sz" />
             </span>
             <span className="pe-3">Save</span>
-          </div>
+          </div> */}
           <div
             className="px-0 py-2 d-inline-flex"
             style={{ background: "#c2e7ff", borderRadius: "12px" }}

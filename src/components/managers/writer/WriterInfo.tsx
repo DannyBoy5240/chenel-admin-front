@@ -55,6 +55,41 @@ export default function WriterInfo(props: any) {
     return date.toLocaleString("en-US", options);
   }
 
+  const getFileNameExtension = (fileName: string): string | null => {
+    const parts = fileName.split(".");
+    if (parts.length > 1) {
+      return parts[parts.length - 1];
+    }
+    return null; // No extension found
+  };
+
+  const [docImageFlag, setDocImageFlag] = useState(false);
+  const [docImageContext, setDocImageContext] = useState("");
+  const onPassportViewHandler = () => {
+    if (getFileNameExtension(passport) === "pdf")
+      window.open(`${FRONTEND_URL}/${passport}`, "_blank");
+    else {
+      setDocImageFlag(true);
+      setDocImageContext(`${FRONTEND_URL}/${passport}`);
+    }
+  };
+  const onWorkpermitViewHandler = () => {
+    if (getFileNameExtension(workpermit) === "pdf")
+      window.open(`${FRONTEND_URL}/${workpermit}`, "_blank");
+    else {
+      setDocImageFlag(true);
+      setDocImageContext(`${FRONTEND_URL}/${workpermit}`);
+    }
+  };
+  const onSecurityViewHandler = () => {
+    if (getFileNameExtension(security) === "pdf")
+      window.open(`${FRONTEND_URL}/${security}`, "_blank");
+    else {
+      setDocImageFlag(true);
+      setDocImageContext(`${FRONTEND_URL}/${security}`);
+    }
+  };
+
   return (
     <div className="default-component-back">
       <div className="d-flex">
@@ -84,10 +119,7 @@ export default function WriterInfo(props: any) {
             <div
               className="py-2 border"
               role="button"
-              onClick={() => {
-                console.log(`${BACKEND_URL}/uploads/${passport}`);
-                window.open(`${BACKEND_URL}/uploads/${passport}`, "_blank");
-              }}
+              onClick={() => onPassportViewHandler()}
             >
               View Passport
             </div>
@@ -99,10 +131,7 @@ export default function WriterInfo(props: any) {
             <div
               className="py-2 border"
               role="button"
-              onClick={() => {
-                console.log(`${BACKEND_URL}/uploads/${passport}`);
-                window.open(`${BACKEND_URL}/uploads/${workpermit}`, "_blank");
-              }}
+              onClick={() => onWorkpermitViewHandler()}
             >
               View Work-Permit
             </div>
@@ -114,15 +143,38 @@ export default function WriterInfo(props: any) {
             <div
               className="py-2 border"
               role="button"
-              onClick={() => {
-                window.open(`${FRONTEND_URL}/${security}`, "_blank");
-              }}
+              onClick={() => onSecurityViewHandler()}
             >
               View Security-Card
             </div>
           )}
         </div>
       </div>
+      {/* document image show */}
+      {docImageFlag && (
+        <div
+          style={{
+            width: "100vw",
+            height: "100vh",
+            position: "absolute",
+            zIndex: "50",
+            left: "0px",
+            top: "0px",
+            background: "#55555555",
+          }}
+          onClick={() => setDocImageFlag(false)}
+        >
+          <img
+            src={docImageContext}
+            style={{
+              width: "80%",
+              height: "80%",
+              marginLeft: "10%",
+              marginTop: "10vh",
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

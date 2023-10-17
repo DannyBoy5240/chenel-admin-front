@@ -126,6 +126,7 @@ export default function WriterDocsInfo(props: any) {
       );
       if (res.data.success) {
         console.log("update writer doc succeed!");
+        fetchData();
       }
     } catch (err: any) {
       console.log(err.message);
@@ -302,7 +303,11 @@ export default function WriterDocsInfo(props: any) {
           </div>
           <div
             className="px-4"
-            style={{ paddingTop: "32px", height: "84vh", overflow: "auto" }}
+            style={{
+              paddingTop: "20px",
+              height: "calc(100vh - 150px)",
+              overflow: "auto",
+            }}
           >
             {defaultQuestions.map((qus, key) => {
               return (
@@ -319,14 +324,18 @@ export default function WriterDocsInfo(props: any) {
                         updatedInfo[key].ans = e.target.value;
                         setInfo(updatedInfo);
                       }}
-                      disabled={
-                        (
+                      disabled={(() => {
+                        const status = (
                           docList.filter(
                             (doc: any) =>
                               doc.email === (selectedUser as any).email
                           )[0] as any
-                        )?.status.toLowerCase() === "writerconfirm"
-                      }
+                        )?.status.toLowerCase();
+                        return (
+                          status === "writerconfirm" ||
+                          status === "clerkconfirm"
+                        );
+                      })()}
                     />
                   </div>
                 </div>

@@ -69,7 +69,10 @@ export default function CompletedDocs(props: any) {
       </div>
       <div style={{ overflowY: "auto", height: "60vh" }}>
         {docList
-          .filter((doc: any) => doc.status === "WRITERCONFIRM")
+          .filter(
+            (doc: any) =>
+              doc.status === "WRITERCONFIRM" || doc.status === "CLERKCONFIRM"
+          )
           .filter(
             (doc: any) =>
               JSON.stringify(doc).includes(props.searchKey) ||

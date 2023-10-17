@@ -345,7 +345,7 @@ export default function UserInfo(props: any) {
                                       docList.filter(
                                         (doc: any) => doc.email === data.email
                                       )[0] as any
-                                    ).writer
+                                    )?.writer
                                 )[0] as any
                               )?.fullName // Render the email property
                             }
@@ -456,7 +456,7 @@ export default function UserInfo(props: any) {
                                       docList.filter(
                                         (doc: any) => doc.email === data.email
                                       )[0] as any
-                                    ).clerk
+                                    )?.clerk
                                 )[0] as any
                               )?.fullName // Render the email property
                             }

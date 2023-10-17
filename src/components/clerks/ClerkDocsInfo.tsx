@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-import { BACKEND_URL } from "../../constants";
+import { BACKEND_URL, FRONTEND_URL } from "../../constants";
 
 import houseSolidIcon from "../../assets/icons/house-solid.svg";
 import toWritersIcon from "../../assets/icons/to-writers.svg";
@@ -16,6 +16,7 @@ export default function ClerkDocsInfo(props: any) {
   // const [selectedName, setSelectedName] = useState("");
   const [selectedUser, setSelectedUser] = useState({});
   const [userViewFlag, setUserViewFlag] = useState(0); // flag idx for user item click
+  const [formType, setFormType] = useState("i-130");
 
   const defaultQuestions = [
     "What is your name? Can you spell it? Do you have a document that shows your name such as a passport or work permit or driver's license?",
@@ -104,41 +105,55 @@ export default function ClerkDocsInfo(props: any) {
     setFlagWriterIdx(0);
   };
 
-  const handleWriterData = async (isSubmit: boolean) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const data = {
-      email: (selectedUser as any).email,
-      writerdoc: defaultQuestions.map((doc, idx) => {
-        return { qus: doc, ans: info[idx].ans };
-      }),
-      status: isSubmit ? "WRITERCONFIRM" : "WRITERCHECKING",
-    };
+  const onEditDocHandler = () => {
+    window.open(`../assets/docs/${formType}.pdf`, "_blank");
+  };
+
+  const [submitStatus, setSubmitStatus] = useState("");
+  const onSubmitDocHandler = async (event: any) => {
+    const file = event.target.files[0];
+    const curEmail = (selectedUser as any).email;
+
+    if (!curEmail || curEmail === "") {
+      setSubmitStatus("Customer Info Invalid!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("formdoc", file || "");
+    formData.append("email", curEmail);
 
     try {
-      const res = await axios.post(
-        `${BACKEND_URL}/users/updatewriterdoc`,
-        data,
-        config
+      const response = await axios.post(
+        `${BACKEND_URL}/users/upload/formdoc`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
-      if (res.data.success) {
-        console.log("update writer doc succeed!");
-      }
-    } catch (err: any) {
-      console.log(err.message);
+      // Handle the response from the server (e.g., display a success message)
+      console.log("File uploaded successfully", response.data);
+      setSubmitStatus("Submit succeed!");
+      // Clear the uploaded file
+    } catch (error) {
+      console.error("Error uploading file", error);
+      setSubmitStatus("Submit failed!");
     }
-    setUserViewFlag(0);
   };
 
-  const saveDataHandler = () => {
-    handleWriterData(false);
+  const onChangeForm = (_type: any) => {
+    setFormType(_type);
   };
 
-  const submitDataHandler = () => {
-    handleWriterData(true);
+  const onViewDocHandler = () => {
+    const formdoc = (
+      docList.filter(
+        (doc: any) => doc.email === (selectedUser as any).email
+      )[0] as any
+    ).formdoc;
+    window.open(`${FRONTEND_URL}/${formdoc}`, "_blank");
   };
 
   function convertToUSDateTime(dateString: string): string {
@@ -232,9 +247,9 @@ export default function ClerkDocsInfo(props: any) {
                           style={{ zIndex: 50 }}
                           onClick={() => console.log("view button clicked!")}
                         >
-                          {doc.status.toLowerCase() === "writerchecking"
-                            ? "Pending"
-                            : "Completed"}
+                          {doc.status.toLowerCase() === "clerkconfirm"
+                            ? "Completed"
+                            : "Pending"}
                         </div>
                       </div>
                     </div>
@@ -246,7 +261,7 @@ export default function ClerkDocsInfo(props: any) {
       ) : key === "home" ? (
         <div>
           <div className="position-relative d-flex">
-            <div className="d-flex px-4 pt-4">
+            <div className="d-flex px-4 pt-4 align-items-center">
               <div>
                 <span className="px-2">Full Name : </span>
                 <input
@@ -256,7 +271,7 @@ export default function ClerkDocsInfo(props: any) {
                   disabled
                 />
               </div>
-              <div className="ps-4">
+              <div className="px-2">
                 <span className="px-2">Email : </span>
                 <input
                   type="email"
@@ -265,107 +280,135 @@ export default function ClerkDocsInfo(props: any) {
                   disabled
                 />
               </div>
-            </div>
-            {(
-              docList.filter(
-                (doc: any) => doc.email === (selectedUser as any).email
-              )[0] as any
-            )?.status.toLowerCase() === "writerchecking" && (
-              <div
-                className="position-absolute"
-                style={{ top: "12px", right: "24px" }}
-              >
-                <div
-                  className="px-0 py-2 d-inline-flex mx-2"
-                  style={{ background: "#c2e7ff", borderRadius: "12px" }}
-                  onClick={() => saveDataHandler()}
-                  role="button"
-                >
-                  <span className="px-3">
-                    <img src={addPlusIcon} className="icon-default-sz" />
-                  </span>
-                  <span className="pe-3">Save</span>
-                </div>
-                <div
-                  className="px-0 py-2 d-inline-flex"
-                  style={{ background: "#c2e7ff", borderRadius: "12px" }}
-                  onClick={() => submitDataHandler()}
-                  role="button"
-                >
-                  <span className="px-3">
-                    <img src={addPlusIcon} className="icon-default-sz" />
-                  </span>
-                  <span className="pe-3">Submit</span>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="d-flex">
-            <div
-              className="px-4 w-50"
-              style={{
-                paddingTop: "32px",
-                height: "calc(100vh - 160px)",
-                overflow: "auto",
-              }}
-            >
               {(
                 docList.filter(
                   (doc: any) => doc.email === (selectedUser as any).email
                 )[0] as any
-              )?.qusans.map((data: any, key: any) => {
-                return (
-                  <div key={`qusans${key + 1}`}>
-                    <div>
-                      {key + 1}. {data.qus}
-                    </div>
-                    <div>
-                      <textarea
-                        className="user-input-box"
-                        value={data.ans}
-                        disabled
-                      />
+              ).status.toLowerCase() === "clerkconfirm" ? (
+                <div className="px-2">
+                  <div
+                    onClick={() => onViewDocHandler()}
+                    className="border px-2 py-1 rounded-lg"
+                    role="button"
+                  >
+                    View
+                  </div>
+                </div>
+              ) : (
+                <div className="d-flex">
+                  <div className="px-2">
+                    <label htmlFor="fruitSelect" className="px-2">
+                      Select Form:
+                    </label>
+                    <select
+                      id="fruitSelect"
+                      style={{
+                        padding: "5px 8px",
+                        borderRadius: "10px",
+                        border: "1px solid gray",
+                      }}
+                      onChange={(ev) => onChangeForm(ev.target.value)}
+                    >
+                      <option value="i-130">I-130</option>
+                      <option value="i-131">I-131</option>
+                      <option value="i-589">I-589</option>
+                    </select>
+                  </div>
+                  <div className="px-2">
+                    <div
+                      onClick={() => onEditDocHandler()}
+                      className="border px-2 py-1 rounded-lg"
+                      role="button"
+                    >
+                      Edit
                     </div>
                   </div>
-                );
-              })}
+                  <div className="px-2 d-flex align-items-center">
+                    <div>
+                      <label
+                        className="custom-file-upload w-100 text-center"
+                        style={{
+                          padding: "3px 15px",
+                          border: "1px solid gray",
+                        }}
+                      >
+                        <input
+                          type="file"
+                          accept="application/pdf"
+                          onChange={onSubmitDocHandler}
+                        />
+                        Submit
+                      </label>
+                    </div>
+                    <div className="ps-2">{submitStatus}</div>
+                  </div>
+                </div>
+              )}
             </div>
+          </div>
+          <div className="d-flex pt-2">
             <div
-              className="px-4 w-50"
+              className="w-50"
               style={{
-                paddingTop: "32px",
                 height: "calc(100vh - 160px)",
                 overflow: "auto",
               }}
             >
-              {defaultQuestions.map((qus: any, key: any) => {
-                return (
-                  <div key={`qus${key + 1}`}>
-                    <div>
-                      {key + 1}. {qus}
+              <div className="p-2">
+                <h4>Customer Information</h4>
+                {(
+                  docList.filter(
+                    (doc: any) => doc.email === (selectedUser as any).email
+                  )[0] as any
+                )?.qusans.map((data: any, key: any) => {
+                  return (
+                    <div key={`qusans${key + 1}`}>
+                      <div>
+                        {key + 1}. {data.qus}
+                      </div>
+                      <div>
+                        <textarea
+                          className="user-input-box"
+                          value={data.ans}
+                          disabled
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <textarea
-                        className="user-input-box"
-                        value={info[key].ans}
-                        onChange={(e) => {
-                          const updatedInfo = [...info];
-                          updatedInfo[key].ans = e.target.value;
-                          setInfo(updatedInfo);
-                        }}
-                        disabled={
-                          (
-                            docList.filter(
-                              (doc: any) =>
-                                doc.email === (selectedUser as any).email
-                            )[0] as any
-                          )?.status.toLowerCase() === "writerconfirm"
-                        }
-                      />
+                  );
+                })}
+              </div>
+            </div>
+            <div
+              className="w-50"
+              style={{
+                height: "calc(100vh - 160px)",
+                overflow: "auto",
+              }}
+            >
+              <div className="p-2">
+                <h4>Writer Information</h4>
+                {defaultQuestions.map((qus: any, key: any) => {
+                  return (
+                    <div key={`qus${key + 1}`}>
+                      <div>
+                        {key + 1}. {qus}
+                      </div>
+                      <div>
+                        <textarea
+                          className="user-input-box"
+                          value={info[key].ans}
+                          onChange={(e) => {
+                            const updatedInfo = [...info];
+                            updatedInfo[key].ans = e.target.value;
+                            setInfo(updatedInfo);
+                          }}
+                          disabled
+                        />
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
