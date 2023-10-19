@@ -57,7 +57,7 @@ function Contact(props: Props) {
 
     setTimeout(() => {
       setMessageResult("");
-    }, 2000);
+    }, 5000);
   };
 
   return (
@@ -70,7 +70,11 @@ function Contact(props: Props) {
         <section
           id="contact"
           className="contact h-100 d-flex flex-column"
-          style={{ padding: "100px 0px 0px 0px", overflowY: "auto" }}
+          style={{
+            padding: "100px 0px 0px 0px",
+            overflowY: "auto",
+            backgroundColor: "rgb(244, 251, 254);",
+          }}
         >
           <div className="container">
             <div className="section-title" style={{ paddingTop: "20px" }}>
@@ -92,7 +96,16 @@ function Contact(props: Props) {
                   className="info"
                   style={{ backgroundColor: "rgb(244, 251, 254)" }}
                 >
-                  <div className="address">
+                  <div
+                    className="address"
+                    role="button"
+                    onClick={() =>
+                      window.open(
+                        "https://www.google.com/maps/place/709+W+Main+St+%231,+Immokalee,+FL+34142,+USA/@26.4181476,-81.4241072,17z/data=!3m1!4b1!4m5!3m4!1s0x88dba4210bde7cd9:0xf2fe7d4f777f7324!8m2!3d26.4181476!4d-81.4241072?entry=ttu",
+                        "_blank"
+                      )
+                    }
+                  >
                     <i className="bi bi-geo-alt"></i>
                     <h4>{t("location")}:</h4>
                     <p>709 W. Main Street</p>
@@ -103,13 +116,19 @@ function Contact(props: Props) {
                   <div className="email">
                     <i className="bi bi-envelope"></i>
                     <h4>{t("email")}:</h4>
-                    <p>Taxgration@gmail.com</p>
+                    <p>
+                      <a href="mailto:Taxgration@gmail.com">
+                        Taxgration@gmail.com
+                      </a>
+                    </p>
                   </div>
 
                   <div className="phone">
                     <i className="bi bi-phone"></i>
                     <h4>{t("call")}:</h4>
-                    <p>+1 239-657-7000</p>
+                    <p>
+                      <a href="tel:+12396577000">+1 239-657-7000</a>
+                    </p>
                   </div>
                 </div>
               </div>

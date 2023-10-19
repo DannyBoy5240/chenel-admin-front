@@ -61,30 +61,35 @@ export default function Header(props: any) {
         >
           <ul>
             <li>
-              {(props.isAuthorized as any)?.roles === "CUSTOMER" ? (
+              {!props.isAuthorized ||
+              (props.isAuthorized as any)?.roles === "CUSTOMER" ? (
                 <a
                   className={`nav-link scrollto ${
                     props.title === "home" && "active"
                   }`}
+                  role="button"
                   onClick={() => navigate("/")}
                 >
                   {t("home")}
                 </a>
               ) : (
-                <a
-                  className={`nav-link scrollto ${
-                    props.title === "home" && "active"
-                  }`}
-                  onClick={() =>
-                    navigate(
-                      `/${(
-                        (props.isAuthorized as any)?.roles as any
-                      ).toLowerCase()}`
-                    )
-                  }
-                >
-                  {t("dashboard")}
-                </a>
+                props.isAuthorized && (
+                  <a
+                    className={`nav-link scrollto ${
+                      props.title === "home" && "active"
+                    }`}
+                    role="button"
+                    onClick={() =>
+                      navigate(
+                        `/${(
+                          (props.isAuthorized as any)?.roles as any
+                        ).toLowerCase()}`
+                      )
+                    }
+                  >
+                    {t("dashboard")}
+                  </a>
+                )
               )}
             </li>
             <li>
@@ -92,6 +97,7 @@ export default function Header(props: any) {
                 className={`nav-link scrollto ${
                   props.title === "about" && "active"
                 }`}
+                role="button"
                 onClick={() => navigate("/about")}
               >
                 {t("aboutus")}
@@ -107,6 +113,7 @@ export default function Header(props: any) {
                 className={`nav-link scrollto ${
                   props.title === "packages" && "active"
                 }`}
+                role="button"
                 onClick={() => navigate("/packages")}
               >
                 {t("services")}
@@ -117,6 +124,7 @@ export default function Header(props: any) {
                 className={`nav-link scrollto ${
                   props.title === "faq" && "active"
                 }`}
+                role="button"
                 onClick={() => navigate("/faq")}
               >
                 {t("FAQ")}
@@ -127,6 +135,7 @@ export default function Header(props: any) {
                 className={`nav-link scrollto ${
                   props.title === "contact" && "active"
                 }`}
+                role="button"
                 onClick={() => navigate("/contact")}
               >
                 {t("contactus")}
@@ -198,7 +207,7 @@ export default function Header(props: any) {
                   </Col>
                 </a>
                 <ul className="dropdown-menu">
-                  <li>
+                  <li role="button">
                     <div
                       className="dropdown-item"
                       onClick={() => logoutHandler()}
@@ -244,20 +253,43 @@ export default function Header(props: any) {
             >
               <div className="position-relative d-flex flex-column bg-white">
                 <div>
-                  <a
-                    className={`nav-link scrollto ${
-                      props.title === "home" && "active"
-                    }`}
-                    onClick={() => navigate("/")}
-                  >
-                    {t("home")}
-                  </a>
+                  {!props.isAuthorized ||
+                  (props.isAuthorized as any)?.roles === "CUSTOMER" ? (
+                    <a
+                      className={`nav-link scrollto ${
+                        props.title === "home" && "active"
+                      }`}
+                      role="button"
+                      onClick={() => navigate("/")}
+                    >
+                      {t("home")}
+                    </a>
+                  ) : (
+                    props.isAuthorized && (
+                      <a
+                        className={`nav-link scrollto ${
+                          props.title === "home" && "active"
+                        }`}
+                        role="button"
+                        onClick={() =>
+                          navigate(
+                            `/${(
+                              (props.isAuthorized as any)?.roles as any
+                            ).toLowerCase()}`
+                          )
+                        }
+                      >
+                        {t("dashboard")}
+                      </a>
+                    )
+                  )}
                 </div>
                 <div>
                   <a
                     className={`nav-link scrollto ${
                       props.title === "about" && "active"
                     }`}
+                    role="button"
                     onClick={() => navigate("/about")}
                   >
                     {t("aboutus")}
@@ -268,6 +300,7 @@ export default function Header(props: any) {
                     className={`nav-link scrollto ${
                       props.title === "packages" && "active"
                     }`}
+                    role="button"
                     onClick={() => navigate("/packages")}
                   >
                     {t("services")}
@@ -278,6 +311,7 @@ export default function Header(props: any) {
                     className={`nav-link scrollto ${
                       props.title === "faq" && "active"
                     }`}
+                    role="button"
                     onClick={() => navigate("/faq")}
                   >
                     {t("FAQ")}
@@ -288,6 +322,7 @@ export default function Header(props: any) {
                     className={`nav-link scrollto ${
                       props.title === "contact" && "active"
                     }`}
+                    role="button"
                     onClick={() => navigate("/contact")}
                   >
                     {t("contactus")}
@@ -368,6 +403,7 @@ export default function Header(props: any) {
                         <li>
                           <div
                             className="dropdown-item"
+                            role="button"
                             onClick={() => logoutHandler()}
                           >
                             {t("logout")}

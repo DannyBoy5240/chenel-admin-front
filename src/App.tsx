@@ -50,7 +50,7 @@ function App() {
       <Router>
         <div
           className="position-relative vh-100"
-          style={{ fontFamily: "Dosis" }}
+          style={{ fontFamily: "Helvetica" }}
         >
           <Routes>
             <Route path="/login" element={<Login />} />

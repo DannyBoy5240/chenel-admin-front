@@ -37,7 +37,6 @@
   }
 } */
 
-
 /**
 * Template Name: Butterfly
 * Updated: Jul 27 2023 with Bootstrap v5.3.1
@@ -738,7 +737,7 @@ section {
 # Services
 --------------------------------------------------------------*/
 .services .icon-box {
-  padding: 30px;
+  padding: 20px;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -1587,4 +1586,3 @@ section {
     text-align: center;
   }
 }
-

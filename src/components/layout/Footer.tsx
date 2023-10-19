@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import facebookIcon from "../../assets/icons/facebook_ico.png";
 import instagramIcon from "../../assets/icons/instagram_ico.png";
@@ -18,13 +18,19 @@ export default function Footer() {
       <div className="container-fluid">
         <div className="row py-3">
           <div className="col-12 col-md-6 col-lg-3 text-center">
-            &copy; Copyright <strong><span>Chenel</span></strong><small>. All Rights Reserved</small>
+            &copy; Copyright{" "}
+            <strong>
+              <span>Chenel</span>
+            </strong>
+            <small>. All Rights Reserved</small>
           </div>
           <div className="col-12 col-md-6 col-lg-3 text-center">
-            <strong>Phone:</strong> +1 239-657-7000
+            <strong>Phone:</strong>{" "}
+            <a href="mailto:Taxgration@gmail.com">+1 239-657-7000</a>
           </div>
           <div className="col-12 col-md-6 col-lg-3 text-center">
-            <strong>Email:</strong> Taxgration@gmail.com
+            <strong>Email:</strong>{" "}
+            <a href="tel:+12396577000">Taxgration@gmail.com</a>
           </div>
           <div className="col-12 col-md-6 col-lg-3 text-center">
             chenelsuperservice.com
@@ -33,19 +39,39 @@ export default function Footer() {
         <div className="row pb-3 justify-content-center">
           <div className="col-12 col-md-6 col-lg-3">
             <div className="w-100 d-flex justify-content-around">
-              <a className="px-2r" role="button" href="https://facebook.com/chenelsuperservice/">
+              <a
+                className="px-2r"
+                role="button"
+                href="https://facebook.com/chenelsuperservice/"
+              >
                 <img src={facebookIcon} className="icon-social-default-sz" />
               </a>
-              <a className="px-2r" role="button" href="https://www.tiktok.com/@chenelsuperservice1">
+              <a
+                className="px-2r"
+                role="button"
+                href="https://www.tiktok.com/@chenelsuperservice1"
+              >
                 <img src={tiktokIcon} className="icon-social-default-sz" />
               </a>
-              <a className="px-2r" role="button" href="https://instagram.com/chenelsuperservice1">
+              <a
+                className="px-2r"
+                role="button"
+                href="https://instagram.com/chenelsuperservice1"
+              >
                 <img src={instagramIcon} className="icon-social-default-sz" />
               </a>
-              <a className="px-2r" role="button" href="https://twitter.com/chenelservices">
+              <a
+                className="px-2r"
+                role="button"
+                href="https://twitter.com/chenelservices"
+              >
                 <img src={twitterIcon} className="icon-social-default-sz" />
               </a>
-              <a className="px-2r" role="button" href="https://LinkedIn.com/in/chenelsuperservice">
+              <a
+                className="px-2r"
+                role="button"
+                href="https://LinkedIn.com/in/chenelsuperservice"
+              >
                 <img src={linkedinIcon} className="icon-social-default-sz" />
               </a>
             </div>

@@ -364,7 +364,7 @@ h6 {
 }
 
 #hero .container {
-  padding-top: 54px;
+  padding-top: 60px;
   /* padding-bottom: 40px; */
 }
 
@@ -704,7 +704,7 @@ section {
 # Services
 --------------------------------------------------------------*/
 .services .icon-box {
-  padding: 30px;
+  padding: 30px 20px;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -1030,10 +1030,10 @@ section {
 }
 
 .testimonial-img {
-  width: 75px;
+  width: 90px;
   border-radius: 50%;
   border: 6px solid rgba(255, 255, 255, 0.15);
-  margin: 10px auto;
+  margin: 5px auto;
 }
 
 .testimonials .testimonial-item h3 {
@@ -1183,7 +1183,7 @@ section {
 }
 
 .team .member .member-info {
-  padding: 25px 15px;
+  padding: 10px 12px;
 }
 
 .team .member .member-info h4 {
@@ -1604,8 +1604,8 @@ section {
 }
 
 .logo-default-sz {
-  width: 65px;
-  height: 65px;
+  width: 90px;
+  height: 130px !important;
   padding: 5px 5px;
 }
 
@@ -1615,7 +1615,7 @@ section {
 }
 @media (min-width: 575px) {
   .img-about-avatar-sz {
-    width: 153px;
-    height: 205px;
+    width: 210px;
+    height: 260px;
   }
 }

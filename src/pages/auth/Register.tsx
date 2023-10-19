@@ -144,9 +144,12 @@ function Register(props: Props) {
               // Handle successful response
               console.log("Success:", responseData);
               if (responseData.success) {
-                navigate("/login");
+                setSignUpError(t("register_succeed"));
+                setTimeout(() => {
+                  navigate("/login");
+                }, 5000);
               } else {
-                setSignUpError("Register occurs an Error!");
+                setSignUpError(t("register_failed"));
                 return;
               }
             } else {
@@ -265,7 +268,9 @@ function Register(props: Props) {
                         value="membershipValue"
                         ref={checkboxMembershipRef}
                       />
-                      <label htmlFor="membership">{t("be_an_employee")}</label>
+                      <label htmlFor="membership" className="ps-2">
+                        {t("be_an_employee")}
+                      </label>
                     </div>
                     {/* Register Status Represent */}
                     <div className="pb-2 text-danger">{signUpError}</div>

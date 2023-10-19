@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
-import { BACKEND_URL } from "../../constants";
+import { BACKEND_URL, FRONTEND_URL } from "../../constants";
 
 export default function CompletedDocs(props: any) {
   const [key, setKey] = useState("home");
@@ -41,8 +41,9 @@ export default function CompletedDocs(props: any) {
     fetchUserDocsData();
   }, []);
 
-  const documentViewHandler = (idx: any) => {
-    console.log(`document ${idx} view clicked!`);
+  const documentViewHandler = (_formdoc: any) => {
+    // console.log("test---");
+    // window.open(`${FRONTEND_URL}/${_formdoc}`, "_blank");
   };
 
   return (
@@ -87,7 +88,7 @@ export default function CompletedDocs(props: any) {
               <div key={key} role="button" className="hover-row-bg-change">
                 <div
                   className="d-inline-flex w-100 px-3 py-2 align-items-center"
-                  onClick={() => documentViewHandler(key + 1)}
+                  onClick={() => documentViewHandler(idx.formdoc)}
                 >
                   <div style={{ width: "5%" }}>{key + 1}</div>
                   <div style={{ width: "20%" }}>

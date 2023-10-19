@@ -30,7 +30,10 @@ function AboutUs(props: Props) {
   const isAuthorized = decoded_token && (decoded_token as any).user;
 
   return (
-    <div className="h-100 d-flex flex-column" style={{ backgroundColor: "#f4fbfe" }}>
+    <div
+      className="h-100 d-flex flex-column"
+      style={{ backgroundColor: "#f4fbfe" }}
+    >
       <Header isAuthorized={isAuthorized} title="about" />
       <div className="flex-grow-1">
         <section
@@ -45,8 +48,8 @@ function AboutUs(props: Props) {
               </h4>
             </div>
 
-            <div className="row justify-content-center">
-              <div className="col-lg-4 row">
+            <div className="row justify-content-center align-items-center">
+              <div className="col-lg-5 row">
                 <div className="col-lg-6 col-md-6 d-flex align-items-stretch justify-content-center">
                   <div className="member">
                     <div className="member-img">
@@ -167,21 +170,23 @@ function AboutUs(props: Props) {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-8">
-                <p>
-                  <br />
-                  <br />
-                  {t("about_history_1")}
-                  <br />
-                  <br />
-                  {t("about_history_2")}
-                  <br />
-                  <br />
-                  {t("about_history_3")}
-                  <br />
-                  <br />
-                  {t("about_history_4")}
-                </p>
+              <div className="col-lg-7 px-4">
+                <p
+                  dangerouslySetInnerHTML={{ __html: t("about_history_1") }}
+                  style={{ textAlign: "justify" }}
+                ></p>
+                <p
+                  dangerouslySetInnerHTML={{ __html: t("about_history_2") }}
+                  style={{ textAlign: "justify" }}
+                ></p>
+                <p
+                  dangerouslySetInnerHTML={{ __html: t("about_history_3") }}
+                  style={{ textAlign: "justify" }}
+                ></p>
+                <p
+                  dangerouslySetInnerHTML={{ __html: t("about_history_4") }}
+                  style={{ textAlign: "justify" }}
+                ></p>
               </div>
             </div>
           </div>

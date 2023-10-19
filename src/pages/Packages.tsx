@@ -61,9 +61,8 @@ function Packages(props: Props) {
 
   useEffect(() => {
     console.log("payment handle status --> ", payment_success);
-    if (payment_success)
-      navigate("/signUp");
-  }, [])
+    if (payment_success) navigate("/signUp");
+  }, []);
 
   // stripe payment handler
   // const paymentHandler = async (method: number) => {
@@ -94,7 +93,7 @@ function Packages(props: Props) {
     try {
       const res = await axios.post(
         `${BACKEND_URL}/paypal/makePayment`,
-        {method},
+        { method },
         config
       );
       window.location.href = res.data.url;
@@ -104,10 +103,13 @@ function Packages(props: Props) {
   };
 
   return (
-    <div className="h-100 d-flex flex-column" style={{ backgroundColor: "#f4fbfe" }}>
+    <div
+      className="h-100 d-flex flex-column"
+      style={{ backgroundColor: "#f4fbfe" }}
+    >
       <Header isAuthorized={isAuthorized} title="packages" />
       <div className="flex-grow-1 align-self-center">
-        <div className="container" style={{paddingTop: "100px"}}>
+        <div className="container" style={{ paddingTop: "100px" }}>
           <div className="row">
             <div className="col-md-4 px-3 d-flex package">
               <Card
@@ -120,15 +122,12 @@ function Packages(props: Props) {
                 onMouseEnter={() => handleMouseEnter(1)}
                 onMouseLeave={handleMouseLeave}
               >
-                <Card.Img
-                  variant="top"
-                  src={p1image}
-                />
+                <Card.Img variant="top" src={p1image} />
                 <Card.Body className="d-flex flex-column h-100">
                   <Card.Title style={{ textAlign: "center" }}>
                     <h3>{t("simple_asylum")}</h3>
                     <h5>
-                      <sup>$</sup>799.00<span> / {t("month")}</span>
+                      <sup>$</sup>999.99<span> / {t("month")}</span>
                     </h5>
                   </Card.Title>
                   <div className="flex-grow-1">
@@ -166,20 +165,18 @@ function Packages(props: Props) {
                 onMouseEnter={() => handleMouseEnter(2)}
                 onMouseLeave={handleMouseLeave}
               >
-                <Card.Img
-                  variant="top"
-                  src={p2image}
-                />
+                <Card.Img variant="top" src={p2image} />
                 <Card.Body className="d-flex flex-column h-100">
                   <Card.Title style={{ textAlign: "center" }}>
                     <h3>{t("advanced_asylum")}</h3>
                     <h5>
-                      <sup>$</sup>999.00<span> / {t("month")}</span>
+                      <sup>$</sup>1499.99<span> / {t("month")}</span>
                     </h5>
                   </Card.Title>
                   <div className="flex-grow-1">
                     <ul>
-                      <li>{t("advanced_asylum_item1")}</li>
+                      {t("advanced_asylum_item1")}
+                      <b> Plus:</b>
                       <li>{t("advanced_asylum_item2")}</li>
                       <li>{t("advanced_asylum_item3")}</li>
                       <li>{t("advanced_asylum_item4")}</li>
@@ -211,20 +208,18 @@ function Packages(props: Props) {
                 onMouseEnter={() => handleMouseEnter(3)}
                 onMouseLeave={handleMouseLeave}
               >
-                <Card.Img
-                  variant="top"
-                  src={p3image}
-                />
+                <Card.Img variant="top" src={p3image} />
                 <Card.Body className="d-flex flex-column h-100">
                   <Card.Title style={{ textAlign: "center" }}>
                     <h3>{t("accompanied_asylum")}</h3>
                     <h5>
-                      <sup>$</sup>1,299.00<span> / {t("month")}</span>
+                      <sup>$</sup>1,299.99<span> / {t("month")}</span>
                     </h5>
                   </Card.Title>
                   <div className="pb-4 flex-grow-1">
                     <ul>
-                      <li>{t("accompained_asylum_item1")}</li>
+                      {t("accompained_asylum_item1")}
+                      <b> Plus:</b>
                       <li>{t("accompained_asylum_item2")}</li>
                       <li>{t("accompained_asylum_item3")}</li>
                       <li>{t("accompained_asylum_item4")}</li>

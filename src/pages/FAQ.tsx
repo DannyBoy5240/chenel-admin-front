@@ -28,17 +28,17 @@ function FAQ(props: Props) {
   const isAuthorized = decoded_token && (decoded_token as any).user;
 
   return (
-    <div className="h-100 d-flex flex-column" style={{ backgroundColor: "#f4fbfe" }}>
+    <div
+      className="h-100 d-flex flex-column"
+      style={{ backgroundColor: "#f4fbfe" }}
+    >
       <Header isAuthorized={isAuthorized} title="faq" />
       <div className="flex-grow-1">
         <section id="faq" className="faq section-bg">
           <div className="container" data-aos="fade-up">
             <div className="section-title">
               <h2>F.A.Q</h2>
-              <h3>
-                {t("frequently_asked")}
-                <span>{t("questions")}</span>
-              </h3>
+              <h3>{t("frequently_asked")}</h3>
               <p>{t("faq_summary")}</p>
             </div>
 
@@ -46,167 +46,230 @@ function FAQ(props: Props) {
               <div className="col-xl-12">
                 <Accordion>
                   <Accordion.Item eventKey="0">
-                    <Accordion.Header>{t("faq_qus_1")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_1")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_1") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                   <Accordion.Item eventKey="1">
-                    <Accordion.Header>{t("faq_qus_2")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_2")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_2") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="2">
-                    <Accordion.Header>{t("faq_qus_3")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_3")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_3") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion defaultActiveKey="0">
                   <Accordion.Item eventKey="3">
-                    <Accordion.Header>{t("faq_qus_4")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_4")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_4") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="4">
-                    <Accordion.Header>{t("faq_qus_5")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_5")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_5") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="5">
-                    <Accordion.Header>{t("faq_qus_6")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_6")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_6") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="6">
-                    <Accordion.Header>{t("faq_qus_7")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_7")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_7") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="7">
-                    <Accordion.Header>{t("faq_qus_8")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_8")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_8") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="8">
-                    <Accordion.Header>{t("faq_qus_9")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_9")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_9") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="9">
-                    <Accordion.Header>{t("faq_qus_10")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_10")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_10") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="10">
-                    <Accordion.Header>{t("faq_qus_11")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_11")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_11") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="11">
-                    <Accordion.Header>{t("faq_qus_12")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_12")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_12") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="12">
-                    <Accordion.Header>{t("faq_qus_13")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_13")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_13") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="13">
-                    <Accordion.Header>{t("faq_qus_14")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_14")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_14") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="14">
-                    <Accordion.Header>{t("faq_qus_15")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_15")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_15") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="15">
-                    <Accordion.Header>{t("faq_qus_16")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_16")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_16") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="16">
-                    <Accordion.Header>{t("faq_qus_17")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_17")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_17") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="17">
-                    <Accordion.Header>{t("faq_qus_18")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_18")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_18") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="18">
-                    <Accordion.Header>{t("faq_qus_19")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_19")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_19") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="19">
-                    <Accordion.Header>{t("faq_qus_20")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_20")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_20") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
                 <Accordion>
                   <Accordion.Item eventKey="20">
-                    <Accordion.Header>{t("faq_qus_21")}</Accordion.Header>
+                    <Accordion.Header style={{ fontFamily: "Helvetica" }}>
+                      <b>{t("faq_qus_21")}</b>
+                    </Accordion.Header>
                     <Accordion.Body
                       dangerouslySetInnerHTML={{ __html: t("faq_ans_21") }}
+                      style={{ textAlign: "justify" }}
                     ></Accordion.Body>
                   </Accordion.Item>
                 </Accordion>

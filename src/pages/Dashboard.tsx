@@ -42,10 +42,13 @@ function Dashboard(props: Props) {
   };
 
   return (
-    <div className="h-100 d-flex flex-column" style={{ backgroundColor: "#f4fbfe" }}>
+    <div
+      className="h-100 d-flex flex-column"
+      style={{ backgroundColor: "#f4fbfe" }}
+    >
       <Header isAuthorized={isAuthorized} title="home" />
       <div className="flex-grow-1">
-        <section id="hero" className="d-flex align-items-center">
+        <section id="hero" className="d-flex align-items-center pb-4">
           <div className="container">
             <div className="row justify-content-between">
               {/* <div className="col-lg-5 pt-4 pt-lg-0 order-1 d-flex flex-column justify-content-center p-4"> */}
@@ -53,21 +56,34 @@ function Dashboard(props: Props) {
                 <h1>{t("project_title")}</h1>
                 <h2>{t("project_subtitle")}</h2>
                 <div style={{ marginBottom: "10px" }}>
-                  <a onClick={() => navigate("/contact")} className="btn-get-started scrollto">
-                    {t("call_to_us")}
+                  <a
+                    onClick={() => navigate("/contact")}
+                    className="btn-get-started scrollto"
+                  >
+                    {t("contact_us")}
                   </a>
                 </div>
                 <div className="row" style={{ fontSize: "14px" }}>
-                  <div className="col-lg-12" style={{ textAlign: "justify" }}>
-                    {t("project_summary")}
-                  </div>
+                  <div
+                    className="col-lg-12"
+                    style={{ textAlign: "justify" }}
+                    dangerouslySetInnerHTML={{ __html: t("project_summary") }}
+                  ></div>
                 </div>
-                <div className="pt-5 pb-3 d-lg-none">
+                <div
+                  className="pt-5 pb-3 d-lg-none"
+                  style={{ textAlign: "justify" }}
+                >
                   {t("project_summary_beta")}
                 </div>
               </div>
               <div className="col-lg-7 order-2 hero-img">
-                <div className="pt-5 pb-3 d-none d-lg-block">{t("project_summary_beta")}</div>
+                <div
+                  className="py-4 d-none d-lg-block"
+                  style={{ textAlign: "justify" }}
+                >
+                  {t("project_summary_beta")}
+                </div>
 
                 <Carousel
                   activeIndex={index}
@@ -76,7 +92,7 @@ function Dashboard(props: Props) {
                 >
                   <Carousel.Item interval={3000}>
                     <div className="row">
-                      <div className="col-4 d-flex flex-column justify-content-center align-items-center flex-wrap">
+                      <div className="col-12 col-md-4 col-lg-3 d-flex flex-column justify-content-center align-items-center flex-wrap">
                         <img
                           src="assets/img/testimonials/testimonials-1.jpg"
                           className="testimonial-img"
@@ -84,20 +100,23 @@ function Dashboard(props: Props) {
                         />
                         <h4>Wiberson</h4>
                       </div>
-                      <div className="col-8 d-flex flex-column justify-content-center align-items-center flex-wrap">
-                        <p>
-                          I am genuinely overjoyed with how everything is
-                          unfolding. Each day, I offer my heartfelt prayers of
-                          gratitude to God for the staff. Truly, words cannot
-                          capture the depth of my happiness and gratitude for
-                          having this family by my side here.
+                      <div className="col-12 col-md-8 col-lg-9 d-flex flex-column justify-content-center align-items-center flex-wrap">
+                        <p
+                          style={{ textAlign: "justify" }}
+                          className="review-box"
+                        >
+                          I'm ecstatic about the way things are unfolding. Every
+                          day, I offer heartfelt prayers of gratitude to God for
+                          our incredible staff. It's impossible to put into
+                          words the depth of my happiness and appreciation for
+                          having this incredible family by my side.
                         </p>
                       </div>
                     </div>
                   </Carousel.Item>
                   <Carousel.Item interval={3000}>
                     <div className="row">
-                      <div className="col-4 d-flex flex-column justify-content-center align-items-center flex-wrap">
+                      <div className="col-12 col-md-4 col-lg-3 d-flex flex-column justify-content-center align-items-center flex-wrap">
                         <img
                           src="assets/img/testimonials/testimonials-2.jpg"
                           className="testimonial-img"
@@ -105,19 +124,23 @@ function Dashboard(props: Props) {
                         />
                         <h4>Bermane</h4>
                       </div>
-                      <div className="col-8 d-flex flex-column justify-content-center align-items-center flex-wrap">
-                        <p>
-                          When I first arrived in the US, I was without a work
-                          permit. But today, thanks to Chenel Super Service, I
-                          proudly stand as a US Citizen with my wife and children
-                          by my side.
+                      <div className="col-12 col-md-8 col-lg-9 d-flex flex-column justify-content-center align-items-center flex-wrap">
+                        <p
+                          style={{ textAlign: "justify" }}
+                          className="review-box"
+                        >
+                          Upon my arrival in the US without a work permit,
+                          uncertainty loomed. Thanks to Chenel Super Service,
+                          I'm now a proud US Citizen, joyfully reunited with my
+                          wife and children. Immensely grateful for this
+                          life-changing transformation!
                         </p>
                       </div>
                     </div>
                   </Carousel.Item>
                   <Carousel.Item interval={3000}>
                     <div className="row">
-                      <div className="col-4 d-flex flex-column justify-content-center align-items-center flex-wrap">
+                      <div className="col-12 col-md-4 col-lg-3 d-flex flex-column justify-content-center align-items-center flex-wrap">
                         <img
                           src="assets/img/testimonials/testimonials-3.jpg"
                           className="testimonial-img"
@@ -125,10 +148,16 @@ function Dashboard(props: Props) {
                         />
                         <h4>Estimable</h4>
                       </div>
-                      <div className="col-8 d-flex flex-column justify-content-center align-items-center flex-wrap">
-                        <p>
-                          Thank you so much. I don't regret choosing you for your
-                          services.
+                      <div className="col-12 col-md-8 col-lg-9 d-flex flex-column justify-content-center align-items-center flex-wrap">
+                        <p
+                          style={{ textAlign: "justify" }}
+                          className="review-box"
+                        >
+                          I'm thrilled with the exceptional experience I've had
+                          here. The dedicated staff's unwavering commitment to
+                          excellence, warm support, and professionalism have
+                          made every moment memorable. I wholeheartedly
+                          recommend this top-notch place.
                         </p>
                       </div>
                     </div>
@@ -142,6 +171,11 @@ function Dashboard(props: Props) {
         <section id="services" className="services section-bg">
           <div className="container">
             <div className="row justify-content-center">
+              <div className="text-center">
+                <h3>
+                  <b>{t("choose_your_package")}</b>
+                </h3>
+              </div>
               <div className="col-lg-4 col-md-6 py-2">
                 <div
                   className="icon-box"
@@ -152,7 +186,10 @@ function Dashboard(props: Props) {
                   <h4 className="title">
                     <a href="">{t("simple_asylum")}</a>
                   </h4>
-                  <div className="description">
+                  <div
+                    className="description"
+                    style={{ height: "252px", marginLeft: "0px" }}
+                  >
                     <ul>
                       <li>{t("simple_asylum_item1")}</li>
                       <li>{t("simple_asylum_item2")}</li>
@@ -172,9 +209,13 @@ function Dashboard(props: Props) {
                   <h4 className="title">
                     <a href="">{t("advanced_asylum")}</a>
                   </h4>
-                  <div className="description">
+                  <div
+                    className="description"
+                    style={{ height: "252px", marginLeft: "0px" }}
+                  >
                     <ul>
-                      <li>{t("advanced_asylum_item1")}</li>
+                      {t("advanced_asylum_item1")}
+                      <b> Plus:</b>
                       <li>{t("advanced_asylum_item2")}</li>
                       <li>{t("advanced_asylum_item3")}</li>
                       <li>{t("advanced_asylum_item4")}</li>
@@ -192,9 +233,13 @@ function Dashboard(props: Props) {
                   <h4 className="title">
                     <a href="">{t("accompanied_asylum")}</a>
                   </h4>
-                  <div className="description">
+                  <div
+                    className="description"
+                    style={{ height: "252px", marginLeft: "0px" }}
+                  >
                     <ul>
-                      <li>{t("accompained_asylum_item1")}</li>
+                      {t("accompained_asylum_item1")}
+                      <b> Plus:</b>
                       <li>{t("accompained_asylum_item2")}</li>
                       <li>{t("accompained_asylum_item3")}</li>
                       <li>{t("accompained_asylum_item4")}</li>
