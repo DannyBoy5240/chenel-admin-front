@@ -97,6 +97,7 @@
   "advanced_asylum_item2": "🔄 Opciones de pago flexibles.",
   "advanced_asylum_item3": "🏠 Un cambio de dirección de cortesía.",
   "advanced_asylum_item4": "🎯 Mejor para: Aquellos que desean un soporte completo con mayor flexibilidad.",
+  "advanced_asylum_item5": "Es para una pareja casada.",
   "accompained_asylum_item1": "Todas las características del paquete Tranquil Refuge.",
   "accompained_asylum_item2": "📖 Guía exclusiva: 'Asilo Revelado: Su Guía Paso a Paso para los Procedimientos de Asilo en EE. UU.'",
   "accompained_asylum_item3": "🎓 Representación Legal: Acceso a servicios de abogados (disponible por ahora en Florida).",
@@ -175,5 +176,9 @@
   "uploaded": "Subido!",
   "choose_your_package": "Elige tu paquete",
   "register_succeed": "¡Su registro ha sido exitoso!",
-  "register_failed": "¡Se produjo un error al registrarse!"
+  "register_failed": "¡Se produjo un error al registrarse!",
+  "user_not_found": "No podemos encontrar al usuario. Por favor, inténtalo de nuevo.",
+  "password_incorrect": "Contraseña incorrecta.",
+  "email_not_verified": "El correo electrónico no está verificado.",
+  "account_on_PENDING": "La cuenta está en estado de PENDIENTE. Por favor, espere a que el administrador apruebe su cuenta."
 }

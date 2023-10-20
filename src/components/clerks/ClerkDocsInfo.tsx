@@ -309,9 +309,19 @@ export default function ClerkDocsInfo(props: any) {
                       }}
                       onChange={(ev) => onChangeForm(ev.target.value)}
                     >
-                      <option value="i-130">I-130</option>
-                      <option value="i-131">I-131</option>
+                      <option value="i-821">I-821</option>
+                      <option value="i-765">I-765</option>
                       <option value="i-589">I-589</option>
+                      <option value="i-131">I-131</option>
+                      <option value="i-130">I-130</option>
+                      <option value="i-130a">I-130A</option>
+                      <option value="i-864">I-864</option>
+                      <option value="i-864a">I-864A</option>
+                      <option value="i-485">I-485</option>
+                      <option value="i-134">I-134</option>
+                      <option value="i-912">I-912</option>
+                      <option value="i-90">I-90</option>
+                      <option value="n-400">N-400</option>
                     </select>
                   </div>
                   <div className="px-2">

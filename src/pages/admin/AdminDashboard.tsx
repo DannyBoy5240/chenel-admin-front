@@ -63,7 +63,7 @@ function AdminDashboard(props: Props) {
               <img
                 src={logoImage}
                 className="img-fluid"
-                style={{ width: "60px" }}
+                style={{ width: "80px" }}
                 alt="Logo"
               />
             </div>
@@ -88,7 +88,7 @@ function AdminDashboard(props: Props) {
           <div className="col-md-2 col-lg-2">
             <Sidebutton page={page} setPage={setPage} />
           </div>
-          <div className="col-md-10 col-lg-10 pe-5">
+          <div className="col-md-10 col-lg-10 pe-0 pe-lg-5">
             {page == "employee" && (
               <EmployeeManagement setPage={setPage} searchKey={searchKey} />
             )}

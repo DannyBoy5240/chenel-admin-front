@@ -26,7 +26,7 @@
   "please_enter_valid_email_address": "Tanpri antre yon adrès imel valid.",
   "full_name": "Non Konplè",
   "please_enter_your_full_name": "Tanpri antre non ou konplè.",
-  "cofirm_password": "Konfime Modpas",
+  "confirm_password": "Konfime Modpas",
   "please_enter_password_correctly": "Passwords must be a mix of uppercase, lowercase, digits, special characters, and a minimum length of 8 characters for added security.",
   "be_an_employee": "Vin yon anplwaye?",
   "you_already_have_account": "Ou gen deja yon kont?",
@@ -97,6 +97,7 @@
   "advanced_asylum_item2": "🔄 Opzyon peman fleksib yo.",
   "advanced_asylum_item3": "🏠 Yon chanjman adrès gratis.",
   "advanced_asylum_item4": "🎯 Pi bon pou : Moun k'ap chèche sipò konplè ak plis fleksibilite.",
+  "advanced_asylum_item5": "Es para una pareja casada.",
   "accompained_asylum_item1": "Tout karakteristik yo nan pakè Tranquil Refuge.",
   "accompained_asylum_item2": "📖 Gid Eksklizif : 'Asil Revele: Gid ou nan Etap pa Etap sou Pwosedi Asil nan Etazini.'",
   "accompained_asylum_item3": "🎓 Reprézantasyon Legal : Akses nan sèvis avoka (disponib nan Florida pou kounye a).",
@@ -175,5 +176,9 @@
   "uploaded": "Telechaje!",
   "choose_your_package": "Chwazi pake w la",
   "register_succeed": "Enskripsyon ou a byen siksè!",
-  "register_failed": "Yon erè rive nan moman enskripsyon!"
+  "register_failed": "Yon erè rive nan moman enskripsyon!",
+  "user_not_found": "Nou pa ka jwenn moun sa a. Tanpri eseye ankò.",
+  "password_incorrect": "Modpas la pa kòrèk.",
+  "email_not_verified": "Imel la pa verifye.",
+  "account_on_PENDING": "Kont la nan Eta TANDE. Tanpri tann administratè a apwouve kont ou."
 }

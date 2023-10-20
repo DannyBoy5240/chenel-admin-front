@@ -110,9 +110,9 @@ export default function CustomerManagement(props: any) {
           borderTopLeftRadius: "18px",
           borderTopRightRadius: "18px",
         }}
-        className="py-2"
+        className="py-4"
       >
-        <div className="d-inline-flex w-100 px-3 py-2">
+        {/* <div className="d-inline-flex w-100 px-3 py-2">
           <div style={{ width: "10%" }}>No</div>
           <div style={{ width: "20%" }}>Name</div>
           <div style={{ width: "25%" }}>Email</div>
@@ -120,53 +120,50 @@ export default function CustomerManagement(props: any) {
             Registered Time
           </div>
           <div style={{ width: "8%" }}></div>
-        </div>
+        </div> */}
       </div>
-      <div style={{ overflowY: "auto", height: "60vh" }}>
+      <div style={{ height: "calc(100vh - 168px)", fontSize: "14px" }}>
         {usersList
           .filter((user: any) => user.roles === key.toUpperCase())
           .filter((user: any) => JSON.stringify(user).includes(props.searchKey))
           .map((idx: any, key: any) => {
             return (
               <div className="hover-row-bg-change" key={key} role="button">
-                <div className="d-flex w-100 px-3 py-2 align-items-center">
-                  <div style={{ width: "10%" }}>{key + 1}</div>
-                  <div style={{ width: "20%" }}>{idx.fullName}</div>
-                  <div style={{ width: "25%" }}>{idx.email}</div>
-                  <div style={{ width: "30%" }} className="text-end">
+                <div className="row d-flex px-3 py-2 align-items-center">
+                  <div className="col-2 col-md-2 col-lg-1">{key + 1}</div>
+                  <div className="col-10 col-md-5 col-lg-3">{idx.fullName}</div>
+                  <div className="col-12 col-md-5 col-lg-3">{idx.email}</div>
+                  <div className="col-12 col-md-8 col-lg-3 ps-5 ps-lg-0">
                     {convertToUSDateTime(idx.regTime)}
                   </div>
                   <div
-                    style={{
-                      width: "10%",
-                      color: idx.status === "PENDING" ? "red" : "blue",
-                    }}
-                    className="text-center"
+                    className="col-6 col-md-3 col-lg-1"
+                    style={{ color: idx.status === "PENDING" ? "red" : "blue" }}
                   >
                     {idx.status}
                   </div>
-                  <div
-                    style={{
-                      width: "5%",
-                      justifyContent: "space-around",
-                      display: "flex",
-                    }}
-                  >
-                    {idx.status === "PENDING" ? (
+                  <div className="col-6 col-md-1 col-lg-1 d-flex justify-content-end">
+                    {idx.status === "PENDING" && (
                       <div
-                        className="d-inline-flex row-remove-btn px-1"
+                        className="d-inline-flex row-remove-btn py-1 me-1"
                         onClick={() => approveHandler(idx.email)}
                       >
-                        <img src={approveIcon} style={{ width: "12px" }} />
+                        <img
+                          src={approveIcon}
+                          style={{ width: "12px" }}
+                          alt="Approve"
+                        />
                       </div>
-                    ) : (
-                      <></>
                     )}
                     <div
                       className="d-inline-flex row-remove-btn"
                       onClick={() => removeHandler(idx.email)}
                     >
-                      <img src={removeIcon} style={{ width: "12px" }} />
+                      <img
+                        src={removeIcon}
+                        style={{ width: "12px" }}
+                        alt="Remove"
+                      />
                     </div>
                   </div>
                 </div>

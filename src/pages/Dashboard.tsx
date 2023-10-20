@@ -55,7 +55,7 @@ function Dashboard(props: Props) {
               <div className="col-lg-5 order-1 d-flex flex-column justify-content-center">
                 <h1>{t("project_title")}</h1>
                 <h2>{t("project_subtitle")}</h2>
-                <div style={{ marginBottom: "10px" }}>
+                <div style={{ marginBottom: "10px" }} role="button">
                   <a
                     onClick={() => navigate("/contact")}
                     className="btn-get-started scrollto"
@@ -219,6 +219,7 @@ function Dashboard(props: Props) {
                       <li>{t("advanced_asylum_item2")}</li>
                       <li>{t("advanced_asylum_item3")}</li>
                       <li>{t("advanced_asylum_item4")}</li>
+                      <li>{t("advanced_asylum_item5")}</li>
                     </ul>
                   </div>
                 </div>

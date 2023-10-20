@@ -59,16 +59,16 @@ function AboutUs(props: Props) {
                         alt=""
                       />
                       <div className="social">
-                        <a href="">
+                        <a href="https://twitter.com/chenelservices">
                           <i className="bi bi-twitter"></i>
                         </a>
-                        <a href="">
+                        <a href="https://facebook.com/chenelsuperservice/">
                           <i className="bi bi-facebook"></i>
                         </a>
-                        <a href="">
+                        <a href="https://instagram.com/chenelsuperservice1">
                           <i className="bi bi-instagram"></i>
                         </a>
-                        <a href="">
+                        <a href="https://LinkedIn.com/in/chenelsuperservice">
                           <i className="bi bi-linkedin"></i>
                         </a>
                       </div>
@@ -89,16 +89,16 @@ function AboutUs(props: Props) {
                         alt=""
                       />
                       <div className="social">
-                        <a href="">
+                        <a href="https://twitter.com/chenelservices">
                           <i className="bi bi-twitter"></i>
                         </a>
-                        <a href="">
+                        <a href="https://facebook.com/chenelsuperservice/">
                           <i className="bi bi-facebook"></i>
                         </a>
-                        <a href="">
+                        <a href="https://instagram.com/chenelsuperservice1">
                           <i className="bi bi-instagram"></i>
                         </a>
-                        <a href="">
+                        <a href="https://LinkedIn.com/in/chenelsuperservice">
                           <i className="bi bi-linkedin"></i>
                         </a>
                       </div>
@@ -119,16 +119,16 @@ function AboutUs(props: Props) {
                         alt=""
                       />
                       <div className="social">
-                        <a href="">
+                        <a href="https://twitter.com/chenelservices">
                           <i className="bi bi-twitter"></i>
                         </a>
-                        <a href="">
+                        <a href="https://facebook.com/chenelsuperservice/">
                           <i className="bi bi-facebook"></i>
                         </a>
-                        <a href="">
+                        <a href="https://instagram.com/chenelsuperservice1">
                           <i className="bi bi-instagram"></i>
                         </a>
-                        <a href="">
+                        <a href="https://LinkedIn.com/in/chenelsuperservice">
                           <i className="bi bi-linkedin"></i>
                         </a>
                       </div>
@@ -149,16 +149,16 @@ function AboutUs(props: Props) {
                         alt=""
                       />
                       <div className="social">
-                        <a href="">
+                        <a href="https://twitter.com/chenelservices">
                           <i className="bi bi-twitter"></i>
                         </a>
-                        <a href="">
+                        <a href="https://facebook.com/chenelsuperservice/">
                           <i className="bi bi-facebook"></i>
                         </a>
-                        <a href="">
+                        <a href="https://instagram.com/chenelsuperservice1">
                           <i className="bi bi-instagram"></i>
                         </a>
-                        <a href="">
+                        <a href="https://LinkedIn.com/in/chenelsuperservice">
                           <i className="bi bi-linkedin"></i>
                         </a>
                       </div>

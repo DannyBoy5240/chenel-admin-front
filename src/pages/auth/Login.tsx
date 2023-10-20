@@ -89,7 +89,7 @@ function Login(props: Props) {
         customerLoginHandler(decoded_res.user.email);
       } else navigate("/notfound");
     } else {
-      setSignInError(res.message);
+      setSignInError(t(res.message));
     }
   };
 
@@ -180,13 +180,18 @@ function Login(props: Props) {
                     {t("dont_you_have_account")}{" "}
                     <a
                       className="text-reset"
+                      role="button"
                       onClick={() => navigate("/signUp")}
                     >
                       {t("register_here")}
                     </a>
                     <br />
                     <br />
-                    <a className="text-reset" onClick={() => navigate("/")}>
+                    <a
+                      className="text-reset"
+                      onClick={() => navigate("/")}
+                      role="button"
+                    >
                       {t("return_to_homepage")}
                     </a>
                   </p>

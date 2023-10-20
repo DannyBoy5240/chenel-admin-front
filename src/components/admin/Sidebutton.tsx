@@ -11,7 +11,7 @@ export default function SideButton(props: any) {
         {/* Employee Management */}
         <li className="nav-item" role="button">
           <a
-            className="nav-link"
+            className="nav-link text-center text-lg-start"
             style={{
               background: `${
                 props.page == "employee" ? "#c2e7ff" : "transparent"
@@ -30,14 +30,14 @@ export default function SideButton(props: any) {
                 color: "black",
               }}
             >
-              Employee Management
+              Employees
             </span>
           </a>
         </li>
         {/* Customer Management */}
         <li className="nav-item" role="button">
           <a
-            className="nav-link"
+            className="nav-link text-center text-lg-start"
             style={{
               background: `${
                 props.page == "customer" ? "#c2e7ff" : "transparent"
@@ -56,7 +56,7 @@ export default function SideButton(props: any) {
                 color: "black",
               }}
             >
-              Customer Management
+              Customers
             </span>
           </a>
         </li>

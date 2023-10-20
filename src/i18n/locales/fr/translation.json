@@ -97,6 +97,7 @@
   "advanced_asylum_item2": "🔄 Options de paiement flexibles.",
   "advanced_asylum_item3": "🏠 Un changement d'adresse gratuit.",
   "advanced_asylum_item4": "🎯 Idéal pour : Ceux qui recherchent un soutien complet avec plus de flexibilité.",
+  "advanced_asylum_item5": "C'est pour un couple marié.",
   "accompained_asylum_item1": "Toutes les fonctionnalités du forfait Tranquil Refuge.",
   "accompained_asylum_item2": "📖 Guide exclusif : 'Asile dévoilé : Votre guide étape par étape des procédures d'asile aux États-Unis.'",
   "accompained_asylum_item3": "🎓 Représentation légale : Accès aux services d'avocat (disponible pour le moment en Floride).",
@@ -175,5 +176,9 @@
   "uploaded": "Téléchargé!",
   "choose_your_package": "Choisissez votre forfait",
   "register_succeed": "Votre inscription a été réussie!",
-  "register_failed": "Une erreur est survenue lors de l'inscription!"
+  "register_failed": "Une erreur est survenue lors de l'inscription!",
+  "user_not_found": "Nous ne pouvons pas trouver l'utilisateur. Veuillez réessayer.",
+  "password_incorrect": "Mot de passe incorrect.",
+  "email_not_verified": "L'e-mail n'est pas vérifié.",
+  "account_on_PENDING": "L'utilisateur est en attente. Veuillez attendre l'approbation de l'administrateur pour votre compte."
 }

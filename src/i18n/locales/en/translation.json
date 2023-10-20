@@ -26,7 +26,7 @@
   "please_enter_valid_email_address": "Please enter a valid email address.",
   "full_name": "Full Name",
   "please_enter_your_full_name": "Please enter a your full name.",
-  "cofirm_password": "Confirm Password",
+  "confirm_password": "Confirm Password",
   "please_enter_password_correctly": "Passwords must be a mix of uppercase, lowercase, digits, special characters, and a minimum length of 8 characters for added security.",
   "be_an_employee": "Are you an Chenel Super Service employee?",
   "you_already_have_account": "You already have an account?",
@@ -97,6 +97,7 @@
   "advanced_asylum_item2": "🔄 Flexible payment options.",
   "advanced_asylum_item3": "🏠 One complimentary change of address.",
   "advanced_asylum_item4": "🎯 Best for: Those desiring comprehensive support with added flexibility.",
+  "advanced_asylum_item5": "It's for married couple.",
   "accompained_asylum_item1": "All features of the Tranquil Refuge package.",
   "accompained_asylum_item2": "📖 Exclusive Guide: 'Asylum Unveiled: Your Step-by-Step Guide to U.S. Asylum Procedures.'",
   "accompained_asylum_item3": "🎓 Legal Representation: Access to attorney services (available in Florida for now).",
@@ -175,5 +176,9 @@
   "uploaded": "uploaded!",
   "choose_your_package": "Choose Your Package",
   "register_succeed": "Your registeration has been succeed!",
-  "register_failed": "Register occurs an Error!"
+  "register_failed": "Register occurs an Error!",
+  "user_not_found": "We can't find the user. Please try again.",
+  "password_incorrect": "Password is incorrect.",
+  "email_not_verified": "Email is not verified.",
+  "account_on_PENDING": "The user is on Pending. Please wait the admin approve your account"
 }

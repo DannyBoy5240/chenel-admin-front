@@ -180,6 +180,7 @@ function Packages(props: Props) {
                       <li>{t("advanced_asylum_item2")}</li>
                       <li>{t("advanced_asylum_item3")}</li>
                       <li>{t("advanced_asylum_item4")}</li>
+                      <li>{t("advanced_asylum_item5")}</li>
                     </ul>
                   </div>
                   <div

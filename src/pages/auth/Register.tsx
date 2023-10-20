@@ -288,6 +288,7 @@ function Register(props: Props) {
                     <a
                       onClick={() => navigate("/login")}
                       className="text-reset"
+                      role="button"
                     >
                       {t("login_here")}
                     </a>

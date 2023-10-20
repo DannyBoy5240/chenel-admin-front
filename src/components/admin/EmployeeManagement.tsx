@@ -49,15 +49,18 @@ export default function EmployeeManagement(props: any) {
 
   function convertToUSDateTime(dateString: string): string {
     const date = new Date(dateString);
+
     const options: Intl.DateTimeFormatOptions = {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+      month: "2-digit",
+      day: "2-digit",
       year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      timeZone: "America/New_York",
     };
-    return date.toLocaleString("en-US", options);
+
+    const formattedDate = date.toLocaleString(undefined, options);
+    return formattedDate;
   }
 
   // approve / remove functions
@@ -105,7 +108,7 @@ export default function EmployeeManagement(props: any) {
     <div className="d-flex flex-column h-100">
       {/* Management Header */}
       <div
-        className="d-flex justify-content-between align-items-center"
+        className="d-md-flex justify-content-between align-items-center"
         style={{
           backgroundColor: "white",
           borderTopLeftRadius: "20px",
@@ -121,11 +124,11 @@ export default function EmployeeManagement(props: any) {
                 : "hover-bg-header-left-change"
             }`}
             style={{
-              width: "240px",
+              width: "213px",
               textAlign: "center",
-              padding: "25px",
+              padding: "20px",
               color: "black",
-              fontSize: "18px",
+              fontSize: "16px",
             }}
             role="button"
             onClick={() => {
@@ -143,11 +146,11 @@ export default function EmployeeManagement(props: any) {
               key == "writer" ? "bg-header-clicked" : "hover-bg-header-change"
             }`}
             style={{
-              width: "240px",
+              width: "213px",
               textAlign: "center",
-              padding: "25px",
+              padding: "20px",
               color: "black",
-              fontSize: "18px",
+              fontSize: "16px",
             }}
             role="button"
             onClick={() => {
@@ -165,11 +168,11 @@ export default function EmployeeManagement(props: any) {
               key == "clerk" ? "bg-header-clicked" : "hover-bg-header-change"
             }`}
             style={{
-              width: "240px",
+              width: "213px",
               textAlign: "center",
-              padding: "25px",
+              padding: "20px",
               color: "black",
-              fontSize: "18px",
+              fontSize: "16px",
             }}
             role="button"
             onClick={() => {
@@ -185,56 +188,64 @@ export default function EmployeeManagement(props: any) {
         <div className="pe-3"></div>
       </div>
       {/* Management Body */}
-      <div style={{ overflowY: "auto", height: "70vh" }}>
+      <div
+        style={{
+          height: "calc(100vh - 178px)",
+          fontSize: "14px",
+        }}
+      >
         {usersList
           .filter((user: any) => user.roles === key.toUpperCase())
           .filter((user: any) => JSON.stringify(user).includes(props.searchKey))
           .map((idx: any, key: any) => {
             return (
               <div className="hover-row-bg-change" key={key} role="button">
-                <div className="d-flex w-100 px-3 py-2 align-items-center">
-                  <div style={{ width: "4%" }}>{key + 1}</div>
-                  <div style={{ width: "15%" }}>{idx.fullName}</div>
-                  <div style={{ width: "6%" }}>{idx.gender ? "M" : "W"}</div>
-                  <div style={{ width: "10%" }}>
-                    {convertToDateOnly(idx.birthday)}
+                <div className="row d-flex px-3 py-2 align-items-center">
+                  <div className="col-2 col-md-2 col-lg-1 d-flex justify-content-between">
+                    <div>{key + 1}</div>
+                    <div>{idx.gender ? "M" : "W"}</div>
                   </div>
-                  <div style={{ width: "20%" }}>{idx.email}</div>
-                  <div style={{ width: "15%" }}>{idx.phoneNumber}</div>
-                  <div style={{ width: "15%" }} className="text-end">
+                  <div className="col-10 col-md-4 col-lg-3 d-flex justify-content-between">
+                    <div>{idx.fullName}</div>
+                    <div>{convertToDateOnly(idx.birthday)}</div>
+                  </div>
+                  <div className="col-12 col-md-6 col-lg-4 d-flex justify-content-between">
+                    <div>{idx.email}</div>
+                    <div>{idx.phoneNumber}</div>
+                  </div>
+                  <div className="col-12 col-md-9 col-lg-2 ps-5 ps-lg-0">
                     {convertToUSDateTime(idx.regTime)}
                   </div>
                   <div
-                    style={{
-                      width: "10%",
-                      color: idx.status === "PENDING" ? "red" : "blue",
-                    }}
-                    className="text-center"
+                    className="col-12 col-md-3 col-lg-2 d-flex justify-content-between"
+                    style={{ color: idx.status === "PENDING" ? "red" : "blue" }}
                   >
-                    {idx.status}
-                  </div>
-                  <div
-                    style={{
-                      width: "5%",
-                      justifyContent: "space-around",
-                      display: "flex",
-                    }}
-                  >
-                    {idx.status === "PENDING" ? (
+                    <div>{idx.status}</div>
+                    <div>
+                      {idx.status === "PENDING" ? (
+                        <div
+                          className="row-remove-btn"
+                          onClick={() => approveHandler(idx.email)}
+                        >
+                          <img
+                            src={approveIcon}
+                            alt="Approve"
+                            style={{ width: "12px" }}
+                          />
+                        </div>
+                      ) : (
+                        <></>
+                      )}
                       <div
-                        className="d-inline-flex row-remove-btn px-1"
-                        onClick={() => approveHandler(idx.email)}
+                        className="row-remove-btn"
+                        onClick={() => removeHandler(idx.email)}
                       >
-                        <img src={approveIcon} style={{ width: "12px" }} />
+                        <img
+                          src={removeIcon}
+                          alt="Remove"
+                          style={{ width: "12px" }}
+                        />
                       </div>
-                    ) : (
-                      <></>
-                    )}
-                    <div
-                      className="d-inline-flex row-remove-btn"
-                      onClick={() => removeHandler(idx.email)}
-                    >
-                      <img src={removeIcon} style={{ width: "12px" }} />
                     </div>
                   </div>
                 </div>
