@@ -180,5 +180,7 @@
   "user_not_found": "No podemos encontrar al usuario. Por favor, inténtalo de nuevo.",
   "password_incorrect": "Contraseña incorrecta.",
   "email_not_verified": "El correo electrónico no está verificado.",
-  "account_on_PENDING": "La cuenta está en estado de PENDIENTE. Por favor, espere a que el administrador apruebe su cuenta."
+  "account_on_PENDING": "La cuenta está en estado de PENDIENTE. Por favor, espere a que el administrador apruebe su cuenta.",
+  "user_already_exist": "El usuario ya existe.",
+  "phone_already_used": "El teléfono ya está en uso."
 }

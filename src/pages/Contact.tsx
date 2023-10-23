@@ -55,9 +55,9 @@ function Contact(props: Props) {
       console.log(err.message);
     }
 
-    setTimeout(() => {
-      setMessageResult("");
-    }, 5000);
+    // setTimeout(() => {
+    //   setMessageResult("");
+    // }, 5000);
   };
 
   return (

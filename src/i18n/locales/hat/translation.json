@@ -180,5 +180,7 @@
   "user_not_found": "Nou pa ka jwenn moun sa a. Tanpri eseye ankò.",
   "password_incorrect": "Modpas la pa kòrèk.",
   "email_not_verified": "Imel la pa verifye.",
-  "account_on_PENDING": "Kont la nan Eta TANDE. Tanpri tann administratè a apwouve kont ou."
+  "account_on_PENDING": "Kont la nan Eta TANDE. Tanpri tann administratè a apwouve kont ou.",
+  "user_already_exist": "Moun sa yo deja egziste.",
+  "phone_already_used": "Telefòn sa a deja nan sèvis."
 }

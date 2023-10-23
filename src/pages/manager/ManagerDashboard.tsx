@@ -59,7 +59,7 @@ function ManagerDashboard(props: Props) {
       {/* Header */}
       <div className="d-flex py-3 align-items-center">
         <div
-          className="col-lg-2 d-flex align-items-center"
+          className="col-lg-3 d-flex align-items-center"
           role="button"
           onClick={() => navigate("/")}
         >
@@ -67,13 +67,13 @@ function ManagerDashboard(props: Props) {
             <img
               src={logoImage}
               className="img-fluid"
-              style={{ width: "60px" }}
+              style={{ width: "80px" }}
               alt="Logo"
             />
           </div>
           <div className="fw-bold">Chenel Service</div>
         </div>
-        <div className="col-md-7 col-lg-5">
+        <div className="col-md-7 col-lg-6">
           <div className="position-relative w-100 px-1 rounded-pill bg-light">
             <input
               className="form-control border-0 rounded-pill bg-white"
@@ -92,7 +92,7 @@ function ManagerDashboard(props: Props) {
         <div className="col-md-2 col-lg-2">
           <Sidebutton page={page} setPage={setPage} />
         </div>
-        <div className="col-md-10 col-lg-10 pe-5">
+        <div className="col-md-10 col-lg-10 pe-0 pe-lg-5">
           {/* <TopSideBar /> */}
           {page == "info" && <UserInfo setPage={setPage} />}
           {page == "writer" && <Writers searchKey={searchKey} />}
@@ -103,7 +103,7 @@ function ManagerDashboard(props: Props) {
         {/* <div className="col-lg-1 mt-5"></div> */}
       </div>
       {/* Profile Icon */}
-      <div style={{ position: "absolute", top: "18px", right: "18px" }}>
+      <div style={{ position: "absolute", top: "28px", right: "18px" }}>
         <div className="position-relative">
           <div
             className="avatar-default-sz rounded-circle"

@@ -55,7 +55,7 @@ function Dashboard(props: Props) {
               <div className="col-lg-5 order-1 d-flex flex-column justify-content-center">
                 <h1>{t("project_title")}</h1>
                 <h2>{t("project_subtitle")}</h2>
-                <div style={{ marginBottom: "10px" }} role="button">
+                <div style={{ marginBottom: "16px" }} role="button">
                   <a
                     onClick={() => navigate("/contact")}
                     className="btn-get-started scrollto"
@@ -63,7 +63,7 @@ function Dashboard(props: Props) {
                     {t("contact_us")}
                   </a>
                 </div>
-                <div className="row" style={{ fontSize: "14px" }}>
+                <div className="row" style={{ fontSize: "17px" }}>
                   <div
                     className="col-lg-12"
                     style={{ textAlign: "justify" }}
@@ -80,7 +80,7 @@ function Dashboard(props: Props) {
               <div className="col-lg-7 order-2 hero-img">
                 <div
                   className="py-4 d-none d-lg-block"
-                  style={{ textAlign: "justify" }}
+                  style={{ textAlign: "justify", fontSize: "17px" }}
                 >
                   {t("project_summary_beta")}
                 </div>

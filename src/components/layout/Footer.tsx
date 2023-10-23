@@ -26,14 +26,14 @@ export default function Footer() {
           </div>
           <div className="col-12 col-md-6 col-lg-3 text-center">
             <strong>Phone:</strong>{" "}
-            <a href="mailto:Taxgration@gmail.com">+1 239-657-7000</a>
+            <a href="tel:+12396577000">+1 239-657-7000</a>
           </div>
           <div className="col-12 col-md-6 col-lg-3 text-center">
             <strong>Email:</strong>{" "}
-            <a href="tel:+12396577000">Taxgration@gmail.com</a>
+            <a href="mailto:Taxgration@gmail.com">Taxgration@gmail.com</a>
           </div>
           <div className="col-12 col-md-6 col-lg-3 text-center">
-            chenelsuperservice.com
+            <a href="https://chenelsuperservice.com">chenelsuperservice.com</a>
           </div>
         </div>
         <div className="row pb-3 justify-content-center">

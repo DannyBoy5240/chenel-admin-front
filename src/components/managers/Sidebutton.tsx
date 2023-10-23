@@ -11,20 +11,20 @@ export default function SideButton(props: any) {
     <div className="px-3" role="button">
       <div className="py-3">
         <div
-          className="px-0 py-3 d-inline-flex"
+          className="px-0 py-3 d-lg-flex text-center text-lg-start"
           style={{ background: "#c2e7ff", borderRadius: "12px" }}
           onClick={() => props.setPage("addnewuser")}
         >
-          <span className="px-3">
+          <div className="px-3">
             <img src={addPlusIcon} className="icon-default-sz" />
-          </span>
-          <span className="pe-3">Add New User</span>
+          </div>
+          <div className="pe-lg-3">Add New User</div>
         </div>
       </div>
       <ul className="nav nav-pills flex-column">
         <li className="nav-item" role="button">
           <a
-            className="nav-link"
+            className="nav-link text-center text-lg-start"
             style={{
               background: `${props.page == "info" ? "#c2e7ff" : "transparent"}`,
               borderTopRightRadius: "12px",
@@ -47,7 +47,7 @@ export default function SideButton(props: any) {
         </li>
         <li className="nav-item" role="button">
           <a
-            className="nav-link"
+            className="nav-link text-center text-lg-start"
             style={{
               background: `${
                 props.page == "writer" ? "#c2e7ff" : "transparent"
@@ -72,7 +72,7 @@ export default function SideButton(props: any) {
         </li>
         <li className="nav-item" role="button">
           <a
-            className="nav-link"
+            className="nav-link text-center text-lg-start"
             style={{
               background: `${
                 props.page == "clerk" ? "#c2e7ff" : "transparent"
@@ -97,7 +97,7 @@ export default function SideButton(props: any) {
         </li>
         <li className="nav-item" role="button">
           <a
-            className="nav-link"
+            className="nav-link text-center text-lg-start"
             style={{
               background: `${props.page == "doc" ? "#c2e7ff" : "transparent"}`,
               borderTopRightRadius: "12px",
@@ -114,7 +114,7 @@ export default function SideButton(props: any) {
                 color: "black",
               }}
             >
-              Completed Doc
+              Docs
             </span>
           </a>
         </li>

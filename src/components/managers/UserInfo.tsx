@@ -192,11 +192,11 @@ export default function UserInfo(props: any) {
                     : "hover-bg-header-left-change"
                 }`}
                 style={{
-                  width: "240px",
+                  width: "213px",
                   textAlign: "center",
-                  padding: "25px",
+                  padding: "20px",
                   color: "black",
-                  fontSize: "18px",
+                  fontSize: "16px",
                 }}
                 role="button"
                 onClick={() => {
@@ -215,11 +215,11 @@ export default function UserInfo(props: any) {
                     : "hover-bg-header-change"
                 }`}
                 style={{
-                  width: "240px",
+                  width: "213px",
                   textAlign: "center",
-                  padding: "25px",
+                  padding: "20px",
                   color: "black",
-                  fontSize: "18px",
+                  fontSize: "16px",
                 }}
                 role="button"
                 onClick={() => {
@@ -238,11 +238,11 @@ export default function UserInfo(props: any) {
                     : "hover-bg-header-change"
                 }`}
                 style={{
-                  width: "240px",
+                  width: "213px",
                   textAlign: "center",
-                  padding: "25px",
+                  padding: "20px",
                   color: "black",
-                  fontSize: "18px",
+                  fontSize: "16px",
                 }}
                 role="button"
                 onClick={() => {
@@ -260,7 +260,7 @@ export default function UserInfo(props: any) {
           {/* Table Body */}
           {key === "home" ? (
             <div>
-              <div style={{ overflowY: "auto", height: "calc(100vh - 170px)" }}>
+              <div style={{ overflowY: "auto", height: "calc(100vh - 170px)", fontSize: "14px" }}>
                 {userList
                   .filter((user: any) => user.roles === "CUSTOMER")
                   .map((idx: any, key: any) => {
@@ -271,20 +271,14 @@ export default function UserInfo(props: any) {
                         className="hover-row-bg-change"
                       >
                         <div
-                          className="d-flex w-100 px-3 py-2 align-items-center"
+                          className="row d-flex w-100 px-3 py-2 align-items-center"
                           onClick={() => userViewHandler(key + 1, idx.email)}
                         >
-                          <div className="w-25 d-flex">
-                            <div className="w-50">{key + 1}</div>
-                            <div className="w-50">{idx.fullName}</div>
-                          </div>
-                          <div className="w-50 d-flex">
-                            <div className="w-50">{idx.email}</div>
-                            <div className="w-50">{idx.phoneNumber}</div>
-                          </div>
-                          <div className="w-25 text-end">
-                            {convertToUSDateTime(idx.regTime)}
-                          </div>
+                          <div className="col-md-1 col-lg-1">{key + 1}</div>
+                          <div className="col-md-5 col-lg-3">{idx.email}</div>
+                          <div className="col-md-6 col-lg-3 text-end text-lg-start">{idx.fullName}</div>
+                          <div className="col-md-6 col-lg-2 ps-md-5 ps-lg-0">{idx.phoneNumber}</div>
+                          <div className="col-md-6 col-lg-3 text-end">{convertToUSDateTime(idx.regTime)}</div>
                         </div>
                       </div>
                     );
@@ -299,6 +293,7 @@ export default function UserInfo(props: any) {
                     overflowY: "auto",
                     height: "calc(100vh - 170px)",
                     paddingRight: "2px",
+                    fontSize: "14px"
                   }}
                 >
                   {/* Users Header */}
@@ -309,9 +304,9 @@ export default function UserInfo(props: any) {
                     className="w-100"
                   >
                     <div className="w-100 d-inline-flex px-3 py-2">
-                      <div className="w-25">No</div>
-                      <div className="w-25">Name</div>
-                      <div className="w-25">Writer</div>
+                      <div className="col-md-2">No</div>
+                      <div className="col-md-5">Name</div>
+                      <div className="col-md-5">Writer</div>
                     </div>
                   </div>
                   {/* Users Content */}
@@ -333,9 +328,9 @@ export default function UserInfo(props: any) {
                             setFlagWriterUser(tempUserList);
                           }}
                         >
-                          <div className="w-25">{idx + 1}</div>
-                          <div className="w-25">{data.fullName}</div>
-                          <div className="w-25">
+                          <div className="col-md-2">{idx + 1}</div>
+                          <div className="col-md-5">{data.fullName}</div>
+                          <div className="col-md-5">
                             {
                               (
                                 userList.filter(
@@ -357,7 +352,7 @@ export default function UserInfo(props: any) {
               </div>
               <div className="w-50">
                 <div
-                  style={{ overflowY: "auto", height: "calc(100vh - 170px)" }}
+                  style={{ overflowY: "auto", height: "calc(100vh - 170px)", fontSize: "14px" }}
                 >
                   {/* Writers Header */}
                   <div
@@ -367,8 +362,11 @@ export default function UserInfo(props: any) {
                     className="w-100"
                   >
                     <div className="w-100 d-inline-flex px-3 py-2">
-                      <div className="w-50">No</div>
-                      <div className="w-50">Name</div>
+                      <div className="col-md-2">No</div>
+                      <div className="col-md-10 d-flex justify-content-between">
+                        <div>Name</div>
+                        <div>Handle</div>
+                      </div>
                     </div>
                   </div>
                   {/* Writers Content */}
@@ -386,8 +384,8 @@ export default function UserInfo(props: any) {
                           key={"userwriter" + idx}
                           onClick={() => setFlagWriterIdx(idx + 1)}
                         >
-                          <div className="w-50">{idx + 1}</div>
-                          <div className="w-50">{data.fullName}</div>
+                          <div className="col-md-2">{idx + 1}</div>
+                          <div className="col-md-10">{data.fullName}</div>
                           <div
                             role="button"
                             className="position-absolute row-send-btn"
@@ -410,6 +408,7 @@ export default function UserInfo(props: any) {
                     overflowY: "auto",
                     height: "calc(100vh - 170px)",
                     paddingRight: "2px",
+                    fontSize: "14px"
                   }}
                 >
                   {/* Users Header */}
@@ -420,9 +419,9 @@ export default function UserInfo(props: any) {
                     className="w-100"
                   >
                     <div className="w-100 d-inline-flex px-3 py-2">
-                      <div className="w-25">No</div>
-                      <div className="w-25">Name</div>
-                      <div className="w-25">Clerk</div>
+                      <div className="col-md-2">No</div>
+                      <div className="col-md-5">Name</div>
+                      <div className="col-md-5">Clerk</div>
                     </div>
                   </div>
                   {/* Users Content */}
@@ -444,9 +443,9 @@ export default function UserInfo(props: any) {
                             setFlagClerkUser(tempUserList);
                           }}
                         >
-                          <div className="w-25">{idx + 1}</div>
-                          <div className="w-25">{data.fullName}</div>
-                          <div className="w-25">
+                          <div className="col-md-2">{idx + 1}</div>
+                          <div className="col-md-5">{data.fullName}</div>
+                          <div className="col-md-5">
                             {
                               (
                                 userList.filter(
@@ -468,7 +467,7 @@ export default function UserInfo(props: any) {
               </div>
               <div className="w-50">
                 <div
-                  style={{ overflowY: "auto", height: "calc(100vh - 170px)" }}
+                  style={{ overflowY: "auto", height: "calc(100vh - 170px)", fontSize: "14px" }}
                 >
                   {/* Clerks Header */}
                   <div
@@ -478,8 +477,11 @@ export default function UserInfo(props: any) {
                     className="w-100"
                   >
                     <div className="w-100 d-inline-flex px-3 py-2">
-                      <div className="w-50">No</div>
-                      <div className="w-50">Name</div>
+                      <div className="col-md-2">No</div>
+                      <div className="col-md-10 d-flex justify-content-between">
+                        <div>Name</div>
+                        <div>Handle</div>
+                      </div>
                     </div>
                   </div>
                   {/* Clerks Content */}
@@ -497,8 +499,8 @@ export default function UserInfo(props: any) {
                           key={"userclerk" + idx}
                           onClick={() => setFlagClerkIdx(idx + 1)}
                         >
-                          <div className="w-50">{idx + 1}</div>
-                          <div className="w-50">{data.fullName}</div>
+                          <div className="col-md-2">{idx + 1}</div>
+                          <div className="col-md-10">{data.fullName}</div>
                           <div
                             role="button"
                             className="position-absolute row-send-btn"

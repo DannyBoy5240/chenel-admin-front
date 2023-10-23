@@ -170,7 +170,7 @@ export default function ClerkDocsInfo(props: any) {
   }
 
   return (
-    <div className="bg-white h-100 default-border-raidus">
+    <div className="bg-white h-100 default-border-raidus" style={{ fontSize: "14px" }}>
       {/* Summary View */}
       {userViewFlag == 0 ? (
         <div className="d-flex flex-column h-100">

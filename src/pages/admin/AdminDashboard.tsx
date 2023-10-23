@@ -96,7 +96,7 @@ function AdminDashboard(props: Props) {
           </div>
         </div>
         {/* Profile Icon */}
-        <div style={{ position: "absolute", top: "18px", right: "18px" }}>
+        <div style={{ position: "absolute", top: "28px", right: "18px" }}>
           <div className="position-relative">
             <div
               className="avatar-default-sz rounded-circle"

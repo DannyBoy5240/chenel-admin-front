@@ -11,7 +11,7 @@ export default function RightSide(props: any) {
       <ul className="nav nav-pills flex-column">
         <li className="nav-item" role="button">
           <a
-            className="nav-link"
+            className="nav-link text-center text-lg-start"
             style={{
               background: `${props.page == "info" ? "#c2e7ff" : "transparent"}`,
               borderTopRightRadius: "12px",
@@ -34,7 +34,7 @@ export default function RightSide(props: any) {
         </li>
         <li className="nav-item" role="button">
           <a
-            className="nav-link"
+            className="nav-link text-center text-lg-start"
             style={{
               background: `${props.page == "docs" ? "#c2e7ff" : "transparent"}`,
               borderTopRightRadius: "12px",
@@ -51,7 +51,7 @@ export default function RightSide(props: any) {
                 color: "black",
               }}
             >
-              Completed Docs
+              Docs
             </span>
           </a>
         </li>

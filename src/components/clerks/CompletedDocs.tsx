@@ -46,7 +46,7 @@ export default function CompletedDocs(props: any) {
   };
 
   return (
-    <div className="bg-white h-100 default-border-raidus">
+    <div className="bg-white h-100 default-border-raidus" style={{ fontSize: "14px" }}>
       {/* Table Header */}
       <div
         key={key}

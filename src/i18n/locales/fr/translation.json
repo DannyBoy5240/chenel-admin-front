@@ -180,5 +180,7 @@
   "user_not_found": "Nous ne pouvons pas trouver l'utilisateur. Veuillez réessayer.",
   "password_incorrect": "Mot de passe incorrect.",
   "email_not_verified": "L'e-mail n'est pas vérifié.",
-  "account_on_PENDING": "L'utilisateur est en attente. Veuillez attendre l'approbation de l'administrateur pour votre compte."
+  "account_on_PENDING": "L'utilisateur est en attente. Veuillez attendre l'approbation de l'administrateur pour votre compte.",
+  "user_already_exist": "L'utilisateur existe déjà.",
+  "phone_already_used": "Le numéro de téléphone est déjà utilisé."
 }

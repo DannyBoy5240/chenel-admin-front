@@ -96,7 +96,7 @@ export default function WriterInfo(props: any) {
         <div className="col-sm-12 col-lg-6 py-2">
           <img
             src={tempAvatar}
-            style={{ height: "450px", paddingLeft: "48px" }}
+            style={{ height: "300px", paddingLeft: "48px" }}
           />
         </div>
         <div className="col-sm-12 col-lg-6 pt-4" style={{ fontSize: "24px" }}>
@@ -161,16 +161,16 @@ export default function WriterInfo(props: any) {
             left: "0px",
             top: "0px",
             background: "#55555555",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
           onClick={() => setDocImageFlag(false)}
         >
           <img
             src={docImageContext}
             style={{
-              width: "80%",
               height: "80%",
-              marginLeft: "10%",
-              marginTop: "10vh",
             }}
           />
         </div>

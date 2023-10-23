@@ -54,16 +54,17 @@ export default function UserInfo(props: any) {
           background: "#c2e7ff",
           borderTopLeftRadius: "18px",
           borderTopRightRadius: "18px",
+          fontSize: "14px"
         }}
         className="py-2"
       >
-        <div className="d-inline-flex w-100 px-3 py-2">
-          <div style={{ width: "5%" }}>No</div>
-          <div style={{ width: "20%" }}>Name</div>
-          <div style={{ width: "20%" }}>Email</div>
-          <div style={{ width: "20%" }}>Writer</div>
-          <div style={{ width: "20%" }}>Clerk</div>
-          <div style={{ width: "15%", textAlign: "end" }}>View PDFs</div>
+        <div className="row d-flex w-100 px-3 py-2">
+          <div className="col-md-1 col-lg-1">No</div>
+          <div className="col-md-6 col-lg-3">Name</div>
+          <div className="col-md-5 col-lg-3">Email</div>
+          <div className="col-md-5 col-lg-2 ps-md-5 ps-lg-0">Writer</div>
+          <div className="col-md-5 col-lg-2">Clerk</div>
+          <div className="col-md-2 col-lg-1 ps-lg-3">View</div>
         </div>
       </div>
       <div style={{ overflowY: "auto", height: "calc(100vh - 150px)" }}>
@@ -74,11 +75,11 @@ export default function UserInfo(props: any) {
             return (
               <div key={key} role="button" className="hover-row-bg-change">
                 <div
-                  className="d-inline-flex w-100 px-3 py-2 align-items-center"
+                  className="row d-flex w-100 px-3 py-2 align-items-center"
                   onClick={() => documentViewHandler(idx.formdoc)}
                 >
-                  <div style={{ width: "5%" }}>{key + 1}</div>
-                  <div style={{ width: "20%" }}>
+                  <div className="col-md-1 col-lg-1">{key + 1}</div>
+                  <div className="col-md-6 col-lg-3">
                     {
                       (
                         userList.filter(
@@ -87,8 +88,8 @@ export default function UserInfo(props: any) {
                       )?.fullName
                     }
                   </div>
-                  <div style={{ width: "20%" }}>{idx.email}</div>
-                  <div style={{ width: "20%" }}>
+                  <div className="col-md-5 col-lg-3">{idx.email}</div>
+                  <div className="col-md-5 col-lg-2 ps-md-5 ps-lg-0">
                     {
                       (
                         userList.filter(
@@ -97,7 +98,7 @@ export default function UserInfo(props: any) {
                       )?.fullName
                     }
                   </div>
-                  <div style={{ width: "20%" }}>
+                  <div className="col-md-5 col-lg-2">
                     {
                       (
                         userList.filter(
@@ -106,7 +107,7 @@ export default function UserInfo(props: any) {
                       )?.fullName
                     }
                   </div>
-                  <div style={{ width: "15%", textAlign: "end" }}>
+                  <div className="col-md-2 col-lg-1 d-flex justify-content-end">
                     <div
                       className="d-inline-flex row-send-btn"
                       style={{ zIndex: 50 }}

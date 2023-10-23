@@ -144,15 +144,18 @@ export default function WriterDocsInfo(props: any) {
 
   function convertToUSDateTime(dateString: string): string {
     const date = new Date(dateString);
+
     const options: Intl.DateTimeFormatOptions = {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+      month: "2-digit",
+      day: "2-digit",
       year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      timeZone: "America/New_York",
     };
-    return date.toLocaleString("en-US", options);
+
+    const formattedDate = date.toLocaleString(undefined, options);
+    return formattedDate;
   }
 
   return (
@@ -167,6 +170,7 @@ export default function WriterDocsInfo(props: any) {
               background: "#c2e7ff",
               borderTopLeftRadius: "18px",
               borderTopRightRadius: "18px",
+              fontSize: "14px"
             }}
             className="py-2"
           >
@@ -181,7 +185,7 @@ export default function WriterDocsInfo(props: any) {
               <div style={{ width: "15%", textAlign: "end" }}>Status</div>
             </div>
           </div>
-          <div style={{ overflowY: "auto", height: "80vh" }}>
+          <div style={{ overflowY: "auto", height: "80vh", fontSize: "14px" }}>
             {docList
               .filter((doc: any) =>
                 doc.writer === props.curWriter ? props.curWriter : ""
@@ -306,7 +310,7 @@ export default function WriterDocsInfo(props: any) {
             style={{
               paddingTop: "20px",
               height: "calc(100vh - 150px)",
-              overflow: "auto",
+              overflow: "auto"
             }}
           >
             {defaultQuestions.map((qus, key) => {

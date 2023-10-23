@@ -65,7 +65,7 @@ function Writerboard(props: Props) {
             <img
               src={logoImage}
               className="img-fluid"
-              style={{ width: "60px" }}
+              style={{ width: "80px" }}
               alt="Logo"
             />
           </div>
@@ -109,7 +109,7 @@ function Writerboard(props: Props) {
         {/* <div className="col-lg-1 mt-5"></div> */}
       </div>
       {/* Profile Icon */}
-      <div style={{ position: "absolute", top: "18px", right: "18px" }}>
+      <div style={{ position: "absolute", top: "28px", right: "18px" }}>
         <div className="position-relative">
           <div className="avatar-default-sz rounded-circle">
             <img
