@@ -155,7 +155,7 @@ function Register(props: Props) {
             } else {
               // Handle error response
               console.error("Error Response:", responseData);
-              setSignUpError(responseData.message);
+              setSignUpError(t(responseData.message));
             }
           })
           .catch((error) => {

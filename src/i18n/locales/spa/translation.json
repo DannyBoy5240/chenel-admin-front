@@ -182,5 +182,22 @@
   "email_not_verified": "El correo electrónico no está verificado.",
   "account_on_PENDING": "La cuenta está en estado de PENDIENTE. Por favor, espere a que el administrador apruebe su cuenta.",
   "user_already_exist": "El usuario ya existe.",
-  "phone_already_used": "El teléfono ya está en uso."
+  "phone_already_used": "El teléfono ya está en uso.",
+  "forget_your_password": "¿Olvidaste tu contraseña?",
+  "reset_password": "Restablecer contraseña",
+  "return_to_login": "Volver al inicio de sesión",
+  "input_verifycode": "Introduzca su código de verificación",
+  "code_verify": "Código de verificación",
+  "code_verified": "¡El código se ha verificado con éxito!",
+  "code_not_verified": "El código no se ha verificado. Por favor, compruebe o intente de nuevo.",
+  "reset_password_succeed": "¡Éxito al restablecer la contraseña! Por favor, revise su correo electrónico para obtener el código de verificación y continuar con el restablecimiento de la contraseña.",
+  "reset_password_failed": "Fallo al restablecer la contraseña. Por favor, inténtelo de nuevo.",
+  "password_update_succeed": "¡Su contraseña se ha actualizado con éxito! Por favor, inicie sesión con su nueva contraseña.",
+  "password_update_failed": "Fallo al actualizar la contraseña. Por favor, inténtelo de nuevo.",
+  "reset_your_password": "Restablecer tu contraseña",
+  "new_password": "Nueva contraseña",
+  "new_password_confirm": "Confirmar tu nueva contraseña",
+  "new_password_reset": "Restablecer contraseña",
+  "current_password": "Contraseña actual",
+  "change_password": "Cambiar contraseña"
 }

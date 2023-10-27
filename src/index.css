@@ -165,3 +165,13 @@ code {
     height: 200px;
   }
 }
+
+.centered-div {
+  position: fixed;  /* Use fixed positioning to center on the entire screen */
+  top: 50%;        /* Position it 50% from the top edge */
+  left: 50%;       /* Position it 50% from the left edge */
+  transform: translate(-50%, -50%);  /* Center the element by moving it back 50% of its width and height */
+  background-color: lightgray; /* Just for visualization */
+  padding: 20px;
+  z-index: 50;
+}

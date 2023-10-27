@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
+
+import { BACKEND_URL } from "../../constants";
+import axios from "axios";
 
 import logoImage from "../../assets/img/logo.png";
 import testAvatar from "../../assets/img/avatar.jpg";
 
 import { useDispatch } from "react-redux";
 import { logout } from "../../actions/auth";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import jwt_decode from "jwt-decode";
-
 import { useTranslation } from "react-i18next";
 
 interface Props {
@@ -29,6 +27,8 @@ export default function Header(props: any) {
   const { t, i18n } = useTranslation();
 
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+  const [isPasswordChange, setIsPasswordChange] = useState(false);
+
   const toggleMobileMenu = () => {
     setMobileMenuVisible(!mobileMenuVisible);
   };
@@ -43,6 +43,34 @@ export default function Header(props: any) {
     // save language settings to local storage
     localStorage.setItem("chenel_lang", lang);
   };
+
+  // password update functions
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
+  const [resetPasswordNote, setResetPasswordNote] = useState("");
+
+  const resetNewPasswordHandler = async () => {
+    if (!props.isAuthorized) return;
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/users/updateuserpassword`,
+        { email: props.isAuthorized.email, currentPassword, newPassword  },
+        config
+      );
+      // inform password reset succeed
+      setResetPasswordNote(t("reset_password_succeed"));
+    } catch (err: any) {
+      console.log(err.message);
+      setResetPasswordNote(t("reset_password_failed"));
+    }
+  }
 
   return (
     <header id="header" className="fixed-top" style={{ padding: "0px" }}>
@@ -207,6 +235,14 @@ export default function Header(props: any) {
                   </Col>
                 </a>
                 <ul className="dropdown-menu">
+                  {/* <li role="button">
+                    <div
+                      className="dropdown-item"
+                      onClick={() => setIsPasswordChange(true)}
+                    >
+                      {t("change_password")}
+                    </div>
+                  </li> */}
                   <li role="button">
                     <div
                       className="dropdown-item"
@@ -400,6 +436,15 @@ export default function Header(props: any) {
                         </Col>
                       </a>
                       <ul className="dropdown-menu">
+                        {/* <li>
+                          <div
+                            className="dropdown-item"
+                            role="button"
+                            onClick={() => setIsPasswordChange(true)}
+                          >
+                            {t("change_password")}
+                          </div>
+                        </li> */}
                         <li>
                           <div
                             className="dropdown-item"
@@ -440,6 +485,70 @@ export default function Header(props: any) {
           )}
         </nav>
       </div>
+      {isPasswordChange === true && 
+        <div className="centered-div">
+          <div className="p-4">
+            <div className="form-group">
+              <h4>{t("reset_password")}</h4>
+              <div className="pt-3">
+                <label htmlFor="password1" className="sr-only">
+                  {t("current_password")}
+                </label>
+                <input
+                  type="password"
+                  name="password1"
+                  id="password1"
+                  className="form-control"
+                  placeholder={t("new_password")}
+                  value={currentPassword}
+                  onChange={(ev) => setCurrentPassword(ev.target.value)}
+                />
+              </div>
+              <div className="py-2">
+                <label htmlFor="password1" className="sr-only">
+                  {t("new_password")}
+                </label>
+                <input
+                  type="password"
+                  name="password1"
+                  id="password1"
+                  className="form-control"
+                  placeholder={t("new_password")}
+                  value={newPassword}
+                  onChange={(ev) => setNewPassword(ev.target.value)}
+                />
+              </div>
+              <div className="py-2">
+                <label htmlFor="password2" className="sr-only">
+                  {t("new_password_confirm")}
+                </label>
+                <input
+                  type="password"
+                  name="password2"
+                  id="password2"
+                  className="form-control"
+                  placeholder={t("new_password_confirm")}
+                  value={newPasswordConfirm}
+                  onChange={(ev) => setNewPasswordConfirm(ev.target.value)}
+                />
+              </div>
+              <div className="py-2" style={{ textAlign: "center" }}>
+                <input
+                  name="newpasswordreset"
+                  id="newpasswordreset"
+                  className="btn btn-block login-btn"
+                  style={{ marginBottom: "0px" }}
+                  type="button"
+                  value={t("new_password_reset")}
+                  disabled={newPassword === "" || newPassword !== newPasswordConfirm}
+                  onClick={resetNewPasswordHandler}
+                />
+              </div>
+              <div className="text-danger">{resetPasswordNote}</div>
+            </div>
+          </div>
+        </div>
+      }
     </header>
   );
 }

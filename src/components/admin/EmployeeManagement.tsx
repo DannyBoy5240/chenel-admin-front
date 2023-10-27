@@ -221,7 +221,7 @@ export default function EmployeeManagement(props: any) {
                     style={{ color: idx.status === "PENDING" ? "red" : "blue" }}
                   >
                     <div>{idx.status}</div>
-                    <div>
+                    <div className="d-flex">
                       {idx.status === "PENDING" ? (
                         <div
                           className="row-remove-btn"

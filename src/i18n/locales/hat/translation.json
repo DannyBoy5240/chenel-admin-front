@@ -182,5 +182,22 @@
   "email_not_verified": "Imel la pa verifye.",
   "account_on_PENDING": "Kont la nan Eta TANDE. Tanpri tann administratè a apwouve kont ou.",
   "user_already_exist": "Moun sa yo deja egziste.",
-  "phone_already_used": "Telefòn sa a deja nan sèvis."
+  "phone_already_used": "Telefòn sa a deja nan sèvis.",
+  "forget_your_password": "Bliye Modpas Ou?",
+  "reset_password ": "Ranplase Modpas",
+  "return_to_login": "Retounen nan Koneksyon",
+  "input_verifycode": "Antre Kòd Verifikasyon ou",
+  "code_verify": "Kòd Verifikasyon",
+  "code_verified": "Kòd la verifye avèk siksè !",
+  "code_not_verified": "Kòd la pa verifye. Tanpri tcheke oswa eseye ankò.",
+  "reset_password_succeed": "Réyisi Réyajistre Modpas ou ! Tanpri tcheke imel ou pou jwenn kòd verifikasyon pou kontinye avèk réyajistre modpas ou.",
+  "reset_password_failed": "Echèk nan réyajistre modpas la. Tanpri eseye ankò.",
+  "password_update_succeed": "Modpas ou a aktiyelman mete ajou avèk siksè ! Tanpri konekte avèk nouvo modpas ou.",
+  "password_update_failed": "Echèk nan aktiyalizasyon modpas la. Tanpri eseye ankò.",
+  "reset_your_password": "Réyajiste Modpas ou",
+  "new_password": "Nouvo Modpas",
+  "new_password_confirm": "Konfime nouvo modpas ou",
+  "new_password_reset": "Réyajiste Modpas",
+  "current_password": "Modpas kounye a",
+  "change_password": "Chanje Modpas"
 }

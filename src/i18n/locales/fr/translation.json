@@ -182,5 +182,22 @@
   "email_not_verified": "L'e-mail n'est pas vérifié.",
   "account_on_PENDING": "L'utilisateur est en attente. Veuillez attendre l'approbation de l'administrateur pour votre compte.",
   "user_already_exist": "L'utilisateur existe déjà.",
-  "phone_already_used": "Le numéro de téléphone est déjà utilisé."
+  "phone_already_used": "Le numéro de téléphone est déjà utilisé.",
+  "forget_your_password": "Mot de passe oublié?",
+  "reset_password ": "Réinitialiser le mot de passe",
+  "return_to_login": "Retour à la connexion",
+  "input_verifycode": "Entrez votre code de vérification",
+  "code_verify": "Code de vérification",
+  "code_verified": "Le code a été vérifié avec succès !",
+  "code_not_verified": "Le code n'a pas été vérifié. Veuillez vérifier ou réessayer.",
+  "reset_password_succeed": "Réinitialisation du mot de passe réussie ! Veuillez vérifier votre courrier électronique pour obtenir le code de vérification et procéder à la réinitialisation de votre mot de passe.",
+  "reset_password_failed": "Échec de la réinitialisation du mot de passe. Veuillez réessayer.",
+  "password_update_succeed": "Votre mot de passe a été mis à jour avec succès ! Veuillez vous connecter avec votre nouveau mot de passe.",
+  "password_update_failed": "Échec de la mise à jour du mot de passe. Veuillez réessayer.",
+  "reset_your_password": "Réinitialiser votre mot de passe",
+  "new_password": "Nouveau mot de passe",
+  "new_password_confirm": "Confirmer votre nouveasu mot de passe",
+  "new_password_reset": "Réinitialiser le mot de passe",
+  "current_password": "Mot de passe actuel",
+  "change_password": "Changer le mot de passe"
 }
